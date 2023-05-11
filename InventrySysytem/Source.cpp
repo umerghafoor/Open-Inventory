@@ -1,7 +1,7 @@
-#include<iostream>
-using namespace std;
+#include "Header.h"
+
 int main()
 {
-	cout << "Hello worlds!";
+	std::cout << "Hello world!" << std::endl;
 	return 0;
 }
