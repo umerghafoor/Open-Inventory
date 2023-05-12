@@ -131,10 +131,6 @@
     <ClCompile Include="Features\customer.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Class\customer.h" />
-    <ClInclude Include="Header.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
