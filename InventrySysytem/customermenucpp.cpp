@@ -9,3 +9,8 @@ void CustomerMenu()
 
 
 }
+
+int main()
+{
+	CustomerMenu();
+}

@@ -123,5 +123,5 @@ int main2()
 		else
 			break;
 	}
-
+	return 0;
 }
