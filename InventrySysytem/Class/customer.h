@@ -1,20 +1,12 @@
 #pragma once
-
+#include"user.h"
 #include<iostream>
 #include<string>
 #include<fstream>
 #include <sstream>
-class user
-{
-protected:
-	int ID;
-	std::string name;
-	std::string email;
-	std::string password;
-};
+
 class Customer:public user
 {
-	
 public:
 	Customer(int);
 	Customer(int _ID, std::string, std::string, std::string);
