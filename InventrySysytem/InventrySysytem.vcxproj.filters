@@ -18,8 +18,12 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Features\admin.cpp">
+    <ClCompile Include="Features\admin.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Features\customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+
 </Project>

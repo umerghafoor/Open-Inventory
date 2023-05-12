@@ -1,7 +1,20 @@
 #include<string>
 #include<iostream>
 #include<fstream>
+#include"Class/customer.h"
+
 using namespace std;
+
+void CustomerMode()
+{
+//	Customer c1(13,"Umer","umerghafoor@gmail.com","password");
+	Customer c2(13);
+	std::cout << c2.getName();
+}
+
+
+
+
 class data
 {
 private:
@@ -66,6 +79,7 @@ class signup :public data
 {
 
 };
+
 
 int main()
 {
