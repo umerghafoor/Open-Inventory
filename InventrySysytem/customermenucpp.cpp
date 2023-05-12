@@ -3,14 +3,14 @@
 
 void CustomerMenu()
 {
-	//	Customer c1(13,"Umer","umerghafoor@gmail.com","password");
-	Customer c2(13);
+	/*Customer c1(11,"Asad","asadabdullah@gmail.com","asad123");*/
+	/*yaha pe sign up ka poochna ha*/
+	Customer c2(11);
 	std::cout << c2.getName();
-
-
 }
 
 int main()
 {
 	CustomerMenu();
+	return 0;
 }

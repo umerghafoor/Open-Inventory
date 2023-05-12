@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 class data
 {
 private:
@@ -70,11 +68,14 @@ class signup :public data
 {
 
 };
+class admin :public data
+{
 
+};
 
 int main2()
 {
-
+	ifstream filea("admin.txt", ios::in);
 	fstream file("user.txt", ios::app);
 	int ch = 0;
 	int cho = 0;
@@ -118,7 +119,31 @@ int main2()
 		}
 		else if (ch == 2)
 		{
-			/*login data*/
+			string u, p;
+			admin q2;
+			string name, email, username, password;
+			cout << "Enter admin's username :";
+
+			cin >> username;
+			q2.setusername(username);
+			cout << "Enter admin's password :";
+			cin >> password;
+			q2.setpassword(password);
+
+			cout << "check" << endl;
+			while (getline(filea, u, ',') && getline(filea, p, '\n'))
+			{
+				cout << "CHECK!!!!!!!!!!!!!!";
+				if (u != q2.getusername() || p != q2.getpassword())
+				{
+					cout << "The username or password does not match." << endl;
+					break;
+				}
+				else
+				{
+					cout << "Welcome to the ADMIN MENU of the inventory system." << endl;
+				}
+			}
 		}
 		else
 			break;
