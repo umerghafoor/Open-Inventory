@@ -1,17 +1,8 @@
 #include<string>
 #include<iostream>
 #include<fstream>
-#include"Class/customer.h"
 
 using namespace std;
-
-void CustomerMode()
-{
-//	Customer c1(13,"Umer","umerghafoor@gmail.com","password");
-	Customer c2(13);
-	std::cout << c2.getName();
-}
-
 
 
 
@@ -81,7 +72,7 @@ class signup :public data
 };
 
 
-int main()
+int main2()
 {
 
 	fstream file("user.txt", ios::app);
