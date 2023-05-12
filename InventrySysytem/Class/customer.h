@@ -4,13 +4,17 @@
 #include<string>
 #include<fstream>
 #include <sstream>
-
-class Customer
+class user
 {
+protected:
 	int ID;
 	std::string name;
 	std::string email;
 	std::string password;
+};
+class Customer:public user
+{
+	
 public:
 	Customer(int);
 	Customer(int _ID, std::string, std::string, std::string);
@@ -21,8 +25,8 @@ public:
 };
 
 Customer::Customer(int _ID)
-	: ID(_ID)
 {
+	this->ID = _ID;
 	std::ifstream customerDataBase("customerDataBase.csv");
 	std::string _id, _name, _email, _password;
 	std::string line;
@@ -47,8 +51,11 @@ Customer::Customer(int _ID)
 	customerDataBase.close();
 }
 Customer::Customer(int _ID, std::string _name, std::string _email, std::string _password)
-	: ID(_ID), name(_name), email(_email), password(_password)
 {
+	this->ID = _ID;
+	this->name = _name;
+	this->email = _email;
+	this->password = _password;
 	std::ifstream customerDataBase("customerDataBase.csv");
 	std::string line;
 	bool customerExists = false;
