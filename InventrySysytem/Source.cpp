@@ -98,41 +98,20 @@ int main()
 				cout << "Create a username for youself :";
 				getline(cin, username);
 				q1.setusername(username);
+				cout << "Create a password :";
+				getline(cin, password);
+				q1.setpassword(password);
 				if (file.is_open())
 				{
-					bool usernametaken = false;
-					string n, e, u, p;
-					file.clear(); // Clear any error flags
-					file.seekg(0); // Set the file's position indicator to the beginning
-					while (getline(file,n,',') && getline(file, e,',') && getline(file,u,',') && getline(file,p,'\n'))
-					{
-						cout << "CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
-						if (u == q1.getusername())
-						{
-							cout << "This user name is already taken!!!" << endl;
-							cout << "TRY AGAIN!";
-							usernametaken = true;
-							break;
-						}
-						else
-						{
-							cout << "Create a password :";
-							getline(cin, password);
-							q1.setpassword(password);
-							if (file.is_open())
-							{
-								file << name << "," << email << "," << username << "," << password << endl;
-							}
-							else
-							{
-								cout << "File is not open";
-							}
-						}
-					}
+					file << name << "," << email << "," << username << "," << password << endl;
+				}
+				else
+				{
+					cout << "File is not open";
 				}
 			}
 		}
-		if (ch == 2)
+		else if (ch == 2)
 		{
 			/*login data*/
 		}
