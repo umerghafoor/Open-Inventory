@@ -66,10 +66,7 @@ class signup :public data
 {
 
 };
-class signin :public data
-{
 
-};
 int main()
 {
 
@@ -96,32 +93,35 @@ int main()
 				getline(cin,name);
 				q1.setname(name);
 				cout << "Enter your email : ";
-				cin >> email;
+				getline(cin, email);
 				q1.setemail(email);
 				cout << "Create a username for youself :";
-				cin >> username;
+				getline(cin, username);
 				q1.setusername(username);
-				
 				if (file.is_open())
 				{
-					string n, e, u, password;
-					while (getline(file,n,',') && getline(file, e,',') && getline(file,u,',') && getline(file,password,'\n'))
+					bool usernametaken = false;
+					string n, e, u, p;
+					file.clear(); // Clear any error flags
+					file.seekg(0); // Set the file's position indicator to the beginning
+					while (getline(file,n,',') && getline(file, e,',') && getline(file,u,',') && getline(file,p,'\n'))
 					{
 						cout << "CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
 						if (u == q1.getusername())
 						{
 							cout << "This user name is already taken!!!" << endl;
 							cout << "TRY AGAIN!";
+							usernametaken = true;
+							break;
 						}
 						else
 						{
 							cout << "Create a password :";
-							cin >> password;
+							getline(cin, password);
 							q1.setpassword(password);
-
 							if (file.is_open())
 							{
-								file << q1.getname() << "," << q1.getemail() << "," << q1.getusername() << "," << q1.getpassword() << endl;
+								file << name << "," << email << "," << username << "," << password << endl;
 							}
 							else
 							{
