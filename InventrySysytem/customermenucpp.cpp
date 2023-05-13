@@ -18,5 +18,6 @@ void ItemFunctions()
 int main()
 {
 	ItemFunctions();
+	CustomerMenu();
 	return 0;
 }

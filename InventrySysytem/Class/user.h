@@ -1,5 +1,4 @@
 #pragma once
-#include"customer.h"
 class user
 {
 protected:

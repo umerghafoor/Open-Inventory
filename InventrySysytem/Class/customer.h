@@ -5,8 +5,8 @@
 #include<fstream>
 #include <sstream>
 #include <vector>
-#include"user.h"
 #include"Inventory.h"
+#include"user.h"
 
 class Customer:private user
 {	
