@@ -21,7 +21,7 @@
     <ClCompile Include="Features\customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="customermenucpp.cpp">
+    <ClCompile Include="venderormenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

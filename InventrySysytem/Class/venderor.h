@@ -27,7 +27,7 @@ void Vendor::verifyvendor(int id, std::string password)
 	bool logedIn = false;
 	std::string vID = "", line;
 	std::string vpassword = "";
-	/*if (vendordatabase.is_open())
+	if (vendordatabase.is_open())
 	{
 		while (getline(vendordatabase, line))
 		{
@@ -39,14 +39,12 @@ void Vendor::verifyvendor(int id, std::string password)
 			{
 				std::cout << "We welcome the Vendor." << std::endl;
 				logedIn = true;
-				return logedIn;
 			}
 			else
 			{
 				std::cout << "Either ID or password is wrong" << std::endl;
 				logedIn = false;
-				return logedIn;
 			}
 		}
-	}*/
+	}
 }
