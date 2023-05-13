@@ -127,12 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Customermenu.cpp" />
-    <ClCompile Include="Adminmenu.cpp" />
+    <ClCompile Include="customermenucpp.cpp" />
+    <ClCompile Include="Features\admin.h" />
+    <ClCompile Include="Features\customer.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Class\admin.h" />
-    <ClInclude Include="Class\data.h" />
+    <ClInclude Include="Class\customer.h" />
+    <ClInclude Include="Class\inventory.h" />
+    <ClInclude Include="Class\user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
