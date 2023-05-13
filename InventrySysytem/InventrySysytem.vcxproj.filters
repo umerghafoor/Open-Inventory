@@ -32,5 +32,8 @@
     <ClInclude Include="Class\user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Class\admin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
