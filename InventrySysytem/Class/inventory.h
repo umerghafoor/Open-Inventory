@@ -8,15 +8,18 @@ struct Item
     int itemNo;
     std::string itemName;
     float price;
+    float salePrice;
     int quantity;
+    std::string category;
     Item()
     {
         itemNo = 0;
         itemName = "\0";
         price = 0;
+        salePrice = 0;
         quantity = 0;
     }
-    Item(int itemNo, std::string itemName, float price, int quantity)
+    Item(int itemNo, std::string itemName,float salePrice, float price, int quantity, std::string category)
     {
         this->itemNo = itemNo;
         this->itemName = itemName;
@@ -28,11 +31,11 @@ struct Item
 class inventory
 {
     Item item;
-    
+
 protected:
     inventory() {}
     //venderor will use this to add new items
-    bool addItem(int, std::string, float, int);
+    bool addItem(int, std::string, float, float, int, std::string);
 
     //it will return item no one will be able to modify it in data base
     Item ReturnItemByNo(int);
@@ -46,17 +49,15 @@ protected:
     bool editItemQuantity(int, int);
 };
 
-bool inventory::addItem(int itemNo, std::string itemName, float price, int Quantity)
+bool inventory::addItem(int itemNo, std::string itemName, float price,float salePrice, int Quantity,std::string category)
 {
     std::ifstream itemDataBase("ItemDataBase.csv");
     std::string line;
-    while (std::getline(itemDataBase, line)) {
+    while (std::getline(itemDataBase, line))
+    {
         std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
+        std::string _itemNo;
         std::getline(ss, _itemNo, ',');
-        std::getline(ss, _itemName, ',');
-        std::getline(ss, _price, ',');
-        std::getline(ss, _quantity, ',');
         int dbItemNo = std::stoi(_itemNo);
         if (dbItemNo == itemNo) 
         {
@@ -64,9 +65,8 @@ bool inventory::addItem(int itemNo, std::string itemName, float price, int Quant
             return false;
         }
     }
-
     std::ofstream itemDataBaseOut("ItemDataBase.csv", std::ios::app);
-    itemDataBaseOut << itemNo << "," << itemName << "," << price << "," << Quantity << "\n";
+    itemDataBaseOut << itemNo << "," << itemName << "," << salePrice << "," << Quantity << ',' << category << ',' << price << '\n';
     itemDataBaseOut.close();
     return true;
 }
@@ -77,18 +77,22 @@ Item inventory::ReturnItemByNo(int itemNo)
     std::string line;
     while (std::getline(itemDataBase, line)) {
         std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
+        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
         std::getline(ss, _itemName, ',');
         std::getline(ss, _price, ',');
         std::getline(ss, _quantity, ',');
+        std::getline(ss, _category, ',');
+        std::getline(ss, _salePrice, ',');
         int dbItemNo = std::stoi(_itemNo);
         if (dbItemNo == itemNo)
         {
             item.itemNo = itemNo;
             item.itemName = _itemName;
-            item.price = std::stoi(_price);
+            item.price = std::stof(_price);
+            item.salePrice = std::stof(_salePrice);
             item.quantity = std::stoi(_quantity);
+            item.category = _category;
             return item;
         }
     }
@@ -99,17 +103,22 @@ Item inventory::ReturnItemByName(std::string itemName)
     std::string line;
     while (std::getline(itemDataBase, line)) {
         std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
+        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
         std::getline(ss, _itemName, ',');
         std::getline(ss, _price, ',');
         std::getline(ss, _quantity, ',');
+        std::getline(ss, _category, ',');
+        std::getline(ss, _salePrice, ',');
+
         if (itemName == _itemName)
         {
             item.itemNo = (std::stoi(_itemNo));
             item.itemName = _itemName;
-            item.price = std::stoi(_price);
+            item.price = std::stof(_price);
+            item.salePrice = std::stof(_salePrice);
             item.quantity = std::stoi(_quantity);
+            item.category = _category;
             return item;
         }
     }
@@ -122,15 +131,19 @@ std::vector<Item> inventory::ReturnAllItems()
     while (std::getline(itemDataBase, line)) 
     {
         std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
+        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
         std::getline(ss, _itemName, ',');
         std::getline(ss, _price, ',');
         std::getline(ss, _quantity, ',');
+        std::getline(ss, _category, ',');
+        std::getline(ss, _salePrice, ',');
+
         int itemNo = std::stoi(_itemNo);
         float price = std::stof(_price);
         int quantity = std::stoi(_quantity);
-        Item item(itemNo, _itemName, price, quantity);
+        float salePrice = std::stof(_salePrice);
+        Item item(itemNo, _itemName, price, salePrice, quantity, _category);
         allItems.push_back(item);
     }
     itemDataBase.close();
@@ -173,18 +186,21 @@ bool inventory::editItemQuantity(int itemNo, int newQuantity)
     while (std::getline(itemDataBase, line))
     {
         std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
+        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
         std::getline(ss, _itemName, ',');
         std::getline(ss, _price, ',');
         std::getline(ss, _quantity, ',');
+        std::getline(ss, _category, ',');
+        std::getline(ss, _salePrice, ',');
+
         int dbItemNo = std::stoi(_itemNo);
 
         if (dbItemNo == itemNo)
         {
             int dbQuantity = std::stoi(_quantity);
             dbQuantity += newQuantity;
-            tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << "\n";
+            tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
         }
         else
         {

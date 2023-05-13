@@ -15,7 +15,7 @@ class Customer :private user, private inventory
 	std::vector<Item> cart;
 public:
 	Customer(int,std::string);
-	Customer(int _ID, std::string, std::string, std::string);
+	Customer(int _ID, std::string, std::string, std::string,bool);
 
 	//getter
 	int getID();
@@ -35,7 +35,6 @@ public:
 	float totalAmount();
 	bool doneShoping(float,float,float);
 
-	
 };
 
 Customer::Customer(int _ID , std::string password)
@@ -74,7 +73,7 @@ Customer::Customer(int _ID , std::string password)
 		password = '\0';
 	}
 }
-Customer::Customer(int _ID, std::string _name, std::string _email, std::string _password)
+Customer::Customer(int _ID, std::string _name, std::string _email, std::string _password,bool specialCustomer)
 {
 	this->ID = _ID;
 	this->name = _name;
@@ -103,7 +102,7 @@ Customer::Customer(int _ID, std::string _name, std::string _email, std::string _
 	if (!customerExists) 
 	{
 		std::ofstream customerDataBase("customerDataBase.csv", std::ios::app);
-		customerDataBase << ID << "," << name << "," << email << "," << password << "\n";
+		customerDataBase << ID << "," << name << "," << email << "," << password<<','<< specialCustomer << "\n";
 		customerDataBase.close();
 	}
 	logedIn = false;
@@ -129,7 +128,7 @@ float Customer::totalAmount()
 	{
 		for (auto i = 0; i != cart.size(); i++)
 		{
-			total += cart[i].price * cart[i].quantity;
+			total += cart[i].salePrice * cart[i].quantity;
 		}
 		return total;
 	}
@@ -148,10 +147,17 @@ bool Customer::doneShoping(float cash, float change, float received)
 		std::time_t t = std::time(0);
 		std::tm now;
 		localtime_s(&now, &t);
-
-		logFile << received << "," << cash << "," << change << "," << ID << "," << name << ","
-			<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
-			<< std::endl;
+		for (int i = 0;i < cart.size();i++)
+		{
+			logFile
+				//usefull information
+				<< cart[i].salePrice << "," << cart[i].price << "," << cart[i].quantity << "," << cart[i].itemName << ","
+				//user details
+				<< ID << "," << name << ","
+				//time and date
+				<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
+				<< std::endl;
+		}
 		
 		logFile.close();
 	}
@@ -225,7 +231,7 @@ void Customer::displayAll()
 		std::vector<Item> dispalyItems = ReturnAllItems();
 		for (auto i = 0; i != dispalyItems.size(); i++)
 		{
-			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << std::endl;
+			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << '\t' << dispalyItems[i].category << std::endl;
 		}
 	}
 	else
@@ -239,7 +245,7 @@ void Customer::displayCart()
 	if (logedIn)
 	{
 		std::cout << "No." << '\t' << "Code" << '\t' << "Name"
-			<< '\t' << "Price" << '\t' << "Quant" << '\t' << "Total" << std::endl;
+			<< '\t' << "Price" << '\t' << "Quant" << '\t' << "Sub Total" << std::endl;
 		for (auto i = 0; i != cart.size(); i++)
 		{
 			total = cart[i].price * cart[i].quantity;

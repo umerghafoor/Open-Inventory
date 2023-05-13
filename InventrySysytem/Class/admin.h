@@ -8,8 +8,10 @@
 
 struct Log
 {
-	float amount;
-
+	float salePrice;
+	float price;
+	int quantity;
+	std::string item;
 	int day;
 	int month;
 	int year;
@@ -22,7 +24,7 @@ public:
 	Admin(int, std::string, std::string, std::string);
 
 	std::vector<Log> returnReport();
-	void displaySaleLog();
+	void SaleLog(int&, float&, float&, float&);
 	void displayPurchaseLog();
 };
 
@@ -102,16 +104,18 @@ std::vector<Log> Admin::returnReport()
 	{
 		std::vector<Log> allLog;
 		Log _log;
-		std::string _sale, _buffer, _day, _month, _year;
+		std::string _price, _salePrice, _quantity, _item, _buffer, _day, _month, _year;
 		std::ifstream log("log.csv");
 		std::string line;
 		while (std::getline(log, line))
 		{
 			std::stringstream ss(line);
-			std::getline(ss, _sale, ',');
 
-			std::getline(ss, _buffer, ',');
-			std::getline(ss, _buffer, ',');
+			std::getline(ss, _salePrice, ',');
+			std::getline(ss, _price, ',');
+			std::getline(ss, _quantity, ',');
+
+			std::getline(ss, _item, ',');
 			std::getline(ss, _buffer, ',');
 			std::getline(ss, _buffer, ',');
 
@@ -119,7 +123,11 @@ std::vector<Log> Admin::returnReport()
 			std::getline(ss, _month, '/');
 			std::getline(ss, _year, ' ');
 
-			_log.amount = std::stof(_sale);
+			_log.price = std::stof(_price);
+			_log.salePrice = std::stof(_salePrice);
+			_log.quantity = std::stoi(_quantity);
+
+			_log.item = _item;
 			_log.day = std::stoi(_day);
 			_log.month = std::stoi(_month);
 			_log.year = std::stoi(_year);
@@ -131,25 +139,35 @@ std::vector<Log> Admin::returnReport()
 	}
 }
 
-void Admin::displaySaleLog()
+void Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,float& profit)
 {
 	std::vector<Log> log = returnReport();
-	float totalSales = 0;
+	int _totalItemSold = 0;
+	float _totalRevenue = 0;
+	float _totalCost = 0;
 	for (int i = 0;i < log.size();i++)
 	{
-		if (log[i].amount > 0)
-			totalSales += log[i].amount;
+		if (log[i].price > 0)
+		{
+			_totalItemSold += log[i].quantity;
+			_totalRevenue += (log[i].salePrice * log[i].quantity);
+			_totalCost += (log[i].price * log[i].quantity);
+		}
 	}
-	std::cout << "Total Sales : " << totalSales << std::endl;
+	totalItemSold = _totalItemSold;
+	totalRevenue = _totalRevenue;
+	totalCost = _totalCost;
+	profit = _totalRevenue - totalCost;
 }
+
 void Admin::displayPurchaseLog()
 {
 	std::vector<Log> log = returnReport();
 	float totalSales = 0;
 	for (int i = 0;i < log.size();i++)
 	{
-		if (log[i].amount < 0)
-			totalSales += log[i].amount;
+		if (log[i].price < 0)
+			totalSales += log[i].price;
 	}
 	std::cout << "Total Sales : " << totalSales << std::endl;
 }
