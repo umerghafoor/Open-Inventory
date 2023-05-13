@@ -30,7 +30,7 @@ void CustomerMenu()
 	c2.doneShoping(500, 150, 350);
 }
 
-int main2()
+int main()
 {
 
 	CustomerMenu();

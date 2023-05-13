@@ -127,9 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="customermenucpp.cpp" />
     <ClCompile Include="Features\admin.h" />
     <ClCompile Include="Features\customer.cpp" />
-    <ClCompile Include="venderormenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\admin.h" />
