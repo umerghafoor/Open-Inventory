@@ -3,9 +3,8 @@
 
 void CustomerMenu()
 {
-//	Customer c1(2,"user2","user1@gmail.com","12345678");
-	/*yaha pe sign up ka poochna ha*/
-	Customer c2(2,"12345678");
+	Customer c1(3,"user3","user3@gmail.com","12345678");
+	Customer c2(3,"1234ddsad678");
 	std::cout << c2.getName();
 }
 
@@ -18,6 +17,6 @@ void ItemFunctions()
 int main()
 {
 	ItemFunctions();
-	CustomerMenu();
+	/*CustomerMenu();*/
 	return 0;
 }

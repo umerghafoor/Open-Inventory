@@ -18,12 +18,12 @@ public:
 		this->ID = ID;
 		this->password = password;
 	}
-	void verifyAdmin(int ID, std::string password);
+	bool verifyAdmin(int ID, std::string password);
 };
-void Admin::verifyAdmin(int ID, std::string password)
+bool Admin::verifyAdmin(int ID, std::string password)
 {
 	std::ifstream admindatabase("Admindatabase.csv", std::ios::in);
-	bool pass = false;
+	bool logedIn = false;
 	std::string vID = "", line;
 	std::string vpassword = "";
 	if (admindatabase.is_open())
@@ -37,11 +37,14 @@ void Admin::verifyAdmin(int ID, std::string password)
 			if (ID == id && password == password)
 			{
 				std::cout << "We welcome the Admin Himself" << std::endl;
-				break;
+				logedIn = true;
+				return logedIn;
 			}
 			else
 			{
 				std::cout << "Either ID or password is wrong" << std::endl;
+				logedIn = false;
+				return logedIn;
 			}
 		}
 	}

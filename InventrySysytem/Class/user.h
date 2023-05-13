@@ -6,6 +6,7 @@ protected:
 	std::string name;
 	std::string email;
 	std::string password;
+	bool logedIn;
 	bool checkID(std::string, std::string);
 
 };
