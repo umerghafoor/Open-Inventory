@@ -9,7 +9,7 @@ void CustomerMenu()
 	std::cout << c2.getName();
 }
 
-int main()
+int main2()
 {
 	CustomerMenu();
 	return 0;

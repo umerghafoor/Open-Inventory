@@ -15,15 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="Customermenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Features\admin.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Features\customer.cpp">
+    <ClCompile Include="Adminmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
-
+  <ItemGroup>
+    <ClInclude Include="Class\data.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\admin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
