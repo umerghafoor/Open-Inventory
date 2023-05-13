@@ -128,12 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="customermenucpp.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Admin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\admin.h" />
-    <ClInclude Include="Class\user.h" />
+    <ClInclude Include="Class\data.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

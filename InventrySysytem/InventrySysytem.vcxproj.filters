@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="customermenucpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -26,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Class\user.h">
+    <ClInclude Include="Class\data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Class\admin.h">

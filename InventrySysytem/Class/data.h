@@ -1,6 +1,5 @@
 #pragma once
-#include"customer.h"
-class user
+class data
 {
 protected:
 	int ID;

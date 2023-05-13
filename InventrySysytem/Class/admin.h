@@ -1,11 +1,11 @@
 #pragma once
-#include"user.h"
+#include"data.h"
 #include<iostream>
 #include<string>
 #include<fstream>
 #include <sstream>
 
-class Admin :public user
+class Admin :public data
 {
 public:
 	Admin(int);
