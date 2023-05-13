@@ -8,7 +8,7 @@ protected:
 	std::string password;
 	bool logedIn;
 	bool checkID(std::string, std::string);
-
+	void logOut();
 };
 
 bool user::checkID(std::string password, std::string newpassword)
@@ -17,4 +17,9 @@ bool user::checkID(std::string password, std::string newpassword)
 		return true;
 	else
 		return false;
+}
+
+void user::logOut()
+{
+	logedIn = false;
 }

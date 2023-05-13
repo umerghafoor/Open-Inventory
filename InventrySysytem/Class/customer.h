@@ -35,7 +35,7 @@ public:
 	float totalAmount();
 	bool doneShoping(float,float,float);
 
-	void logOut();
+	
 };
 
 Customer::Customer(int _ID , std::string password)
@@ -157,10 +157,6 @@ bool Customer::doneShoping(float cash, float change, float received)
 	}
 	else
 		return true;
-}
-void Customer::logOut()
-{
-	logedIn = false;
 }
 
 bool Customer::addToCartbyNo(int itemNo,int quantity)

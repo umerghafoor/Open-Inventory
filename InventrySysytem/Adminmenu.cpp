@@ -1,9 +1,10 @@
 #include<iostream>
 #include"Class/admin.h"
 
-int main2()
+int main()
 {
-	Admin ad;
-	ad.verifyAdmin(2331, "asadabdullah");
-	return 0;
+//	Admin ad(1, "umer", "email", "12345678");
+	Admin ad2(1, "12345678");
+	ad2.displaySaleLog();
+	ad2.displayPurchaseLog();
 }
