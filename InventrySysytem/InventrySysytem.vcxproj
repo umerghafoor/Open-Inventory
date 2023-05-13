@@ -128,9 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="customermenucpp.cpp" />
-    <ClCompile Include="Features\admin.h" />
-    <ClCompile Include="Features\customer.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Admin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\admin.h" />

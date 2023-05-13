@@ -11,8 +11,6 @@ public:
 	Admin(int);
 	Admin(int _ID,std::string);
 	int getAdminID();
-	std::string getAdminName();
-	std::string getAdminEmail();
 	bool verifyAdminPassword(std::string);
 };
 Admin::Admin(int _ID)
@@ -64,21 +62,13 @@ Admin::Admin(int _ID, std::string _password)
 	if (!adminExists) 
 	{
 		std::ofstream Admindatabase("Admindatabase.csv", std::ios::app);
-		Admindatabase << ID << "," << name << "," << email << "," << password << "\n";
+		Admindatabase << ID << "," << password << "\n";
 		Admindatabase.close();
 	}
 }
 int Admin::getAdminID()
 {
 	return ID;
-}
-std::string Admin::getAdminName()
-{
-	return name;
-}
-std::string Admin::getAdminEmail()
-{
-	return email;
 }
 bool Admin::verifyAdminPassword(std::string _password)
 {
