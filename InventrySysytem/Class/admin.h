@@ -8,72 +8,41 @@
 class Admin :public data
 {
 public:
-	Admin(int);
-	Admin(int _ID,std::string);
-	int getAdminID();
-	bool verifyAdminPassword(std::string);
+	Admin()
+	{
+		this->ID = ID;
+		this->password = password;
+	}
+	Admin(int ID, std::string password)
+	{
+		this->ID = ID;
+		this->password = password;
+	}
+	void verifyAdmin(int ID, std::string password);
 };
-Admin::Admin(int _ID)
+void Admin::verifyAdmin(int ID, std::string password)
 {
-	this->ID = _ID;
-	std::ifstream Admindatabase("Admindatabase.csv");
-	std::string _id, _name, _email, _password;
-	std::string line;
-	while (std::getline(Admindatabase, line))
+	std::ifstream admindatabase("Admindatabase.csv", std::ios::in);
+	bool pass = false;
+	std::string vID = "", line;
+	std::string vpassword = "";
+	if (admindatabase.is_open())
 	{
-		std::stringstream ss(line);
-		std::getline(ss, _id, ',');
-		std::getline(ss, _name, ',');
-		std::getline(ss, _email, ',');
-		std::getline(ss, _password, ',');
-
-		int id = std::stoi(_id);
-		if (id == _ID)
+		while (getline(admindatabase, line))
 		{
-			ID = id;
-			name = _name;
-			email = _email;
-			password = _password;
-			break;
+			std::stringstream ss(line);
+			std::getline(ss, vID, ',');
+			std::getline(ss, vpassword);
+			int id = std::stoi(vID);
+			if (ID == id && password == password)
+			{
+				std::cout << "We welcome the Admin Himself" << std::endl;
+				break;
+			}
+			else
+			{
+				std::cout << "Either ID or password is wrong" << std::endl;
+			}
 		}
 	}
-	Admindatabase.close();
-}
-Admin::Admin(int _ID, std::string _password)
-{
-	this->ID = _ID;
-	this->password = _password;
-	std::ifstream Admindatabase("Admindatabase.csv");
-	std::string line;
-	bool adminExists = false;
-	while (std::getline(Admindatabase, line)) 
-	{
-		std::stringstream ss(line);
-		std::string field;
-		std::getline(ss, field, ',');
-		int existingID = std::stoi(field);
-		if (existingID == ID) 
-		{
-			adminExists = true;
-			break;
-		}
-	}
-	Admindatabase.close();
-	if (!adminExists) 
-	{
-		std::ofstream Admindatabase("Admindatabase.csv", std::ios::app);
-		Admindatabase << ID << "," << password << "\n";
-		Admindatabase.close();
-	}
-}
-int Admin::getAdminID()
-{
-	return ID;
-}
-bool Admin::verifyAdminPassword(std::string _password)
-{
-	if (password == _password)
-		return true;
-	else
-		return false;
 }

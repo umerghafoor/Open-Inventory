@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="customermenucpp.cpp">
+    <ClCompile Include="Customermenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Admin.cpp">
+    <ClCompile Include="Adminmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
