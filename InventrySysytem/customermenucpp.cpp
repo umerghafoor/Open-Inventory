@@ -14,7 +14,7 @@ void ItemFunctions()
 	std::cout << i1.addItem(2, "item2", 40.0, 99);
 }
 
-int main()
+int main2()
 {
 	ItemFunctions();
 	/*CustomerMenu();*/

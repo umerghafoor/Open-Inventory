@@ -5,30 +5,31 @@
 #include <sstream>
 #include"user.h"
 
-class Admin :public user
+class Vendor :public user
 {
 public:
-	Admin()
+	Vendor()
 	{
 		this->ID = 0;
 		this->password = "\0";
 	}
-	Admin(int ID, std::string password)
+	Vendor(int ID, std::string password)
 	{
 		this->ID = ID;
 		this->password = password;
 	}
-	bool verifyAdmin(int ID, std::string password);
+	void verifyvendor(int id, std::string password);
 };
-bool Admin::verifyAdmin(int ID, std::string password)
+
+void Vendor::verifyvendor(int id, std::string password)
 {
-	std::ifstream admindatabase("Admindatabase.csv", std::ios::in);
+	std::ifstream vendordatabase("vendordatabase.csv", std::ios::in);
 	bool logedIn = false;
 	std::string vID = "", line;
 	std::string vpassword = "";
-	if (admindatabase.is_open())
+	/*if (vendordatabase.is_open())
 	{
-		while (getline(admindatabase, line))
+		while (getline(vendordatabase, line))
 		{
 			std::stringstream ss(line);
 			std::getline(ss, vID, ',');
@@ -36,7 +37,7 @@ bool Admin::verifyAdmin(int ID, std::string password)
 			int id = std::stoi(vID);
 			if (ID == id && password == password)
 			{
-				std::cout << "We welcome the Admin Himself" << std::endl;
+				std::cout << "We welcome the Vendor." << std::endl;
 				logedIn = true;
 				return logedIn;
 			}
@@ -47,5 +48,5 @@ bool Admin::verifyAdmin(int ID, std::string password)
 				return logedIn;
 			}
 		}
-	}
+	}*/
 }
