@@ -47,7 +47,6 @@ protected:
     bool buyItem(int, int);
 
     // use to edit quantity
-public:
     bool editItemQuantity(int, int);
 };
 

@@ -21,7 +21,7 @@
     <ClCompile Include="Features\customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="venderormenu.cpp">
+    <ClCompile Include="Adminmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Class\venderor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comman\constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

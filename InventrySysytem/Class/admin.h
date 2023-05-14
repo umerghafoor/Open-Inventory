@@ -4,7 +4,6 @@
 #include<fstream>
 #include <sstream>
 #include <vector>
-
 #include"user.h"
 #include"../comman/constants.h"
 
@@ -19,15 +18,28 @@ struct Log
 	int year;
 };
 
-class Admin :private user
+class Admin :private user 
 {
+	//private data
+	std::vector<user> allUser;
+	//private funtions
 	std::vector<Log> returnReport();
+	std::vector<user> returnAllUser();
 public:
 	Admin(int, std::string);
 	Admin(int, std::string, std::string, std::string);
 
-	void SaleLog(int&, float&, float&, float&);
-	void PurchaseLog(int&, float&, float&);
+	//Customer managment
+	bool deleteCustomer(int);
+	bool markSpecial(int,bool);
+
+	//Inventory mangment
+	bool deleteItem(int);
+	bool reduceItemQuantity(int, int);
+
+	//Report managment
+	bool SaleLog(int&, float&, float&, float&);
+	bool PurchaseLog(int&, float&, float&);
 };
 
 Admin::Admin(int _ID, std::string password)
@@ -140,44 +152,236 @@ std::vector<Log> Admin::returnReport()
 		return allLog;
 	}
 }
-
-void Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,float& profit)
+std::vector<user> Admin::returnAllUser()
 {
-	std::vector<Log> log = returnReport();
-	int _totalItemSold = 0;
-	float _totalRevenue = 0;
-	float _totalCost = 0;
-	for (int i = 0;i < log.size();i++)
+	if (logedIn)
 	{
-		if (log[i].price > 0)
+		std::vector<user> allUser;
+		user *temp;
+		std::string _ID, _name, _email, _password, _specialUser;
+		std::ifstream customer(customerDataBaseFile);
+		std::string line;
+		while (std::getline(customer, line))
 		{
-			_totalItemSold += log[i].quantity;
-			_totalRevenue += (log[i].salePrice * log[i].quantity);
-			_totalCost += (log[i].price * log[i].quantity);
+			std::stringstream ss(line);
+
+			std::getline(ss, _ID, ',');
+			std::getline(ss, _name, ',');
+			std::getline(ss, _email, ',');
+			std::getline(ss, _password, ',');
+
+			int ID = stoi(_ID);
+			bool specialUser = _specialUser == "1";
+			temp = new user(ID, _name, _email, _password, specialUser);
+			allUser.push_back(*temp);
 		}
+		customer.close();
+		return allUser;
 	}
-	totalItemSold = _totalItemSold;
-	totalRevenue = _totalRevenue;
-	totalCost = _totalCost;
-	profit = _totalRevenue - totalCost;
 }
 
-void Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal)
+bool Admin::deleteCustomer(int deleteID)
 {
-	std::vector<Log> log = returnReport();
-	int _totalItemPurchased = 0;
-	float _totalCost = 0;
-	float _netTotal = 0;
-	for (int i = 0;i < log.size();i++)
+	if (logedIn)
 	{
-		if (log[i].price < 0)
+		std::ofstream tempCustomerDataBase(tempDataBaseFile);
+
+		std::ifstream customerDataBase(customerDataBaseFile);
+		std::string line;
+		while (getline(customerDataBase, line))
 		{
-			_totalItemPurchased += log[i].quantity;
-			_totalCost += (log[i].salePrice * log[i].quantity);
-			_netTotal += -(log[i].price * log[i].quantity);
+			std::istringstream ss(line);
+			std::string id;
+			getline(ss, id, ',');
+
+			if (stoi(id) == deleteID)
+			{
+				continue;
+			}
+			else
+			{
+				tempCustomerDataBase << line << "\n";
+			}
 		}
+		customerDataBase.close();
+		tempCustomerDataBase.close();
+
+		std::remove(customerDataBaseFile.c_str());
+		std::rename(tempDataBaseFile.c_str(), customerDataBaseFile.c_str());
+		return true;
 	}
-	totalItemPurchased = _totalItemPurchased;
-	totalCost = _totalCost;
-	netTotal = _netTotal;
+	else
+	{
+		return false;
+	}
+}
+bool Admin::markSpecial(int markID,bool special=true)
+{
+	if (logedIn)
+	{
+		std::ofstream tempCustomerDataBase(tempDataBaseFile);
+		std::ifstream customerDataBase(customerDataBaseFile);
+
+		std::string line;
+		while (getline(customerDataBase, line))
+		{
+			std::istringstream ss(line);
+			std::string id;
+			getline(ss, id, ',');
+
+			if (stoi(id) == markID)
+			{
+				std::string name, email, password;
+				getline(ss, name, ',');
+				getline(ss, email, ',');
+				getline(ss, password, ',');
+				tempCustomerDataBase << ID << "," << name << "," << email << "," << password << ',' << special << '\n';
+				continue;
+			}
+			else
+			{
+				tempCustomerDataBase << line << "\n";
+			}
+		}
+		customerDataBase.close();
+		tempCustomerDataBase.close();
+
+		std::remove(customerDataBaseFile.c_str());
+		std::rename(tempDataBaseFile.c_str(), customerDataBaseFile.c_str());
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Admin::deleteItem(int deleteID) 
+{
+	if (logedIn)
+	{
+		std::ifstream itemDataBase(itemDataBaseFile);
+		std::ofstream tempDataBase(tempDataBaseFile);
+
+		std::string line;
+		bool itemDeleted = false;
+
+		while (std::getline(itemDataBase, line)) {
+			std::stringstream ss(line);
+			std::string _ID;
+
+			std::getline(ss, _ID, ',');
+			int id = std::stoi(_ID);
+
+			if (id == deleteID) 
+			{
+				itemDeleted = true;
+			}
+			else 
+			{
+				tempDataBase << line << "\n";
+			}
+		}
+		itemDataBase.close();
+		tempDataBase.close();
+
+		if (!itemDeleted) 
+		{
+			return false;
+		}
+		std::remove(itemDataBaseFile.c_str());
+		std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
+		return true;
+	}
+	return false;
+}
+bool Admin::reduceItemQuantity(int itemNo, int changeQuantity)
+{
+	if (logedIn && changeQuantity<0)
+	{
+		std::ifstream itemDataBase(itemDataBaseFile);
+		std::ofstream tempDataBase(tempDataBaseFile);
+
+		std::string line;
+		while (std::getline(itemDataBase, line))
+		{
+			std::stringstream ss(line);
+			std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
+			std::getline(ss, _itemNo, ',');
+			std::getline(ss, _itemName, ',');
+			std::getline(ss, _price, ',');
+			std::getline(ss, _quantity, ',');
+			std::getline(ss, _category, ',');
+			std::getline(ss, _salePrice, ',');
+
+			int dbItemNo = std::stoi(_itemNo);
+
+			if (dbItemNo == itemNo)
+			{
+				int dbQuantity = std::stoi(_quantity);
+				dbQuantity += changeQuantity;
+				tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
+			}
+			else
+			{
+				tempDataBase << line << "\n";
+			}
+		}
+		itemDataBase.close();
+		tempDataBase.close();
+		std::remove(itemDataBaseFile.c_str());
+		std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
+		return true;
+	}
+	return false;
+}
+
+bool Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,float& profit)
+{
+	if (logedIn)
+	{
+		std::vector<Log> log = returnReport();
+		int _totalItemSold = 0;
+		float _totalRevenue = 0;
+		float _totalCost = 0;
+		for (int i = 0;i < log.size();i++)
+		{
+			if (log[i].price > 0)
+			{
+				_totalItemSold += log[i].quantity;
+				_totalRevenue += (log[i].salePrice * log[i].quantity);
+				_totalCost += (log[i].price * log[i].quantity);
+			}
+		}
+		totalItemSold = _totalItemSold;
+		totalRevenue = _totalRevenue;
+		totalCost = _totalCost;
+		profit = _totalRevenue - totalCost;
+		return true;
+	}
+	return false;
+}
+bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal)
+{
+	if (logedIn)
+	{
+		std::vector<Log> log = returnReport();
+		int _totalItemPurchased = 0;
+		float _totalCost = 0;
+		float _netTotal = 0;
+		for (int i = 0;i < log.size();i++)
+		{
+			if (log[i].price < 0)
+			{
+				_totalItemPurchased += log[i].quantity;
+				_totalCost += (log[i].salePrice * log[i].quantity);
+				_netTotal += -(log[i].price * log[i].quantity);
+			}
+		}
+		totalItemPurchased = _totalItemPurchased;
+		totalCost = _totalCost;
+		netTotal = _netTotal;
+		return true;
+	}
+	return false;
 }
