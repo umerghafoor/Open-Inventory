@@ -25,6 +25,7 @@ class Admin :private user
 	//private funtions
 	std::vector<Log> returnReport();
 	std::vector<user> returnAllUser();
+	std::vector<user> returnAllEmployee();
 public:
 	Admin(int, std::string);
 	Admin(int, std::string, std::string, std::string);
@@ -160,6 +161,33 @@ std::vector<user> Admin::returnAllUser()
 		user *temp;
 		std::string _ID, _name, _email, _password, _specialUser;
 		std::ifstream customer(customerDataBaseFile);
+		std::string line;
+		while (std::getline(customer, line))
+		{
+			std::stringstream ss(line);
+
+			std::getline(ss, _ID, ',');
+			std::getline(ss, _name, ',');
+			std::getline(ss, _email, ',');
+			std::getline(ss, _password, ',');
+
+			int ID = stoi(_ID);
+			bool specialUser = _specialUser == "1";
+			temp = new user(ID, _name, _email, _password, specialUser);
+			allUser.push_back(*temp);
+		}
+		customer.close();
+		return allUser;
+	}
+}
+std::vector<user> Admin::returnAllEmployee()
+{
+	if (logedIn)
+	{
+		std::vector<user> allUser;
+		user* temp;
+		std::string _ID, _name, _email, _password, _specialUser;
+		std::ifstream customer(employeeDataBaseFile);
 		std::string line;
 		while (std::getline(customer, line))
 		{
