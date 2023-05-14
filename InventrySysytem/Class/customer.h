@@ -36,6 +36,8 @@ public:
 	float totalAmount();
 	bool doneShoping(float,float,float);
 
+	bool checkID(std::string, std::string);
+	void logOut();
 };
 
 Customer::Customer(int _ID , std::string password)
@@ -148,6 +150,7 @@ bool Customer::doneShoping(float cash, float change, float received)
 		std::time_t t = std::time(0);
 		std::tm now;
 		localtime_s(&now, &t);
+
 		for (int i = 0;i < cart.size();i++)
 		{
 			logFile
@@ -260,3 +263,15 @@ void Customer::displayCart()
 	}
 }
 
+bool Customer::checkID(std::string password, std::string newpassword)
+{
+	if (password == newpassword)
+		return true;
+	else
+		return false;
+}
+
+void Customer::logOut()
+{
+	logedIn = false;
+}

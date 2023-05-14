@@ -43,11 +43,8 @@ protected:
     Item ReturnItemByName(std::string);
     std::vector<Item> ReturnAllItems();
 
-    //user will use this
-    bool buyItem(int, int);
-
-    // use to edit quantity
-    bool editItemQuantity(int, int);
+//    bool buyItem(int, int);
+//    bool editItemQuantity(int, int);
 };
 
 bool inventory::addItem(int itemNo, std::string itemName, float price,float salePrice, int Quantity,std::string category)
@@ -151,68 +148,65 @@ std::vector<Item> inventory::ReturnAllItems()
     return allItems;
 }
 
-bool inventory::buyItem(int itemNo,int quantity)
-{
-    std::ifstream itemDataBase(itemDataBaseFile);
-    std::string line;
-    while (std::getline(itemDataBase, line)) 
-    {
-        std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _quantity;
-        std::getline(ss, _itemNo, ',');
-        std::getline(ss, _itemName, ',');
-        std::getline(ss, _price, ',');
-        std::getline(ss, _quantity, ',');
-        int dbItemNo = std::stoi(_itemNo);
-        if (dbItemNo == itemNo)
-        {
-            item.itemNo = itemNo;
-            item.itemName = _itemName;
-            item.price = std::stoi(_price);
-            item.quantity = std::stoi(_quantity);
-            return true;
-        }
-    }
-}
+//bool inventory::buyItem(int itemNo,int quantity)
+//{
+//    std::ifstream itemDataBase(itemDataBaseFile);
+//    std::string line;
+//    while (std::getline(itemDataBase, line)) 
+//    {
+//        std::stringstream ss(line);
+//        std::string _itemNo, _itemName, _price, _quantity;
+//        std::getline(ss, _itemNo, ',');
+//        std::getline(ss, _itemName, ',');
+//        std::getline(ss, _price, ',');
+//        std::getline(ss, _quantity, ',');
+//        int dbItemNo = std::stoi(_itemNo);
+//        if (dbItemNo == itemNo)
+//        {
+//            item.itemNo = itemNo;
+//            item.itemName = _itemName;
+//            item.price = std::stoi(_price);
+//            item.quantity = std::stoi(_quantity);
+//            return true;
+//        }
+//    }
+//}
 
-/*
-private memeber functions
-*/
-bool inventory::editItemQuantity(int itemNo, int changeQuantity)
-{
-    std::ifstream itemDataBase(itemDataBaseFile);
-    std::ofstream tempDataBase(tempDataBaseFile);
-
-    std::string line;
-    while (std::getline(itemDataBase, line))
-    {
-        std::stringstream ss(line);
-        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
-        std::getline(ss, _itemNo, ',');
-        std::getline(ss, _itemName, ',');
-        std::getline(ss, _price, ',');
-        std::getline(ss, _quantity, ',');
-        std::getline(ss, _category, ',');
-        std::getline(ss, _salePrice, ',');
-
-        int dbItemNo = std::stoi(_itemNo);
-
-        if (dbItemNo == itemNo)
-        {
-            int dbQuantity = std::stoi(_quantity);
-            dbQuantity += changeQuantity;
-            tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
-        }
-        else
-        {
-            tempDataBase << line << "\n";
-        }
-    }
-    itemDataBase.close();
-    tempDataBase.close();
-    std::cout << "uhfu";
-    std::remove(itemDataBaseFile.c_str());
-    std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
-    std::cout << "uhfu";
-    return true;
-}
+//bool inventory::editItemQuantity(int itemNo, int changeQuantity)
+//{
+//    std::ifstream itemDataBase(itemDataBaseFile);
+//    std::ofstream tempDataBase(tempDataBaseFile);
+//
+//    std::string line;
+//    while (std::getline(itemDataBase, line))
+//    {
+//        std::stringstream ss(line);
+//        std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
+//        std::getline(ss, _itemNo, ',');
+//        std::getline(ss, _itemName, ',');
+//        std::getline(ss, _price, ',');
+//        std::getline(ss, _quantity, ',');
+//        std::getline(ss, _category, ',');
+//        std::getline(ss, _salePrice, ',');
+//
+//        int dbItemNo = std::stoi(_itemNo);
+//
+//        if (dbItemNo == itemNo)
+//        {
+//            int dbQuantity = std::stoi(_quantity);
+//            dbQuantity += changeQuantity;
+//            tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
+//        }
+//        else
+//        {
+//            tempDataBase << line << "\n";
+//        }
+//    }
+//    itemDataBase.close();
+//    tempDataBase.close();
+//    std::cout << "uhfu";
+//    std::remove(itemDataBaseFile.c_str());
+//    std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
+//    std::cout << "uhfu";
+//    return true;
+//}

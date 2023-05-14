@@ -24,8 +24,10 @@ class Admin :private user
 	std::vector<user> allUser;
 	//private funtions
 	std::vector<Log> returnReport();
-	std::vector<user> returnAllUser();
-	std::vector<user> returnAllEmployee();
+
+	//std::vector<user> returnAllUser();
+	//std::vector<user> returnAllEmployee();
+
 public:
 	Admin(int, std::string);
 	Admin(int, std::string, std::string, std::string);
@@ -36,11 +38,14 @@ public:
 
 	//Inventory mangment
 	bool deleteItem(int);
-	bool reduceItemQuantity(int, int);
+	bool editQuantity(int, int);
 
 	//Report managment
-	bool SaleLog(int&, float&, float&, float&);
-	bool PurchaseLog(int&, float&, float&);
+	bool SaleLog(int&, float&, float&, float&, std::string);
+	bool PurchaseLog(int&, float&, float&, std::string);
+
+	bool checkID(std::string, std::string);
+	void logOut();
 };
 
 Admin::Admin(int _ID, std::string password)
@@ -153,61 +158,63 @@ std::vector<Log> Admin::returnReport()
 		return allLog;
 	}
 }
-std::vector<user> Admin::returnAllUser()
-{
-	if (logedIn)
-	{
-		std::vector<user> allUser;
-		user *temp;
-		std::string _ID, _name, _email, _password, _specialUser;
-		std::ifstream customer(customerDataBaseFile);
-		std::string line;
-		while (std::getline(customer, line))
-		{
-			std::stringstream ss(line);
-
-			std::getline(ss, _ID, ',');
-			std::getline(ss, _name, ',');
-			std::getline(ss, _email, ',');
-			std::getline(ss, _password, ',');
-			std::getline(ss, _specialUser, ',');
-
-			int ID = stoi(_ID);
-			bool specialUser = _specialUser == "1";
-			temp = new user(ID, _name, _email, _password, specialUser);
-			allUser.push_back(*temp);
-		}
-		customer.close();
-		return allUser;
-	}
-}
-std::vector<user> Admin::returnAllEmployee()
-{
-	if (logedIn)
-	{
-		std::vector<user> allUser;
-		user* temp;
-		std::string _ID, _name, _email, _password, _specialUser;
-		std::ifstream customer(employeeDataBaseFile);
-		std::string line;
-		while (std::getline(customer, line))
-		{
-			std::stringstream ss(line);
-
-			std::getline(ss, _ID, ',');
-			std::getline(ss, _name, ',');
-			std::getline(ss, _email, ',');
-			std::getline(ss, _password, ',');
-
-			int ID = stoi(_ID);
-			bool specialUser = _specialUser == "1";
-			temp = new user(ID, _name, _email, _password, specialUser);
-			allUser.push_back(*temp);
-		}
-		customer.close();
-		return allUser;
-	}
-}
+//
+//std::vector<user> Admin::returnAllUser()
+//{
+//	if (logedIn)
+//	{
+//		std::vector<user> allUser;
+//		user *temp;
+//		std::string _ID, _name, _email, _password, _specialUser;
+//		std::ifstream customer(customerDataBaseFile);
+//		std::string line;
+//		while (std::getline(customer, line))
+//		{
+//			std::stringstream ss(line);
+//
+//			std::getline(ss, _ID, ',');
+//			std::getline(ss, _name, ',');
+//			std::getline(ss, _email, ',');
+//			std::getline(ss, _password, ',');
+//			std::getline(ss, _specialUser, ',');
+//
+//			int ID = stoi(_ID);
+//			bool specialUser = _specialUser == "1";
+//			temp = new user(ID, _name, _email, _password, specialUser);
+//			allUser.push_back(*temp);
+//			delete temp;
+//		}
+//		customer.close();
+//		return allUser;
+//	}
+//}
+//std::vector<user> Admin::returnAllEmployee()
+//{
+//	if (logedIn)
+//	{
+//		std::vector<user> allUser;
+//		user* temp;
+//		std::string _ID, _name, _email, _password, _specialUser;
+//		std::ifstream customer(employeeDataBaseFile);
+//		std::string line;
+//		while (std::getline(customer, line))
+//		{
+//			std::stringstream ss(line);
+//
+//			std::getline(ss, _ID, ',');
+//			std::getline(ss, _name, ',');
+//			std::getline(ss, _email, ',');
+//			std::getline(ss, _password, ',');
+//
+//			int ID = stoi(_ID);
+//			bool specialUser = _specialUser == "1";
+//			temp = new user(ID, _name, _email, _password, specialUser);
+//			allUser.push_back(*temp);
+//		}
+//		customer.close();
+//		return allUser;
+//	}
+//}
 
 bool Admin::deleteCustomer(int deleteID)
 {
@@ -324,12 +331,13 @@ bool Admin::deleteItem(int deleteID)
 	}
 	return false;
 }
-bool Admin::reduceItemQuantity(int itemNo, int changeQuantity)
+bool Admin::editQuantity(int itemNo, int changeQuantity)
 {
 	if (logedIn && changeQuantity<0)
 	{
 		std::ifstream itemDataBase(itemDataBaseFile);
 		std::ofstream tempDataBase(tempDataBaseFile);
+		std::ofstream logFile(logDataBaseFile, std::ios::app);
 
 		std::string line;
 		while (std::getline(itemDataBase, line))
@@ -345,11 +353,24 @@ bool Admin::reduceItemQuantity(int itemNo, int changeQuantity)
 
 			int dbItemNo = std::stoi(_itemNo);
 
+			//Boilerplate code for ctime library
+			std::time_t t = std::time(0);
+			std::tm now;
+			localtime_s(&now, &t);
+
 			if (dbItemNo == itemNo)
 			{
 				int dbQuantity = std::stoi(_quantity);
 				dbQuantity += changeQuantity;
 				tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
+				logFile
+					//usefull information
+					<< _salePrice << "," << 0 << "," << changeQuantity << "," << _itemName << ","
+					//user details
+					<< ID << "," << name +"(admin)" << ","
+					//time and date
+					<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
+					<< std::endl;
 			}
 			else
 			{
@@ -358,6 +379,7 @@ bool Admin::reduceItemQuantity(int itemNo, int changeQuantity)
 		}
 		itemDataBase.close();
 		tempDataBase.close();
+		logFile.close();
 		std::remove(itemDataBaseFile.c_str());
 		std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
 		return true;
@@ -365,8 +387,31 @@ bool Admin::reduceItemQuantity(int itemNo, int changeQuantity)
 	return false;
 }
 
-bool Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,float& profit)
+
+
+/*
+* @param ofTime
+*	For day		d01
+*	For mount	m01
+*	For Year	y2023
+*/
+bool Admin::SaleLog(int& totalItemSold, float& totalRevenue, float& totalCost, float& profit, std::string ofTime = "DateType(date)")
 {
+	int option = 0;
+	int time = 0;
+	
+	if (ofTime[0] == 'd')
+		option = 1;
+	else if (ofTime[0] == 'm')
+		option = 2;
+	else if (ofTime[0] == 'y')
+		option = 3;
+	else
+		option = 0;
+	ofTime.erase(0, 1);
+	if (option != 0)
+		time = stoi(ofTime);
+
 	if (logedIn)
 	{
 		std::vector<Log> log = returnReport();
@@ -377,9 +422,31 @@ bool Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,floa
 		{
 			if (log[i].price > 0)
 			{
-				_totalItemSold += log[i].quantity;
-				_totalRevenue += (log[i].salePrice * log[i].quantity);
-				_totalCost += (log[i].price * log[i].quantity);
+				if (log[i].day == time && option == 1)
+				{
+					_totalItemSold += log[i].quantity;
+					_totalRevenue += (log[i].salePrice * log[i].quantity);
+					_totalCost += (log[i].price * log[i].quantity);
+				}
+				else if (log[i].month == time && option == 2)
+				{
+					_totalItemSold += log[i].quantity;
+					_totalRevenue += (log[i].salePrice * log[i].quantity);
+					_totalCost += (log[i].price * log[i].quantity);
+				}
+				else if (log[i].year == time && option == 3)
+				{
+					_totalItemSold += log[i].quantity;
+					_totalRevenue += (log[i].salePrice * log[i].quantity);
+					_totalCost += (log[i].price * log[i].quantity);
+				}
+				else if(option == 0)
+				{
+					_totalItemSold += log[i].quantity;
+					_totalRevenue += (log[i].salePrice * log[i].quantity);
+					_totalCost += (log[i].price * log[i].quantity);
+
+				}
 			}
 		}
 		totalItemSold = _totalItemSold;
@@ -390,8 +457,23 @@ bool Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,floa
 	}
 	return false;
 }
-bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal)
+bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal, std::string ofTime = "DateType(date)")
 {
+	int option = 0;
+	int time = 0;
+
+	if (ofTime[0] == 'd')
+		option = 1;
+	else if (ofTime[0] == 'm')
+		option = 2;
+	else if (ofTime[0] == 'y')
+		option = 3;
+	else
+		option = 0;
+	ofTime.erase(0, 1);
+	if (option != 0)
+		time = stoi(ofTime);
+
 	if (logedIn)
 	{
 		std::vector<Log> log = returnReport();
@@ -402,9 +484,31 @@ bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTot
 		{
 			if (log[i].price < 0)
 			{
-				_totalItemPurchased += log[i].quantity;
-				_totalCost += (log[i].salePrice * log[i].quantity);
-				_netTotal += -(log[i].price * log[i].quantity);
+				if (log[i].day == time && option == 1)
+				{
+					_totalItemPurchased += log[i].quantity;
+					_totalCost += (log[i].salePrice * log[i].quantity);
+					_netTotal += -(log[i].price * log[i].quantity);
+				}
+				else if (log[i].month == time && option == 2)
+				{
+					_totalItemPurchased += log[i].quantity;
+					_totalCost += (log[i].salePrice * log[i].quantity);
+					_netTotal += -(log[i].price * log[i].quantity);
+				}
+				if (log[i].year == time && option == 3)
+				{
+					_totalItemPurchased += log[i].quantity;
+					_totalCost += (log[i].salePrice * log[i].quantity);
+					_netTotal += -(log[i].price * log[i].quantity);
+				}
+				if (option == 0)
+				{
+					_totalItemPurchased += log[i].quantity;
+					_totalCost += (log[i].salePrice * log[i].quantity);
+					_netTotal += -(log[i].price * log[i].quantity);
+				}
+
 			}
 		}
 		totalItemPurchased = _totalItemPurchased;
@@ -413,4 +517,18 @@ bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTot
 		return true;
 	}
 	return false;
+}
+
+
+bool Admin::checkID(std::string password, std::string newpassword)
+{
+	if (password == newpassword)
+		return true;
+	else
+		return false;
+}
+
+void Admin::logOut()
+{
+	logedIn = false;
 }

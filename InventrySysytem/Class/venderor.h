@@ -15,13 +15,18 @@ class Vendor :public user, public inventory, public Item
 public:
     Vendor(int, std::string);
     Vendor(int, std::string, std::string, std::string);
+
+	bool editQuantity(int, int);
+	bool checkID(std::string, std::string);
+	void logOut();
 };
+
 Vendor::Vendor(int _ID, std::string password)
 {
 	this->ID = _ID;
 
 	logedIn = false;
-	std::ifstream vendorDataBase("vendorDataBase.csv");
+	std::ifstream vendorDataBase(employeeDataBaseFile);
 	std::string _id, _name, _email, _password;
 	std::string line;
 	while (std::getline(vendorDataBase, line))
@@ -37,11 +42,9 @@ Vendor::Vendor(int _ID, std::string password)
 		{
 			ID = id;
 			name = _name;
-
 			email = _email;
 			password = _password;
 			logedIn = true;
-			std::cout << "Welcome Vendor" << std::endl;
 			break;
 		}
 	}
@@ -52,21 +55,9 @@ Vendor::Vendor(int _ID, std::string password)
 		name = '\0';
 		email = '\0';
 		password = '\0';
+		logedIn = false;
 	}
-	else if (logedIn)
-	{
-		std::cout << "Enter the Item No                  : ";
-		std::cin >> itemNo;
-		std::cout << "Enter the Item Name                : ";
-		std::cin >> itemName;
-		std::cout << "Enter the sales price              : $";
-		std::cin >> price;
-		std::cout << "Enter the quantity                 : ";
-		std::cin >> quantity;
-		std::cout << "Enter the category                 : ";
-		std::cin >> category;
-		addItem(itemNo, itemName, price, salePrice, quantity, category);
-	}
+
 }
 Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _password)
 {
@@ -75,7 +66,7 @@ Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _pass
 	this->email = _email;
 	this->password = _password;
 
-	std::ifstream vendorDataBase("vendorDataBase.csv");
+	std::ifstream vendorDataBase(employeeDataBaseFile);
 	std::string line;
 	bool customerExists = false;
 	while (std::getline(vendorDataBase, line))
@@ -95,9 +86,78 @@ Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _pass
 
 	if (!customerExists)
 	{
-		std::ofstream vendorDataBase("vendorDataBase.csv", std::ios::app);
+		std::ofstream vendorDataBase(employeeDataBaseFile, std::ios::app);
 		vendorDataBase << ID << "," << name << "," << email << "," << password << "\n";
 		vendorDataBase.close();
 	}
+	logedIn = false;
+}
+
+bool Vendor::editQuantity(int itemNo, int changeQuantity)
+{
+	if (logedIn && changeQuantity > 0)
+	{
+		std::ifstream itemDataBase(itemDataBaseFile);
+		std::ofstream tempDataBase(tempDataBaseFile);
+		std::ofstream logFile(logDataBaseFile, std::ios::app);
+
+		std::string line;
+		while (std::getline(itemDataBase, line))
+		{
+			std::stringstream ss(line);
+			std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
+			std::getline(ss, _itemNo, ',');
+			std::getline(ss, _itemName, ',');
+			std::getline(ss, _price, ',');
+			std::getline(ss, _quantity, ',');
+			std::getline(ss, _category, ',');
+			std::getline(ss, _salePrice, ',');
+
+			int dbItemNo = std::stoi(_itemNo);
+			//Boilerplate code for ctime library
+			std::time_t t = std::time(0);
+			std::tm now;
+			localtime_s(&now, &t);
+
+
+			if (dbItemNo == itemNo)
+			{
+				int dbQuantity = std::stoi(_quantity);
+				dbQuantity += changeQuantity;
+				tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
+				logFile
+					//usefull information
+					<< _salePrice << "," << -stof(_price) << "," << changeQuantity << "," << _itemName << ","
+					//user details
+					<< ID << "," << name << ","
+					//time and date
+					<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
+					<< std::endl;
+			}
+			else
+			{
+				tempDataBase << line << "\n";
+			}
+		}
+	
+		itemDataBase.close();
+		tempDataBase.close();
+		std::remove(itemDataBaseFile.c_str());
+		std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
+		return true;
+	}
+	return false;
+}
+
+bool Vendor::checkID(std::string password, std::string newpassword)
+{
+	if (password == newpassword)
+		return true;
+	else
+		return false;
+}
+
+void Vendor::logOut()
+{
 	logedIn = false;
 }

@@ -12,14 +12,14 @@ int main()
 	Admin ad2(1, "12345678");
 
 	//suply the Addresses and get the values in it
-	ad2.SaleLog(totalItem,totalRevenue, totalCost,profit);
+	ad2.SaleLog(totalItem, totalRevenue, totalCost, profit, "y2022");
 	std::cout << "Total Item Sold      : " << totalItem << std::endl;
 	std::cout << "Total Revenue        : $" << totalRevenue << std::endl;
 	std::cout << "Total Cost           : $" << totalCost << std::endl;
 	std::cout << "Profit               : $" << profit << std::endl;
 
 	//suply the Addresses and get the values in it
-	ad2.PurchaseLog(totalItem, totalRevenue, totalCost);
+	ad2.PurchaseLog(totalItem, totalRevenue, totalCost, "d14");
 	std::cout << "\nTotal Item purchase  : " << totalItem << std::endl;
 	std::cout << "Total Cost             : $" << totalRevenue << std::endl;
 	std::cout << "Net Total              : $" << totalCost << std::endl;
@@ -27,8 +27,8 @@ int main()
 	//Customer managment
 	ad2.deleteCustomer(1);
 	ad2.markSpecial(4, 0);
-
+	
 	//cart mangment
 	//ad2.deleteItem(35);
-	ad2.reduceItemQuantity(4, -1);
+	ad2.editQuantity(4, -1);
 }

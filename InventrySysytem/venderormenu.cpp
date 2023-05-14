@@ -3,7 +3,9 @@
 
 void venderor()
 {
-	Vendor ven(2331,"asadabdullah");
+//	Vendor ven1(1, "Umer","umer@email.com", "12345678");
+	Vendor ven(2,"12345678");
+	ven.editQuantity(1, 4);
 }
 
 int main()

@@ -8,15 +8,17 @@ protected:
 	std::string email;
 	std::string password;
 	bool specialUser;
-	//functions
 	bool logedIn;
-	bool checkID(std::string, std::string);
-	void logOut();
+
 	//Constructors
 public:
 	user() {}
 	user(int, std::string, std::string, std::string, bool);
 
+	//virtual funtions
+	virtual bool editQuantity(int itemId, int quantity) = 0;
+	virtual bool checkID(std::string, std::string) = 0;
+	virtual void logOut() = 0;
 };
 
 user::user(int _ID, std::string _name, std::string _email, std::string _password,bool _specialUser)
@@ -28,15 +30,3 @@ user::user(int _ID, std::string _name, std::string _email, std::string _password
 	this->specialUser = _specialUser;
 }
 
-bool user::checkID(std::string password, std::string newpassword)
-{
-	if (password == newpassword)
-		return true;
-	else
-		return false;
-}
-
-void user::logOut()
-{
-	logedIn = false;
-}
