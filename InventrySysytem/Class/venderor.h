@@ -98,21 +98,6 @@ int Vendor::getID()
 	return ID;
 }
 
-void Vendor::displayAll()
-{
-	if (logedIn)
-	{
-		std::vector<Item> dispalyItems = ReturnAllItems();
-		for (auto i = 0; i != dispalyItems.size(); i++)
-		{
-			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << '\t' << dispalyItems[i].category << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "Please Login\n";
-	}
-}
 
 //void Vendor::verifyvendor(int id, std::string password)
 //{
