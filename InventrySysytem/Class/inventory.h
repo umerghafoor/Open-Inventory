@@ -2,6 +2,7 @@
 #include <vector>
 #include <sstream>
 #include<fstream>
+#include "../comman/constants.h"
 
 struct Item
 {
@@ -46,6 +47,7 @@ protected:
     bool buyItem(int, int);
 
     // use to edit quantity
+public:
     bool editItemQuantity(int, int);
 };
 
@@ -73,7 +75,7 @@ bool inventory::addItem(int itemNo, std::string itemName, float price,float sale
 
 Item inventory::ReturnItemByNo(int itemNo)
 {
-    std::ifstream itemDataBase("ItemDataBase.csv");
+    std::ifstream itemDataBase(itemDataBaseFile);
     std::string line;
     while (std::getline(itemDataBase, line)) {
         std::stringstream ss(line);
@@ -99,7 +101,7 @@ Item inventory::ReturnItemByNo(int itemNo)
 }
 Item inventory::ReturnItemByName(std::string itemName)
 {
-    std::ifstream itemDataBase("ItemDataBase.csv");
+    std::ifstream itemDataBase(itemDataBaseFile);
     std::string line;
     while (std::getline(itemDataBase, line)) {
         std::stringstream ss(line);
@@ -126,7 +128,7 @@ Item inventory::ReturnItemByName(std::string itemName)
 std::vector<Item> inventory::ReturnAllItems()
 {
     std::vector<Item> allItems;
-    std::ifstream itemDataBase("ItemDataBase.csv");
+    std::ifstream itemDataBase(itemDataBaseFile);
     std::string line;
     while (std::getline(itemDataBase, line)) 
     {
@@ -152,7 +154,7 @@ std::vector<Item> inventory::ReturnAllItems()
 
 bool inventory::buyItem(int itemNo,int quantity)
 {
-    std::ifstream itemDataBase("ItemDataBase.csv");
+    std::ifstream itemDataBase(itemDataBaseFile);
     std::string line;
     while (std::getline(itemDataBase, line)) 
     {
@@ -177,10 +179,10 @@ bool inventory::buyItem(int itemNo,int quantity)
 /*
 private memeber functions
 */
-bool inventory::editItemQuantity(int itemNo, int newQuantity)
+bool inventory::editItemQuantity(int itemNo, int changeQuantity)
 {
-    std::ifstream itemDataBase("ItemDataBase.csv");
-    std::ofstream tempDataBase("temp.csv");
+    std::ifstream itemDataBase(itemDataBaseFile);
+    std::ofstream tempDataBase(tempDataBaseFile);
 
     std::string line;
     while (std::getline(itemDataBase, line))
@@ -199,7 +201,7 @@ bool inventory::editItemQuantity(int itemNo, int newQuantity)
         if (dbItemNo == itemNo)
         {
             int dbQuantity = std::stoi(_quantity);
-            dbQuantity += newQuantity;
+            dbQuantity += changeQuantity;
             tempDataBase << dbItemNo << "," << _itemName << "," << _price << "," << dbQuantity << ',' << _category << ',' << _salePrice << '\n';
         }
         else
@@ -209,8 +211,9 @@ bool inventory::editItemQuantity(int itemNo, int newQuantity)
     }
     itemDataBase.close();
     tempDataBase.close();
-
-    std::remove("ItemDataBase.csv");
-    std::rename("temp.csv", "ItemDataBase.csv");
+    std::cout << "uhfu";
+    std::remove(itemDataBaseFile.c_str());
+    std::rename(tempDataBaseFile.c_str(), itemDataBaseFile.c_str());
+    std::cout << "uhfu";
     return true;
 }
