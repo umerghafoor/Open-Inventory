@@ -3,7 +3,7 @@
 
 void venderor()
 {
-	Vendor ven(2331, "Asad Abdullah", "asad@gmail.com", "asadabdullah");
+	Vendor ven(2331,"asadabdullah");
 }
 
 int main()
