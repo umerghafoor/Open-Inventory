@@ -137,6 +137,7 @@
     <ClInclude Include="Class\inventory.h" />
     <ClInclude Include="Class\user.h" />
     <ClInclude Include="Class\venderor.h" />
+    <ClInclude Include="comman\constants.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

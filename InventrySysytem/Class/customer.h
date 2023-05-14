@@ -9,6 +9,7 @@
 
 #include"Inventory.h"
 #include"user.h"
+#include "../comman/constants.h"
 
 class Customer :private user, private inventory
 {	
@@ -42,7 +43,7 @@ Customer::Customer(int _ID , std::string password)
 	this->ID = _ID;
 
 	logedIn = false;
-	std::ifstream customerDataBase("customerDataBase.csv");
+	std::ifstream customerDataBase(customerDataBaseFile);
 	std::string _id, _name, _email, _password;
 	std::string line;
 	while (std::getline(customerDataBase, line))
@@ -80,7 +81,7 @@ Customer::Customer(int _ID, std::string _name, std::string _email, std::string _
 	this->email = _email;
 	this->password = _password;
 
-	std::ifstream customerDataBase("customerDataBase.csv");
+	std::ifstream customerDataBase(customerDataBaseFile);
 	std::string line;
 	bool customerExists = false;
 	while (std::getline(customerDataBase, line)) 
@@ -101,7 +102,7 @@ Customer::Customer(int _ID, std::string _name, std::string _email, std::string _
 
 	if (!customerExists) 
 	{
-		std::ofstream customerDataBase("customerDataBase.csv", std::ios::app);
+		std::ofstream customerDataBase(customerDataBaseFile, std::ios::app);
 		customerDataBase << ID << "," << name << "," << email << "," << password<<','<< specialCustomer << "\n";
 		customerDataBase.close();
 	}
@@ -141,7 +142,7 @@ bool Customer::doneShoping(float cash, float change, float received)
 {
 	if (logedIn)
 	{
-		std::ofstream logFile("log.csv", std::ios::app);
+		std::ofstream logFile(logDataBaseFile, std::ios::app);
 
 		//Boilerplate code for ctime library
 		std::time_t t = std::time(0);

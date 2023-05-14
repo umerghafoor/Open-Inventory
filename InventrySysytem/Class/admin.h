@@ -3,8 +3,10 @@
 #include<string>
 #include<fstream>
 #include <sstream>
-#include"user.h"
 #include <vector>
+
+#include"user.h"
+#include"../comman/constants.h"
 
 struct Log
 {
@@ -19,13 +21,13 @@ struct Log
 
 class Admin :private user
 {
+	std::vector<Log> returnReport();
 public:
 	Admin(int, std::string);
 	Admin(int, std::string, std::string, std::string);
 
-	std::vector<Log> returnReport();
 	void SaleLog(int&, float&, float&, float&);
-	void displayPurchaseLog();
+	void PurchaseLog(int&, float&, float&);
 };
 
 Admin::Admin(int _ID, std::string password)
@@ -33,7 +35,7 @@ Admin::Admin(int _ID, std::string password)
 	this->ID = _ID;
 
 	logedIn = false;
-	std::ifstream adminDataBase("adminDataBase.csv");
+	std::ifstream adminDataBase(adminDataBaseFile);
 	std::string _id, _name, _email, _password;
 	std::string line;
 	while (std::getline(adminDataBase, line))
@@ -71,9 +73,9 @@ Admin::Admin(int _ID, std::string _name, std::string _email, std::string _passwo
 	this->email = _email;
 	this->password = _password;
 
-	std::ifstream adminDataBase("adminDataBase.csv");
+	std::ifstream adminDataBase(adminDataBaseFile);
 	std::string line;
-	bool customerExists = false;
+	bool adminExists = false;
 	while (std::getline(adminDataBase, line))
 	{
 		std::stringstream ss(line);
@@ -83,17 +85,17 @@ Admin::Admin(int _ID, std::string _name, std::string _email, std::string _passwo
 		int existingID = std::stoi(_ID);
 		if (existingID == ID)
 		{
-			customerExists = true;
+			adminExists = true;
 			break;
 		}
 	}
 	adminDataBase.close();
 
-	if (!customerExists)
+	if (!adminExists)
 	{
-		std::ofstream customerDataBase("adminDataBase.csv", std::ios::app);
-		customerDataBase << ID << "," << name << "," << email << "," << password << "\n";
-		customerDataBase.close();
+		std::ofstream adminDataBase(adminDataBaseFile, std::ios::app);
+		adminDataBase << ID << "," << name << "," << email << "," << password << "\n";
+		adminDataBase.close();
 	}
 	logedIn = false;
 }
@@ -105,7 +107,7 @@ std::vector<Log> Admin::returnReport()
 		std::vector<Log> allLog;
 		Log _log;
 		std::string _price, _salePrice, _quantity, _item, _buffer, _day, _month, _year;
-		std::ifstream log("log.csv");
+		std::ifstream log(logDataBaseFile);
 		std::string line;
 		while (std::getline(log, line))
 		{
@@ -160,14 +162,22 @@ void Admin::SaleLog(int& totalItemSold,float& totalRevenue,float& totalCost,floa
 	profit = _totalRevenue - totalCost;
 }
 
-void Admin::displayPurchaseLog()
+void Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal)
 {
 	std::vector<Log> log = returnReport();
-	float totalSales = 0;
+	int _totalItemPurchased = 0;
+	float _totalCost = 0;
+	float _netTotal = 0;
 	for (int i = 0;i < log.size();i++)
 	{
 		if (log[i].price < 0)
-			totalSales += log[i].price;
+		{
+			_totalItemPurchased += log[i].quantity;
+			_totalCost += (log[i].salePrice * log[i].quantity);
+			_netTotal += -(log[i].price * log[i].quantity);
+		}
 	}
-	std::cout << "Total Sales : " << totalSales << std::endl;
+	totalItemPurchased = _totalItemPurchased;
+	totalCost = _totalCost;
+	netTotal = _netTotal;
 }
