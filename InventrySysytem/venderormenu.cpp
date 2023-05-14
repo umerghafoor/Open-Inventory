@@ -1,9 +1,13 @@
 #include<iostream>
 #include"Class/venderor.h"
 
+void venderor()
+{
+	Vendor ven(2331, "Asad Abdullah", "asad@gmail.com", "asadabdullah");
+}
+
 int main()
 {
-	Vendor ven;
-	ven.verifyvendor(2331, "asadabdullah");
+	venderor();
 	return 0;
 }

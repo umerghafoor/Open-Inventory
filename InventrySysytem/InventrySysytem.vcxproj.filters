@@ -32,9 +32,6 @@
     <ClInclude Include="Class\customer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Class\data.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Class\inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
