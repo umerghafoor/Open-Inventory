@@ -9,7 +9,7 @@
 #include"user.h"
 #include"Inventory.h"
 
-class Vendor :public user, public inventory
+class Vendor :public user, public inventory, public Item
 {
 	std::vector<Item> cart;
 public:
@@ -41,6 +41,7 @@ Vendor::Vendor(int _ID, std::string password)
 			email = _email;
 			password = _password;
 			logedIn = true;
+			std::cout << "Welcome Vendor" << std::endl;
 			break;
 		}
 	}
@@ -51,6 +52,20 @@ Vendor::Vendor(int _ID, std::string password)
 		name = '\0';
 		email = '\0';
 		password = '\0';
+	}
+	else if (logedIn)
+	{
+		std::cout << "Enter the Item No                  : ";
+		std::cin >> itemNo;
+		std::cout << "Enter the Item Name                : ";
+		std::cin >> itemName;
+		std::cout << "Enter the sales price              : $";
+		std::cin >> price;
+		std::cout << "Enter the quantity                 : ";
+		std::cin >> quantity;
+		std::cout << "Enter the category                 : ";
+		std::cin >> category;
+		addItem(itemNo, itemName, price, salePrice, quantity, category);
 	}
 }
 Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _password)
