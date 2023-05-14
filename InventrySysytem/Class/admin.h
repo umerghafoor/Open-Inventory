@@ -170,6 +170,7 @@ std::vector<user> Admin::returnAllUser()
 			std::getline(ss, _name, ',');
 			std::getline(ss, _email, ',');
 			std::getline(ss, _password, ',');
+			std::getline(ss, _specialUser, ',');
 
 			int ID = stoi(_ID);
 			bool specialUser = _specialUser == "1";
