@@ -24,4 +24,11 @@ int main()
 	std::cout << "Total Cost             : $" << totalRevenue << std::endl;
 	std::cout << "Net Total              : $" << totalCost << std::endl;
 
+	//Customer managment
+	ad2.deleteCustomer(1);
+	ad2.markSpecial(4, 0);
+
+	//cart mangment
+	//ad2.deleteItem(35);
+	ad2.reduceItemQuantity(4, -1);
 }
