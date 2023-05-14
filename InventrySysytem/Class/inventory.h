@@ -4,14 +4,16 @@
 #include<fstream>
 #include "../comman/constants.h"
 
-struct Item
+class Item
 {
+public:
     int itemNo;
     std::string itemName;
     float price;
     float salePrice;
     int quantity;
     std::string category;
+
     Item()
     {
         itemNo = 0;
@@ -94,12 +96,14 @@ Item inventory::ReturnItemByNo(int itemNo)
             return item;
         }
     }
+    return Item();
 }
 Item inventory::ReturnItemByName(std::string itemName)
 {
     std::ifstream itemDataBase(itemDataBaseFile);
     std::string line;
-    while (std::getline(itemDataBase, line)) {
+    while (std::getline(itemDataBase, line)) 
+    {
         std::stringstream ss(line);
         std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
@@ -120,6 +124,7 @@ Item inventory::ReturnItemByName(std::string itemName)
             return item;
         }
     }
+    return Item();
 }
 std::vector<Item> inventory::ReturnAllItems()
 {

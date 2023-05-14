@@ -4,8 +4,10 @@
 #include<fstream>
 #include <sstream>
 #include <vector>
+
 #include"user.h"
 #include"../comman/constants.h"
+#include "inventory.h"
 
 struct Log
 {
@@ -18,19 +20,34 @@ struct Log
 	int year;
 };
 
-class Admin :private user 
+class Admin :private user, public inventory
 {
 	//private data
 	std::vector<user> allUser;
 	//private funtions
 	std::vector<Log> returnReport();
-
+	std::vector<Item> cart;
 	//std::vector<user> returnAllUser();
 	//std::vector<user> returnAllEmployee();
 
 public:
 	Admin(int, std::string);
 	Admin(int, std::string, std::string, std::string);
+
+	//getter
+	int getID();
+	std::string getName();
+	std::string getEmail();
+
+	void displayAll();
+
+	//Cart managment to be send to venderor
+	void displayCart();
+	bool addToCartbyNo(int, int);
+	bool addToCartbyName(std::string, int);
+	bool removeFromCart(int);
+	bool editCartQuantity(int, int);
+	bool sendToVendor();
 
 	//Customer managment
 	bool deleteCustomer(int);
@@ -117,6 +134,134 @@ Admin::Admin(int _ID, std::string _name, std::string _email, std::string _passwo
 	}
 	logedIn = false;
 }
+
+int Admin::getID()
+{
+	return ID;
+}
+std::string Admin::getName()
+{
+	return name;
+}
+std::string Admin::getEmail()
+{
+	return email;
+}
+
+bool Admin::addToCartbyNo(int itemNo, int quantity)
+{
+	if (logedIn)
+	{
+		Item itemTemp = ReturnItemByNo(itemNo);
+		itemTemp.quantity = quantity;
+		cart.push_back(itemTemp);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+bool Admin::addToCartbyName(std::string itemName, int quantity)
+{
+	if (logedIn)
+	{
+		Item itemTemp = ReturnItemByName(itemName);
+		itemTemp.quantity = quantity;
+		cart.push_back(itemTemp);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+bool Admin::removeFromCart(int itemNo)
+{
+	if (logedIn)
+	{
+		if (itemNo < cart.size())
+		{
+			cart.erase(cart.begin() + itemNo);
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+bool Admin::editCartQuantity(int itemNo, int newQuantity)
+{
+	if (logedIn)
+	{
+		if (itemNo < cart.size())
+		{
+			cart[itemNo].quantity = newQuantity;
+			return true;
+		}
+		else
+			return false;
+	}
+	else
+		return false;
+}
+bool Admin::sendToVendor()
+{
+	if (logedIn)
+	{
+		std::ofstream logFile(VendorMessageFile, std::ios::app);
+
+		for (int i = 0;i < cart.size();i++)
+		{
+			logFile
+				//usefull information
+				<< cart[i].quantity << "," << cart[i].itemNo << ',' << cart[i].itemName << "\n";
+		}
+
+		logFile.close();
+	}
+	else
+		return true;
+}
+
+
+
+void Admin::displayAll()
+{
+	if (logedIn)
+	{
+		std::vector<Item> dispalyItems = ReturnAllItems();
+		for (auto i = 0; i != dispalyItems.size(); i++)
+		{
+			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << '\t' << dispalyItems[i].category << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Please Login\n";
+	}
+}
+void Admin::displayCart()
+{
+	float total = 0;
+	if (logedIn)
+	{
+		std::cout << "No." << '\t' << "Code" << '\t' << "Name"
+			<< '\t' << "Price" << '\t' << "Quant" << '\t' << "Sub Total" << std::endl;
+		for (auto i = 0; i != cart.size(); i++)
+		{
+			total = cart[i].price * cart[i].quantity;
+			std::cout << i + 1 << '\t' << cart[i].itemNo << '\t' << cart[i].itemName
+				<< '\t' << cart[i].price << '\t' << cart[i].quantity << '\t' << total << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "Please Login\n";
+	}
+}
+
 
 std::vector<Log> Admin::returnReport()
 {
@@ -390,7 +535,7 @@ bool Admin::editQuantity(int itemNo, int changeQuantity)
 
 
 /*
-* @param ofTime
+* @param ofTime are optional
 *	For day		d01
 *	For mount	m01
 *	For Year	y2023

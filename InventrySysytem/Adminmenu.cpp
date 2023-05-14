@@ -1,6 +1,5 @@
 #include<iostream>
 #include"Class/admin.h"
-#include"Class/inventory.h"
 int main()
 {
 	int totalItem = 0;
@@ -31,4 +30,27 @@ int main()
 	//cart mangment
 	//ad2.deleteItem(35);
 	ad2.editQuantity(4, -1);
-}
+
+	std::cout << ad2.getName() << std::endl;
+
+	ad2.displayAll();
+
+	std::cout << "Add to cart" << std::endl;
+	ad2.addToCartbyNo(1, 12);
+	ad2.addToCartbyName("item2", 4);
+	std::cout << '\n';
+
+
+	std::cout << "cart" << std::endl;
+	ad2.displayCart();
+	ad2.editQuantity(1 - 1, 6);
+	std::cout << "cart after edit quantity" << std::endl;
+	ad2.displayCart();
+
+
+	std::cout << "remove from cart" << std::endl;
+	ad2.removeFromCart(1 - 1);
+	ad2.displayCart();
+
+	ad2.sendToVendor();
+};

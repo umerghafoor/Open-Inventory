@@ -11,6 +11,7 @@
 #include"user.h"
 #include "../comman/constants.h"
 
+
 class Customer :private user, private inventory
 {	
 	std::vector<Item> cart;

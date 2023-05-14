@@ -17,6 +17,8 @@ public:
     Vendor(int, std::string, std::string, std::string);
 
 	bool editQuantity(int, int);
+	bool addItemsFromLog();
+
 	bool checkID(std::string, std::string);
 	void logOut();
 };
@@ -147,6 +149,28 @@ bool Vendor::editQuantity(int itemNo, int changeQuantity)
 		return true;
 	}
 	return false;
+}
+bool Vendor::addItemsFromLog() {
+	std::ifstream logFile(VendorMessageFile);
+	std::string line;
+
+	while (std::getline(logFile, line)) {
+		std::stringstream ss(line);
+		std::string _quantity, _itemNo, _itemName;
+
+		std::getline(ss, _quantity, ',');
+		std::getline(ss, _itemNo, ',');
+		std::getline(ss, _itemName, ',');
+
+		int quantity = std::stoi(_quantity);
+		int itemNo = std::stoi(_itemNo);
+
+		// Add the item to the inventory
+		addItem(itemNo, _itemName, quantity);
+	}
+
+	logFile.close();
+	return true;
 }
 
 bool Vendor::checkID(std::string password, std::string newpassword)
