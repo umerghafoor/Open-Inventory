@@ -47,8 +47,12 @@ int main()
 				cout << "Enter a password           : ";
 				getline(cin, password);
 				cin.ignore();
-				Customer(id,name,email,password, 1);
+				Customer(id,name,email,password, 0);
 				break;
+			}
+			else if (chc == 2)
+			{
+
 			}
 		}
 		else if (ch == 2)
