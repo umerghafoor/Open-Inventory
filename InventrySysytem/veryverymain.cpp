@@ -52,12 +52,18 @@ int main()
 			}
 			else if (chc == 2)
 			{
-
+				int ID = 0;
+				string passsword = "\0";
+				cout << "Enter your ID                        : ";
+				cin >> ID;
+				cout << "Enter your password                  : ";
+				cin >> passsword;
+				Customer(ID, passsword);
 			}
 		}
 		else if (ch == 2)
 		{
-			cout << "Check for 2" << endl;
+			cout << "Welcoome ADMIN!";
 		}
 		else if (ch == 3)
 		{

@@ -45,7 +45,7 @@ public:
 Customer::Customer(int _ID , std::string password)
 {
 	this->ID = _ID;
-
+	this->password = password;
 	logedIn = false;
 	std::ifstream customerDataBase(customerDataBaseFile);
 	std::string _id, _name, _email, _password;
