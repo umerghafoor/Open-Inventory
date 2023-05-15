@@ -15,8 +15,7 @@
     <Keyword>QtVS_v304</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.22000.0</WindowsTargetPlatformVersion>
-    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')"
-      >$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -41,11 +40,8 @@
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
-  <Target Name="QtMsBuildNotFound"
-    BeforeTargets="CustomBuild;ClCompile"
-    Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
-    <Message Importance="High"
-      Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
   </Target>
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
@@ -87,12 +83,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtRcc Include="InventorySysytemGUI.qrc"/>
-    <QtUic Include="InventorySysytemGUI.ui"/>
-    <QtMoc Include="InventorySysytemGUI.h"/>
-    <ClCompile Include="InventorySysytemGUI.cpp"/>
-    <ClCompile Include="main.cpp"/>
-
+    <QtRcc Include="InventorySysytemGUI.qrc" />
+    <QtUic Include="InventorySysytemGUI.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Class\admin.h" />
+    <ClInclude Include="Class\customer.h" />
+    <ClInclude Include="Class\inventory.h" />
+    <ClInclude Include="Class\user.h" />
+    <ClInclude Include="Class\venderor.h" />
+    <ClInclude Include="comman\constants.h" />
+    <QtMoc Include="InventorySysytemGUI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Class\admin.cpp" />
+    <ClCompile Include="Class\customer.cpp" />
+    <ClCompile Include="Class\inventory.cpp" />
+    <ClCompile Include="Class\user.cpp" />
+    <ClCompile Include="Class\venderor.cpp" />
+    <ClCompile Include="InventorySysytemGUI.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

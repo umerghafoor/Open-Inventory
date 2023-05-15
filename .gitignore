@@ -1,2 +1,7 @@
 .vs
 x64
+debug
+*.stash
+InventorySysytem-GUI/Makefile
+InventorySysytem-GUI/Makefile.Debug
+InventorySysytem-GUI/Makefile.Release
