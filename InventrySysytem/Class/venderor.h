@@ -1,10 +1,13 @@
 #pragma once
+#ifndef VENDEROR_H
+#define VENDEROR_H
 #include<iostream>
 #include<string>
 #include<fstream>
 #include <sstream>
 #include <vector>
 #include <ctime>
+
 
 #include"user.h"
 #include"Inventory.h"
@@ -185,3 +188,4 @@ void Vendor::logOut()
 {
 	logedIn = false;
 }
+#endif;

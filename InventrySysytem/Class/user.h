@@ -1,4 +1,7 @@
 #pragma once
+#ifndef USER_H
+#define USER_H
+
 
 class user
 {
@@ -29,4 +32,4 @@ user::user(int _ID, std::string _name, std::string _email, std::string _password
 	this->password = _password;
 	this->specialUser = _specialUser;
 }
-
+#endif;

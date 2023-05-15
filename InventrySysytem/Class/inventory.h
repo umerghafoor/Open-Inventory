@@ -1,3 +1,7 @@
+#ifndef INVENTORY_H
+#define INVENTORY_H
+
+
 #include<iostream>
 #include <vector>
 #include <sstream>
@@ -215,3 +219,4 @@ std::vector<Item> inventory::ReturnAllItems()
 //    std::cout << "uhfu";
 //    return true;
 //}
+#endif;

@@ -1,4 +1,8 @@
 #pragma once
+#ifndef ADMIN_H
+#define ADMIN_H
+
+
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -677,3 +681,4 @@ void Admin::logOut()
 {
 	logedIn = false;
 }
+#endif;

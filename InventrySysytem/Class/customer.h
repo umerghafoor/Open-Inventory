@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef CUSTOMER_H
+#define CUSTOMER_H
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -276,3 +277,4 @@ void Customer::logOut()
 {
 	logedIn = false;
 }
+#endif;
