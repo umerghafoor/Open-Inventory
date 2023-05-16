@@ -24,11 +24,14 @@ public:
 	int getID();
 	std::string getName();
 	std::string getEmail();
+	bool isSpecialCustomer();
 
-	void displayAll();
+	std::vector<Item> displayAll();
+    std::vector<std::string> getCategoryFromItems(std::vector<Item>);
+
 
 	//Cart managment
-	void displayCart();
+	std::vector<Item> displayCart();
 	bool addToCartbyNo(int,int);
 	bool addToCartbyName(std::string, int);
 	bool removeFromCart(int);

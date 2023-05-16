@@ -88,10 +88,10 @@ std::vector<Item> inventory::ReturnAllItems()
         std::string _itemNo, _itemName, _price, _salePrice, _quantity, _category;
         std::getline(ss, _itemNo, ',');
         std::getline(ss, _itemName, ',');
-        std::getline(ss, _price, ',');
+        std::getline(ss, _salePrice, ',');
         std::getline(ss, _quantity, ',');
         std::getline(ss, _category, ',');
-        std::getline(ss, _salePrice, ',');
+        std::getline(ss, _price, '\n');
 
         int itemNo = std::stoi(_itemNo);
         float price = std::stof(_price);

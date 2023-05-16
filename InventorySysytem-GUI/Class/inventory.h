@@ -24,13 +24,16 @@ public:
         price = 0;
         salePrice = 0;
         quantity = 0;
+        category='\0';
     }
-    Item(int itemNo, std::string itemName,float salePrice, float price, int quantity, std::string category)
+    Item(int itemNo, std::string itemName,float price, float salePrice, int quantity, std::string category)
     {
         this->itemNo = itemNo;
         this->itemName = itemName;
         this->price = price;
         this->quantity = quantity;
+        this->salePrice=salePrice;
+        this->category=category;
     }
 };
 

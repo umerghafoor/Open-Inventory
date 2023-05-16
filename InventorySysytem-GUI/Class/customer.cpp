@@ -5,8 +5,8 @@ Customer::Customer(int _ID, std::string password)
 	this->ID = _ID;
 
 	logedIn = false;
-	std::ifstream customerDataBase(customerDataBaseFile);
-	std::string _id, _name, _email, _password;
+    std::ifstream customerDataBase(customerDataBaseFile);
+    std::string _id, _name, _email, _password, _specialUser;
 	std::string line;
 	while (std::getline(customerDataBase, line))
 	{
@@ -14,7 +14,8 @@ Customer::Customer(int _ID, std::string password)
 		std::getline(ss, _id, ',');
 		std::getline(ss, _name, ',');
 		std::getline(ss, _email, ',');
-		std::getline(ss, _password, ',');
+        std::getline(ss, _password, ',');
+        std::getline(ss, _specialUser, '\n');
 
 		int id = std::stoi(_id);
 		if (id == _ID && checkID(_password, password))
@@ -23,6 +24,7 @@ Customer::Customer(int _ID, std::string password)
 			name = _name;
 			email = _email;
 			password = _password;
+            specialUser=_specialUser == "1";
 			logedIn = true;
 			break;
 		}
@@ -83,6 +85,10 @@ std::string Customer::getEmail()
 {
 	return email;
 }
+bool Customer::isSpecialCustomer()
+{
+	return specialUser;
+}
 
 float Customer::totalAmount()
 {
@@ -131,8 +137,18 @@ bool Customer::doneShoping(float cash, float change, float received)
 
 bool Customer::addToCartbyNo(int itemNo, int quantity)
 {
-	if (logedIn)
+	if (logedIn && quantity!=0)
 	{
+		for (int i = 0; i < cart.size(); ++i)
+		{
+			if (cart[i].itemNo == itemNo)
+			{
+				cart[i].quantity += quantity;
+				return true;
+			}
+		}
+
+
 		Item item = ReturnItemByNo(itemNo);
 		item.quantity = quantity;
 		cart.push_back(item);
@@ -145,9 +161,21 @@ bool Customer::addToCartbyNo(int itemNo, int quantity)
 }
 bool Customer::addToCartbyName(std::string itemName, int quantity)
 {
-	if (logedIn)
+	if (logedIn && quantity != 0)
 	{
+		for (int i = 0; i < cart.size(); ++i)
+		{
+			if (cart[i].itemName == itemName)
+			{
+				cart[i].quantity += quantity;
+				return true;
+			}
+		}
 		Item item = ReturnItemByName(itemName);
+		if (item.itemName == "\0")
+		{
+			return false;
+		}
 		item.quantity = quantity;
 		cart.push_back(item);
 		return true;
@@ -188,40 +216,53 @@ bool Customer::editQuantity(int itemNo, int newQuantity)
 		return false;
 }
 
-void Customer::displayAll()
+std::vector<Item> Customer::displayAll()
 {
 	if (logedIn)
 	{
 		std::vector<Item> dispalyItems = ReturnAllItems();
-		for (auto i = 0; i != dispalyItems.size(); i++)
-		{
-			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << '\t' << dispalyItems[i].category << std::endl;
-		}
+		return dispalyItems;
 	}
 	else
-	{
-		std::cout << "Please Login\n";
+    {
+        std::vector<Item> emptyItem;
+        return emptyItem;
 	}
 }
-void Customer::displayCart()
+std::vector<Item> Customer::displayCart()
 {
-	float total = 0;
 	if (logedIn)
 	{
-		std::cout << "No." << '\t' << "Code" << '\t' << "Name"
-			<< '\t' << "Price" << '\t' << "Quant" << '\t' << "Sub Total" << std::endl;
-		for (auto i = 0; i != cart.size(); i++)
-		{
-			total = cart[i].price * cart[i].quantity;
-			std::cout << i + 1 << '\t' << cart[i].itemNo << '\t' << cart[i].itemName
-				<< '\t' << cart[i].price << '\t' << cart[i].quantity << '\t' << total << std::endl;
-		}
+		return cart;
 	}
 	else
 	{
-		std::cout << "Please Login\n";
+		std::vector<Item> emptyItem;
+		return emptyItem;
 	}
 }
+std::vector<std::string> Customer::getCategoryFromItems(std::vector<Item> items)
+{
+    if (logedIn)
+    {
+        std::vector<Item> dispalyItems = ReturnAllItems();
+        std::vector<std::string> categories;
+        for (int i=0;i< dispalyItems.size();i++ )
+        {
+            if (std::find(categories.begin(), categories.end(), dispalyItems[i].category) == categories.end())
+            {
+                categories.push_back(dispalyItems[i].category);
+            }
+        }
+        return categories;
+    }
+    else
+    {
+        std::vector<std::string> emptyItem;
+        return emptyItem;
+    }
+}
+
 
 bool Customer::checkID(std::string password, std::string newpassword)
 {

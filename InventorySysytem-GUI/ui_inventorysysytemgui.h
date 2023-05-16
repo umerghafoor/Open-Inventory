@@ -48,6 +48,7 @@ public:
         if (InventorySysytemGUIClass->objectName().isEmpty())
             InventorySysytemGUIClass->setObjectName("InventorySysytemGUIClass");
         InventorySysytemGUIClass->resize(749, 442);
+        InventorySysytemGUIClass->setStyleSheet(QString::fromUtf8("background-color:rgb(202, 246, 251);"));
         centralWidget = new QWidget(InventorySysytemGUIClass);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setEnabled(true);
@@ -132,8 +133,9 @@ public:
         ID->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border-radius: 15px;\n"
 "    background-color: white;\n"
-"    padding: 8px;\n"
 "	font-size: 16px;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
 "}\n"
 "\n"
 "QLineEdit:focus, QLineEdit:hover {\n"
@@ -143,9 +145,15 @@ public:
         UserID_text = new QLabel(groupBox);
         UserID_text->setObjectName("UserID_text");
         UserID_text->setGeometry(QRect(10, 120, 71, 16));
+        UserID_text->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: black;\n"
+"}"));
         Pass_text = new QLabel(groupBox);
         Pass_text->setObjectName("Pass_text");
         Pass_text->setGeometry(QRect(10, 170, 81, 16));
+        Pass_text->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: black;\n"
+"}"));
         logIn_button = new QPushButton(groupBox);
         logIn_button->setObjectName("logIn_button");
         logIn_button->setGeometry(QRect(210, 200, 91, 41));
@@ -171,8 +179,9 @@ public:
         password->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border-radius: 15px;\n"
 "    background-color: white;\n"
-"    padding: 8px;\n"
 "	font-size: 16px;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
 "}\n"
 "\n"
 "QLineEdit:focus, QLineEdit:hover {\n"
@@ -190,6 +199,9 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         label_5 = new QLabel(layoutWidget);
         label_5->setObjectName("label_5");
+        label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: black;\n"
+"}"));
 
         horizontalLayout->addWidget(label_5);
 
@@ -198,6 +210,9 @@ public:
         QFont font;
         font.setItalic(true);
         label_6->setFont(font);
+        label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: blue;\n"
+"}"));
 
         horizontalLayout->addWidget(label_6);
 
@@ -216,6 +231,9 @@ public:
         font1.setPointSize(20);
         font1.setBold(true);
         label_3->setFont(font1);
+        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: black;\n"
+"}"));
         label_3->setLineWidth(5);
 
         title->addWidget(label_3);
@@ -223,6 +241,9 @@ public:
         label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName("label_4");
         label_4->setFont(font1);
+        label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: black;\n"
+"}"));
         label_4->setLineWidth(5);
 
         title->addWidget(label_4);

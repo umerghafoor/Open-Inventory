@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>InventorySysytemGUI</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(202, 246, 251);</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
     <bool>true</bool>
@@ -138,8 +141,9 @@ QComboBox::focus
       <string notr="true">QLineEdit {
     border-radius: 15px;
     background-color: white;
-    padding: 8px;
 	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
 }
 
 QLineEdit:focus, QLineEdit:hover {
@@ -165,6 +169,11 @@ QLineEdit:focus, QLineEdit:hover {
        <height>16</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: black;
+}</string>
+     </property>
      <property name="text">
       <string>UserID :</string>
      </property>
@@ -177,6 +186,11 @@ QLineEdit:focus, QLineEdit:hover {
        <width>81</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: black;
+}</string>
      </property>
      <property name="text">
       <string>Password :</string>
@@ -226,8 +240,9 @@ QPushButton:pressed {
       <string notr="true">QLineEdit {
     border-radius: 15px;
     background-color: white;
-    padding: 8px;
 	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
 }
 
 QLineEdit:focus, QLineEdit:hover {
@@ -259,6 +274,11 @@ QLineEdit:focus, QLineEdit:hover {
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QLabel" name="label_5">
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: black;
+}</string>
+        </property>
         <property name="text">
          <string>donot have an accocunt</string>
         </property>
@@ -270,6 +290,11 @@ QLineEdit:focus, QLineEdit:hover {
          <font>
           <italic>true</italic>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: blue;
+}</string>
         </property>
         <property name="text">
          <string>SignUp</string>
@@ -298,6 +323,11 @@ QLineEdit:focus, QLineEdit:hover {
          <bold>true</bold>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: black;
+}</string>
+       </property>
        <property name="lineWidth">
         <number>5</number>
        </property>
@@ -314,6 +344,11 @@ QLineEdit:focus, QLineEdit:hover {
          <pointsize>20</pointsize>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: black;
+}</string>
        </property>
        <property name="lineWidth">
         <number>5</number>
