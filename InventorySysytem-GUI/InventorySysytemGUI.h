@@ -2,7 +2,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_InventorySysytemGUI.h"
-#include "Class/user.h"
+
+#include"customerview.h"
+
 #include "Class/customer.h"
 
 class InventorySysytemGUI : public QMainWindow
@@ -19,6 +21,7 @@ private slots:
 private:
     Ui::InventorySysytemGUIClass ui;
     Customer *customerPtr;
+    CustomerView *qwerty;
 };
 
 class xyzClass

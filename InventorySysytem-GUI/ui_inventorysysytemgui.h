@@ -53,7 +53,7 @@ public:
         centralWidget->setEnabled(true);
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(310, 100, 321, 231));
+        groupBox->setGeometry(QRect(320, 70, 321, 281));
         groupBox->setFlat(false);
         groupBox->setCheckable(false);
         userType = new QComboBox(groupBox);
@@ -61,28 +61,128 @@ public:
         userType->addItem(QString());
         userType->addItem(QString());
         userType->setObjectName("userType");
-        userType->setGeometry(QRect(210, 40, 91, 22));
+        userType->setGeometry(QRect(200, 40, 111, 31));
+        userType->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"    background-color: #4da6ff;\n"
+"    border-radius: 15px;\n"
+"    padding: 5px;\n"
+"    color: #FFFFFF;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 30px;\n"
+"    border-left-width: 0px;\n"
+"    border-top-right-radius: 20px;\n"
+"    border-bottom-right-radius: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow\n"
+" {\n"
+"    image: url(icons/down-arrow.png);\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    selection-background-color: transparent;\n"
+"    selection-color: white;\n"
+"    background-color: white;\n"
+"    border-radius: 15px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"    border: none;\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    height: 30px;\n"
+"	\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:hover {\n"
+"    background-color: white;\n"
+"    border-radius: 15px;"
+                        "\n"
+"    font-weight: bold;\n"
+"    \n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:selected {\n"
+"    border-radius: 15px;\n"
+"    color: #4da6ff;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item:focus {\n"
+"    background-color: transparent;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QComboBox::focus \n"
+"{\n"
+"    border: none;\n"
+"}\n"
+""));
         ID = new QLineEdit(groupBox);
         ID->setObjectName("ID");
-        ID->setGeometry(QRect(110, 80, 161, 21));
+        ID->setGeometry(QRect(110, 110, 171, 31));
+        ID->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"    padding: 8px;\n"
+"	font-size: 16px;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         ID->setFrame(false);
         UserID_text = new QLabel(groupBox);
         UserID_text->setObjectName("UserID_text");
-        UserID_text->setGeometry(QRect(10, 80, 49, 16));
+        UserID_text->setGeometry(QRect(10, 120, 71, 16));
         Pass_text = new QLabel(groupBox);
         Pass_text->setObjectName("Pass_text");
-        Pass_text->setGeometry(QRect(10, 120, 49, 16));
+        Pass_text->setGeometry(QRect(10, 170, 81, 16));
         logIn_button = new QPushButton(groupBox);
         logIn_button->setObjectName("logIn_button");
-        logIn_button->setGeometry(QRect(190, 160, 75, 24));
+        logIn_button->setGeometry(QRect(210, 200, 91, 41));
+        logIn_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 20px;\n"
+"    padding: 10px 20px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         password = new QLineEdit(groupBox);
         password->setObjectName("password");
-        password->setGeometry(QRect(110, 120, 161, 21));
+        password->setGeometry(QRect(110, 160, 171, 31));
+        password->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"    padding: 8px;\n"
+"	font-size: 16px;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         password->setFrame(false);
         password->setEchoMode(QLineEdit::Password);
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(70, 200, 212, 22));
+        layoutWidget->setGeometry(QRect(50, 250, 212, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);

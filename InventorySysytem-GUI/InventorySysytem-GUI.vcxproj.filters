@@ -72,10 +72,21 @@
     <ClCompile Include="Class\venderor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="customerview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="InventorySysytemGUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="customerview.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="customerview.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

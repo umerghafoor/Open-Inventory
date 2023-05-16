@@ -1,6 +1,6 @@
 #include "InventorySysytemGUI.h"
-#include "ui_inventorysysytemgui.h"
 #include <QMessageBox>
+//#include"customerview.h"
 
 
 InventorySysytemGUI::InventorySysytemGUI(QWidget *parent)
@@ -16,7 +16,7 @@ void InventorySysytemGUI::on_logIn_button_clicked()
 {
     try 
     {
-        int id = std::stoi(ui.ID->text().toStdString());
+        std::stoi(ui.ID->text().toStdString());
     }
     catch (std::exception& e) 
     {
@@ -36,7 +36,9 @@ void InventorySysytemGUI::on_logIn_button_clicked()
     }
     else
     {
-        QMessageBox::warning(this, "Logedin", "Welcome");
+        this->hide();
+        qwerty=new CustomerView(this,customerPtr);
+        qwerty->show();
     }
 }
 

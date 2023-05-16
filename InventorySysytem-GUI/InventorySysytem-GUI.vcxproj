@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtRcc Include="InventorySysytemGUI.qrc" />
+    <QtUic Include="customerview.ui" />
     <QtUic Include="InventorySysytemGUI.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -93,6 +94,7 @@
     <ClInclude Include="Class\user.h" />
     <ClInclude Include="Class\venderor.h" />
     <ClInclude Include="comman\constants.h" />
+    <QtMoc Include="customerview.h" />
     <QtMoc Include="InventorySysytemGUI.h" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +103,7 @@
     <ClCompile Include="Class\inventory.cpp" />
     <ClCompile Include="Class\user.cpp" />
     <ClCompile Include="Class\venderor.cpp" />
+    <ClCompile Include="customerview.cpp" />
     <ClCompile Include="InventorySysytemGUI.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

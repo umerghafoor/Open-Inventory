@@ -20,10 +20,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>100</y>
+      <x>320</x>
+      <y>70</y>
       <width>321</width>
-      <height>231</height>
+      <height>281</height>
      </rect>
     </property>
     <property name="title">
@@ -38,11 +38,76 @@
     <widget class="QComboBox" name="userType">
      <property name="geometry">
       <rect>
-       <x>210</x>
+       <x>200</x>
        <y>40</y>
-       <width>91</width>
-       <height>22</height>
+       <width>111</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: #4da6ff;
+    border-radius: 15px;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+	text-align: center;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left-width: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+QComboBox::down-arrow
+ {
+    image: url(icons/down-arrow.png);
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox QAbstractItemView {
+    selection-background-color: transparent;
+    selection-color: white;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+    border: none;
+    outline: none;
+}
+
+QComboBox QAbstractItemView::item {
+    height: 30px;
+	
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: white;
+    border-radius: 15px;
+    font-weight: bold;
+    
+}
+
+QComboBox QAbstractItemView::item:selected {
+    border-radius: 15px;
+    color: #4da6ff;
+}
+
+QComboBox QAbstractItemView::item:focus {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+QComboBox::focus 
+{
+    border: none;
+}
+</string>
      </property>
      <item>
       <property name="text">
@@ -64,10 +129,22 @@
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>80</y>
-       <width>161</width>
-       <height>21</height>
+       <y>110</y>
+       <width>171</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+    padding: 8px;
+	font-size: 16px;
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
      </property>
      <property name="text">
       <string/>
@@ -83,8 +160,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>80</y>
-       <width>49</width>
+       <y>120</y>
+       <width>71</width>
        <height>16</height>
       </rect>
      </property>
@@ -96,8 +173,8 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>120</y>
-       <width>49</width>
+       <y>170</y>
+       <width>81</width>
        <height>16</height>
       </rect>
      </property>
@@ -108,11 +185,29 @@
     <widget class="QPushButton" name="logIn_button">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>160</y>
-       <width>75</width>
-       <height>24</height>
+       <x>210</x>
+       <y>200</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
      </property>
      <property name="text">
       <string>LogIn</string>
@@ -122,10 +217,22 @@
      <property name="geometry">
       <rect>
        <x>110</x>
-       <y>120</y>
-       <width>161</width>
-       <height>21</height>
+       <y>160</y>
+       <width>171</width>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+    padding: 8px;
+	font-size: 16px;
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
      </property>
      <property name="text">
       <string/>
@@ -143,8 +250,8 @@
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>70</x>
-       <y>200</y>
+       <x>50</x>
+       <y>250</y>
        <width>212</width>
        <height>22</height>
       </rect>
