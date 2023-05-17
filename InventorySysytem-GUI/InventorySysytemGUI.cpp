@@ -34,11 +34,11 @@ void InventorySysytemGUI::on_logIn_button_clicked()
         QMessageBox ::warning(this, "Login Error", "Invalid User ID or Password");
         return;
     }
-    else if(ui.userType->currentIndex()==1)
+    else if(ui.userType->currentIndex() == 1)
     {
         this->hide();
-        qwerty=new CustomerView(this,customerPtr);
-        qwerty->show();
+        customerMenu=new CustomerView(this,customerPtr);
+        customerMenu->show();
     }
     else
     {

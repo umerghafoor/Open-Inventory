@@ -14,6 +14,7 @@ SOURCES += \
     Class/inventory.cpp \
     Class/user.cpp \
     Class/venderor.cpp \
+    adminmenu.cpp \
     customerview.cpp \
     inventorysysytemgui.cpp \
     main.cpp
@@ -24,11 +25,13 @@ HEADERS += \
     Class/inventory.h \
     Class/user.h \
     Class/venderor.h \
+    adminmenu.h \
     comman/constants.h \
     customerview.h \
     inventorysysytemgui.h
 
 FORMS += \
+    adminmenu.ui \
     customerview.ui \
     inventorysysytemgui.ui
 

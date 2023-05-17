@@ -108,31 +108,61 @@ float Customer::totalAmount()
 }
 bool Customer::doneShoping(float cash, float change, float received)
 {
+    std::vector<Item> allItems = ReturnAllItems();
 	if (logedIn)
-	{
-		std::ofstream logFile(logDataBaseFile, std::ios::app);
+    {
+        std::ofstream logFile(logDataBaseFile, std::ios::app);
 
-		//Boilerplate code for ctime library
-		std::time_t t = std::time(0);
-		std::tm now;
-		localtime_s(&now, &t);
+        // Boilerplate code for ctime library
+        std::time_t t = std::time(0);
+        std::tm now;
+        localtime_s(&now, &t);
 
-		for (int i = 0; i < cart.size(); i++)
-		{
-			logFile
-				//usefull information
-				<< cart[i].salePrice << "," << cart[i].price << "," << cart[i].quantity << "," << cart[i].itemName << ","
-				//user details
-				<< ID << "," << name << ","
-				//time and date
-				<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
-				<< std::endl;
-		}
+        int availableItemCount = 0; // Counter for available items
+
+        for (int i = 0; i < cart.size(); i++)
+        {
+            bool itemAvailable = false;
+            for (int j = 0; j < allItems.size(); j++)
+            {
+                if (allItems[j].itemNo == cart[i].itemNo && allItems[j].quantity >= cart[i].quantity)
+                {
+                    itemAvailable = true;
+                    break;
+                }
+            }
+            if (!itemAvailable)
+            {
+                cart.erase(cart.begin() + i);
+                i--;
+            }
+            else
+            {
+                logFile
+                    // useful information
+                    << cart[i].salePrice << "," << cart[i].price << "," << cart[i].quantity << "," << cart[i].itemName << ","
+                    // user details
+                    << ID << "," << name << ","
+                    // time and date
+                    << now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
+                    << std::endl;
+                availableItemCount++;
+            }
+        }
+        logFile.close();
+        if (availableItemCount == cart.size())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
 		logFile.close();
 	}
 	else
-		return true;
+        return false;
 }
 
 bool Customer::addToCartbyNo(int itemNo, int quantity)
@@ -263,6 +293,11 @@ std::vector<std::string> Customer::getCategoryFromItems(std::vector<Item> items)
     }
 }
 
+bool Customer::emptyCart()
+{
+    cart.erase(cart.begin(),cart.end());
+    return true;
+}
 
 bool Customer::checkID(std::string password, std::string newpassword)
 {
@@ -276,3 +311,4 @@ void Customer::logOut()
 {
 	logedIn = false;
 }
+

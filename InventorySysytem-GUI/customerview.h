@@ -35,6 +35,10 @@ private slots:
 
     void on_itemQuantity_2_valueChanged(int arg1);
 
+    void on_doneShoping_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::CustomerView *ui;
     Customer *customerMenu;

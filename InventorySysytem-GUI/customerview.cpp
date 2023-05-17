@@ -1,9 +1,7 @@
 #include "customerview.h"
 #include "ui_customerview.h"
 
-#include <QStyledItemDelegate>
-#include <QPainter>
-
+#include <QMessageBox>
 
 CustomerView::CustomerView(QWidget *parent,Customer *_custmerMenu) :
     QMainWindow(parent),
@@ -151,6 +149,7 @@ void CustomerView::refreshCart()
     {
         ui->discount->setText("0%");
     }
+    ui->change->setText(QString::number((ui->cash->text().toFloat())-(ui->totalPrice->text().toFloat())));
 }
 
 void CustomerView::refreshAllItems()
@@ -213,3 +212,35 @@ void CustomerView::on_itemCatagory_currentTextChanged(const QString &arg1)
 {
     refreshAllItems();
 }
+
+void CustomerView::on_doneShoping_clicked()
+{
+    if((ui->cash->text().toFloat()) > (ui->totalPrice->text().toFloat()))
+    {
+        if(
+        customerMenu->doneShoping(
+            (ui->cash->text().toFloat()),
+            (ui->totalPrice->text().toFloat()),
+            (ui->cash->text().toFloat())-(ui->totalPrice->text().toFloat())
+                ))
+        {
+            customerMenu->emptyCart();
+            refreshCart();
+            QMessageBox::information(this, "Success", "Shoping completed successfully");
+        }
+        else
+            QMessageBox ::warning(this, "Insufficent Amount", "Please type sufficent Amount");
+    }
+    else
+    {
+        QMessageBox ::warning(this, "Insufficent Amount", "Please type sufficent Amount");
+    }
+}
+
+
+void CustomerView::on_pushButton_clicked()
+{
+    refreshAllItems();
+    refreshCart();
+}
+

@@ -14,7 +14,7 @@
    <string>InventorySysytemGUI</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(202, 246, 251);</string>
+   <string notr="true">background-color:rgb(214, 231, 243);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">

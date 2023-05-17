@@ -36,6 +36,7 @@ public:
 	bool addToCartbyName(std::string, int);
 	bool removeFromCart(int);
 	bool editQuantity(int, int);
+    bool emptyCart();
 
 	//Billing
 	float totalAmount();

@@ -1,7 +1,9 @@
 .vs
 x64
+InventorySysytem-GUI/release
 debug
 *.stash
 InventorySysytem-GUI/Makefile
 InventorySysytem-GUI/Makefile.Debug
 InventorySysytem-GUI/Makefile.Release
+InventorySysytem-GUI/release/qmake/temp/qtvars.pro

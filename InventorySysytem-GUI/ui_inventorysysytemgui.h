@@ -48,7 +48,7 @@ public:
         if (InventorySysytemGUIClass->objectName().isEmpty())
             InventorySysytemGUIClass->setObjectName("InventorySysytemGUIClass");
         InventorySysytemGUIClass->resize(749, 442);
-        InventorySysytemGUIClass->setStyleSheet(QString::fromUtf8("background-color:rgb(202, 246, 251);"));
+        InventorySysytemGUIClass->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
         centralWidget = new QWidget(InventorySysytemGUIClass);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setEnabled(true);
