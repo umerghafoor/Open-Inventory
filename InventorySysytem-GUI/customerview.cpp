@@ -3,10 +3,12 @@
 
 
 #include <QMessageBox>
+#include <QCloseEvent>
+
 
 CustomerView::CustomerView(QWidget *parent,Customer *_custmerMenu) :
     QMainWindow(parent),
-    ui(new Ui::CustomerView)
+    ui(new Ui::CustomerMenu)
 {
     ui->setupUi(this);
     customerMenu=_custmerMenu;
@@ -247,5 +249,13 @@ void CustomerView::on_logOut_clicked()
     customerMenu->logOut();
     this->close();
     parentWidget()->show();
+    delete this;
 }
+
+void CustomerView::closeEvent(QCloseEvent* event)
+{
+    emit finished();
+    event->accept();
+}
+
 

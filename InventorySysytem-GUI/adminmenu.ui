@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1195</width>
+    <width>1183</width>
     <height>759</height>
    </rect>
   </property>
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -33,6 +33,486 @@
      <attribute name="title">
       <string>Report</string>
      </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Item Sold</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>50</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total Cost</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total profit</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemSold">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemSoldCost">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>50</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemProfit">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit">
+      <property name="geometry">
+       <rect>
+        <x>369</x>
+        <y>120</y>
+        <width>111</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemPurchase">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>20</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemCost">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>50</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="netTotal">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>80</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>20</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Item Purchase</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>50</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Total Cost</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>80</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Net Total</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ofYear">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>150</y>
+        <width>71</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Year</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="odMonth">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>150</y>
+        <width>71</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Month</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ofDay">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>150</y>
+        <width>61</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Day</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="itemRevenue">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>80</y>
+        <width>113</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Revenue</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="allUsers">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>50</y>
+        <width>541</width>
+        <height>541</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget
+ {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableView 
+{
+    border: none;
+}
+
+
+QScrollBar:vertical {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+	margin-right: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4DA6FF;
+    border-radius: 10px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableWidget::item:selected {
+    background-color: #4DA6FF;
+    color: white;
+}
+
+QTableWidget::item:selected:focus {
+    outline: none;
+}
+
+QTableWidget::item:selected:active {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+QTableWidget::item:selected:first {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+QTableWidget::item:selected:last {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+</string>
+      </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Special User</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>10</y>
+        <width>181</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Customer Managment</string>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="allEmployee">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>190</y>
+        <width>541</width>
+        <height>401</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTableWidget
+ {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableView 
+{
+    border: none;
+}
+
+
+QScrollBar:vertical {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+	margin-right: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4DA6FF;
+    border-radius: 10px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableWidget::item:selected {
+    background-color: #4DA6FF;
+    color: white;
+}
+
+QTableWidget::item:selected:focus {
+    outline: none;
+}
+
+QTableWidget::item:selected:active {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+QTableWidget::item:selected:first {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+QTableWidget::item:selected:last {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+</string>
+      </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
+      <property name="gridStyle">
+       <enum>Qt::DashLine</enum>
+      </property>
+      <column>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Email</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QCheckBox" name="checkSpecical">
+      <property name="geometry">
+       <rect>
+        <x>850</x>
+        <y>600</y>
+        <width>93</width>
+        <height>26</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Special</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteUser">
+      <property name="geometry">
+       <rect>
+        <x>1012</x>
+        <y>600</y>
+        <width>121</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete User</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteEmployee">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>600</y>
+        <width>161</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Delete Employee</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="inventoryTab">
      <attribute name="title">
@@ -760,6 +1240,37 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>name</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="logOut">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>30</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Log Out</string>
     </property>
    </widget>
   </widget>

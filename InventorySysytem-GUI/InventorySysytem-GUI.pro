@@ -1,5 +1,6 @@
 QT       += core gui
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -17,7 +18,8 @@ SOURCES += \
     adminmenu.cpp \
     customerview.cpp \
     inventorysysytemgui.cpp \
-    main.cpp
+    main.cpp \
+    vendormenu.cpp
 
 HEADERS += \
     Class/admin.h \
@@ -28,12 +30,14 @@ HEADERS += \
     adminmenu.h \
     comman/constants.h \
     customerview.h \
-    inventorysysytemgui.h
+    inventorysysytemgui.h \
+    vendormenu.h
 
 FORMS += \
     adminmenu.ui \
     customerview.ui \
-    inventorysysytemgui.ui
+    inventorysysytemgui.ui \
+    vendormenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

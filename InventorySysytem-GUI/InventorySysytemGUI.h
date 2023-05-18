@@ -8,25 +8,29 @@
 
 #include "Class/customer.h"
 #include "Class/admin.h"
+#include "Class/venderor.h"
 
-class InventorySysytemGUI : public QMainWindow
+class SignInMenu : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    InventorySysytemGUI(QWidget *parent = nullptr);
-    ~InventorySysytemGUI();
+    SignInMenu(QWidget *parent = nullptr);
+    ~SignInMenu();
 
 private slots:
     void on_logIn_button_clicked();
+    void onChildWindowClosed();
 
 private:
-    Ui::InventorySysytemGUIClass ui;
+    Ui::SignInMenu ui;
     Customer *customerPtr;
     Admin *adminPtr;
     user *userPtr;
+    Vendor *vendorPtr;
     CustomerView *customerMenu;
     AdminMenu *adminMenu;
+
 };
 
 

@@ -131,7 +131,8 @@ bool Vendor::addItemsFromLog() {
 	std::ifstream logFile(VendorMessageFile);
 	std::string line;
 
-	while (std::getline(logFile, line)) {
+    while (std::getline(logFile, line))
+    {
 		std::stringstream ss(line);
 		std::string _quantity, _itemNo, _itemName;
 
@@ -142,13 +143,41 @@ bool Vendor::addItemsFromLog() {
 		int quantity = std::stoi(_quantity);
 		int itemNo = std::stoi(_itemNo);
 
-		// Add the item to the inventory
-	//	addItem(itemNo, _itemName, quantity, "cata");
 	}
 
 	logFile.close();
 	return true;
 }
+std::vector<Item> Vendor::displayAll()
+{
+    if (logedIn)
+    {
+        std::vector<Item> dispalyItems = ReturnAllItems();
+        return dispalyItems;
+    }
+    else
+    {
+        std::vector<Item> emptyItem;
+        return emptyItem;
+    }
+}
+float Vendor::totalAmount()
+{
+    float total = 0;
+    if (logedIn)
+    {
+        for (int i=0;i<cart.size(); i++)
+        {
+            total += cart[i].salePrice * cart[i].quantity;
+        }
+        return total;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 
 bool Vendor::checkID(std::string password, std::string newpassword)
 {

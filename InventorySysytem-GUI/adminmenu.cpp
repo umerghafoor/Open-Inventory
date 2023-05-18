@@ -2,6 +2,8 @@
 #include "ui_adminmenu.h"
 
 #include <QMessageBox>
+#include <QCloseEvent>
+
 
 AdminMenu::AdminMenu(QWidget *parent,Admin *newAdmin) :
     QMainWindow(parent),
@@ -51,6 +53,23 @@ AdminMenu::AdminMenu(QWidget *parent,Admin *newAdmin) :
     }
     ui->itemQuantity_forCart->setValue(1);
     refreshAllItems();
+
+    ui->allUsers->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->allUsers->setSelectionMode(QAbstractItemView::SingleSelection );
+    ui->allUsers->setSelectionBehavior(QAbstractItemView::SelectRows );
+    ui->allUsers->horizontalHeader()->setVisible(true);
+    ui->allUsers->verticalHeader()->setVisible(false);
+    ui->allUsers->horizontalHeader()->setSectionResizeMode(2,QHeaderView::Stretch);
+    ui->allUsers->horizontalHeader()->setSectionResizeMode(3,QHeaderView::ResizeToContents);
+    refreshAllUsers();
+
+    ui->allEmployee->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->allEmployee->setSelectionMode(QAbstractItemView::SingleSelection );
+    ui->allEmployee->setSelectionBehavior(QAbstractItemView::SelectRows );
+    ui->allEmployee->horizontalHeader()->setVisible(true);
+    ui->allEmployee->verticalHeader()->setVisible(false);
+    ui->allEmployee->horizontalHeader()->setStretchLastSection(true);
+    refreshAllEmployee();
 }
 
 AdminMenu::~AdminMenu()
@@ -183,6 +202,75 @@ void AdminMenu::refreshAllItems()
 
 }
 
+void AdminMenu::refreshAllUsers()
+{
+    //allItem Table
+    allUser = admin->returnAllUser();
+
+    ui->allUsers->setRowCount(allUser.size());
+
+    for (int i = 0; i < allUser.size(); i++)
+    {
+        QTableWidgetItem* item = new QTableWidgetItem(QString::number(allUser[i].ID));
+        ui->allUsers->setItem(i, 0, item);
+        item = new QTableWidgetItem(QString::fromStdString(allUser[i].name));
+        ui->allUsers->setItem(i, 1, item);
+        item = new QTableWidgetItem(QString::fromStdString(allUser[i].email));
+        ui->allUsers->setItem(i, 2, item);
+        item = new QTableWidgetItem(QString::number(allUser[i].specialUser));
+        ui->allUsers->setItem(i, 3, item);
+
+    }
+
+}
+
+void AdminMenu::refreshAllEmployee()
+{
+    //allItem Table
+    allEmployee = admin->returnAllEmployee();
+
+    ui->allEmployee->setRowCount(allEmployee.size());
+
+    for (int i = 0; i < allEmployee.size(); i++)
+    {
+        QTableWidgetItem* item = new QTableWidgetItem(QString::number(allEmployee[i].ID));
+        ui->allEmployee->setItem(i, 0, item);
+        item = new QTableWidgetItem(QString::fromStdString(allEmployee[i].name));
+        ui->allEmployee->setItem(i, 1, item);
+        item = new QTableWidgetItem(QString::fromStdString(allEmployee[i].email));
+        ui->allEmployee->setItem(i, 2, item);
+    }
+
+}
+
+void AdminMenu::refreshReport(std::string type)
+{
+    int itemSold;
+    float itemPrice;
+    float profit;
+    float revenue;
+    int itemBought;
+    float itemCost;
+    float itemNet;
+
+    QDate selectedDate=ui->dateEdit->date();
+
+    std::string dateStr =  selectedDate.toString("dd/MM/yyyy").toStdString();
+    type+=dateStr;
+
+    admin->SaleLog(itemSold,revenue,itemPrice,profit,type);
+    admin->PurchaseLog(itemBought,itemCost,itemNet,type);
+
+    ui->itemSold->setText(QString::number(itemSold));
+    ui->itemSoldCost->setText(QString::number(itemPrice));
+    ui->itemRevenue->setText(QString::number(revenue));
+    ui->itemProfit->setText(QString::number(profit));
+
+    ui->itemPurchase->setText(QString::number(itemBought));
+    ui->itemCost->setText(QString::number(itemCost));
+    ui->netTotal->setText(QString::number(itemNet));
+}
+
 void AdminMenu::on_pushButton_clicked()
 {
     refreshAllItems();
@@ -266,5 +354,81 @@ void AdminMenu::on_removeItem_clicked()
     int selectedID = ui->allItems->item(row,0)->text().toInt();
     admin->deleteItem(selectedID);
     refreshAllItems();
+}
+
+void AdminMenu::on_ofDay_clicked()
+{
+    refreshReport("d");
+}
+
+void AdminMenu::on_odMonth_clicked()
+{
+     refreshReport("m");
+}
+
+void AdminMenu::on_ofYear_clicked()
+{
+    refreshReport("y");
+}
+
+void AdminMenu::on_allUsers_cellActivated(int row, int column)
+{
+    if(ui->allUsers->item(row,3)->text().toInt()==0)
+    {
+        ui->checkSpecical->setCheckState(Qt::Unchecked);
+    }
+    else
+    {
+        ui->checkSpecical->setCheckState(Qt::Checked);
+    }
+}
+
+void AdminMenu::on_allUsers_cellClicked(int row, int column)
+{
+    if(ui->allUsers->item(row,3)->text().toInt()==0)
+    {
+        ui->checkSpecical->setCheckState(Qt::Unchecked);
+    }
+    else
+    {
+        ui->checkSpecical->setCheckState(Qt::Checked);
+    }
+}
+
+void AdminMenu::on_checkSpecical_clicked(bool checked)
+{
+    int row = ui->allUsers->currentRow();
+    int userID = ui->allUsers->item(row,0)->text().toInt();
+    if(ui->allUsers->item(row,3)->text().toInt()==0)
+    {
+        admin->markSpecial(userID,checked);
+    }
+    else
+    {
+        admin->markSpecial(userID,checked);
+    }
+    refreshAllUsers();
+}
+
+void AdminMenu::on_deleteUser_clicked()
+{
+    int row = ui->allUsers->currentRow();
+    int userID = ui->allUsers->item(row,0)->text().toInt();
+    admin->deleteCustomer(userID);
+    refreshAllUsers();
+}
+
+void AdminMenu::closeEvent(QCloseEvent* event)
+{
+    emit finished();
+    event->accept();
+}
+
+void AdminMenu::on_logOut_clicked()
+{
+    admin->logOut();
+    this->close();
+    parentWidget()->show();
+    delete this;
 }
 

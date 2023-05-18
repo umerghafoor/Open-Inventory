@@ -17,6 +17,9 @@ public:
     explicit AdminMenu(QWidget *parent = nullptr,Admin *admin=nullptr);
     void refreshCart();
     void refreshAllItems();
+    void refreshAllUsers();
+    void refreshAllEmployee();
+    void refreshReport(std::string);
     ~AdminMenu();
 
 private slots:
@@ -43,12 +46,34 @@ private slots:
 
     void on_removeItem_clicked();
 
+    void on_ofDay_clicked();
+
+    void on_odMonth_clicked();
+
+    void on_ofYear_clicked();
+
+    void on_allUsers_cellActivated(int row, int column);
+
+    void on_allUsers_cellClicked(int row, int column);
+
+    void on_checkSpecical_clicked(bool checked);
+
+    void on_deleteUser_clicked();
+
+    void on_logOut_clicked();
+
 private:
     Ui::AdminMenu *ui;
     Admin *admin;
 
     std::vector<Item> allItem;
     std::vector<std::string> allCatagory;
+    std::vector<users> allUser;
+    std::vector<users> allEmployee;
+signals:
+    void finished();
+protected:
+    void closeEvent(QCloseEvent* event) override;
 };
 
 #endif // ADMINMENU_H

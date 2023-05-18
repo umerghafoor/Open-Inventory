@@ -21,6 +21,8 @@ public:
 
 	bool editQuantity(int, int);
 	bool addItemsFromLog();
+    float totalAmount();
+    std::vector<Item> displayAll();
 
 	bool checkID(std::string, std::string);
 	void logOut();

@@ -265,63 +265,63 @@ std::vector<Log> Admin::returnReport()
 		return allLog;
 	}
 }
-//
-//std::vector<user> Admin::returnAllUser()
-//{
-//	if (logedIn)
-//	{
-//		std::vector<user> allUser;
-//		user *temp;
-//		std::string _ID, _name, _email, _password, _specialUser;
-//		std::ifstream customer(customerDataBaseFile);
-//		std::string line;
-//		while (std::getline(customer, line))
-//		{
-//			std::stringstream ss(line);
-//
-//			std::getline(ss, _ID, ',');
-//			std::getline(ss, _name, ',');
-//			std::getline(ss, _email, ',');
-//			std::getline(ss, _password, ',');
-//			std::getline(ss, _specialUser, ',');
-//
-//			int ID = stoi(_ID);
-//			bool specialUser = _specialUser == "1";
-//			temp = new user(ID, _name, _email, _password, specialUser);
-//			allUser.push_back(*temp);
-//			delete temp;
-//		}
-//		customer.close();
-//		return allUser;
-//	}
-//}
-//std::vector<user> Admin::returnAllEmployee()
-//{
-//	if (logedIn)
-//	{
-//		std::vector<user> allUser;
-//		user* temp;
-//		std::string _ID, _name, _email, _password, _specialUser;
-//		std::ifstream customer(employeeDataBaseFile);
-//		std::string line;
-//		while (std::getline(customer, line))
-//		{
-//			std::stringstream ss(line);
-//
-//			std::getline(ss, _ID, ',');
-//			std::getline(ss, _name, ',');
-//			std::getline(ss, _email, ',');
-//			std::getline(ss, _password, ',');
-//
-//			int ID = stoi(_ID);
-//			bool specialUser = _specialUser == "1";
-//			temp = new user(ID, _name, _email, _password, specialUser);
-//			allUser.push_back(*temp);
-//		}
-//		customer.close();
-//		return allUser;
-//	}
-//}
+
+std::vector<users> Admin::returnAllUser()
+{
+    if (logedIn)
+    {
+        std::vector<users> allUser;
+        users *temp;
+        std::string _ID, _name, _email, _password, _specialUser;
+        std::ifstream customer(customerDataBaseFile);
+        std::string line;
+        while (std::getline(customer, line))
+        {
+            std::stringstream ss(line);
+
+            std::getline(ss, _ID, ',');
+            std::getline(ss, _name, ',');
+            std::getline(ss, _email, ',');
+            std::getline(ss, _password, ',');
+            std::getline(ss, _specialUser, ',');
+
+            int ID = stoi(_ID);
+            bool specialUser = _specialUser == "1";
+            temp = new users(ID, _name, _email, specialUser);
+            allUser.push_back(*temp);
+            delete temp;
+        }
+        customer.close();
+        return allUser;
+    }
+}
+std::vector<users> Admin::returnAllEmployee()
+{
+    if (logedIn)
+    {
+        std::vector<users> allUser;
+        users *temp;
+        std::string _ID, _name, _email, _password;
+        std::ifstream employee(employeeDataBaseFile);
+        std::string line;
+        while (std::getline(employee, line))
+        {
+            std::stringstream ss(line);
+
+            std::getline(ss, _ID, ',');
+            std::getline(ss, _name, ',');
+            std::getline(ss, _email, ',');
+            std::getline(ss, _password, ',');
+
+            int ID = stoi(_ID);
+            temp = new users(ID, _name, _email, 0);
+            allUser.push_back(*temp);
+            delete temp;
+        }
+        employee.close();
+        return allUser;
+    }
+}
 
 bool Admin::deleteCustomer(int deleteID)
 {
@@ -378,7 +378,7 @@ bool Admin::markSpecial(int markID, bool special = true)
 				getline(ss, name, ',');
 				getline(ss, email, ',');
 				getline(ss, password, ',');
-				tempCustomerDataBase << ID << "," << name << "," << email << "," << password << ',' << special << '\n';
+                tempCustomerDataBase << id << "," << name << "," << email << "," << password << ',' << special << '\n';
 				continue;
 			}
 			else
@@ -521,20 +521,29 @@ bool Admin::editQuantity(int itemNo, int changeQuantity)
 */
 bool Admin::SaleLog(int& totalItemSold, float& totalRevenue, float& totalCost, float& profit, std::string ofTime = "DateType(date)")
 {
-	int option = 0;
-	int time = 0;
+    int option = 0;
+    if (ofTime[0] == 'd')
+        option = 1;
+    else if (ofTime[0] == 'm')
+        option = 2;
+    else if (ofTime[0] == 'y')
+        option = 3;
+    else
+        option = 0;
+    ofTime.erase(0,1);
 
-	if (ofTime[0] == 'd')
-		option = 1;
-	else if (ofTime[0] == 'm')
-		option = 2;
-	else if (ofTime[0] == 'y')
-		option = 3;
-	else
-		option = 0;
-	ofTime.erase(0, 1);
-	if (option != 0)
-		time = stoi(ofTime);
+    int firstSlash = ofTime.find('/');
+    int secondSlash = ofTime.find('/', firstSlash + 1);
+
+    std::string dayString = ofTime.substr(0, firstSlash);
+    std::string monthString = ofTime.substr(firstSlash + 1, secondSlash - firstSlash - 1);
+    std::string yearString = ofTime.substr(secondSlash + 1);
+
+    int day = std::stoi(dayString);
+    int month = std::stoi(monthString);
+    int year = std::stoi(yearString);
+
+
 
 	if (logedIn)
 	{
@@ -545,20 +554,20 @@ bool Admin::SaleLog(int& totalItemSold, float& totalRevenue, float& totalCost, f
 		for (int i = 0; i < log.size(); i++)
 		{
 			if (log[i].price > 0)
-			{
-				if (log[i].day == time && option == 1)
+            {
+                if (log[i].day == day && option == 1 && log[i].month == month && log[i].year==year)
 				{
 					_totalItemSold += log[i].quantity;
 					_totalRevenue += (log[i].salePrice * log[i].quantity);
 					_totalCost += (log[i].price * log[i].quantity);
 				}
-				else if (log[i].month == time && option == 2)
+                else if (log[i].month == month && option == 2 && log[i].year==year)
 				{
 					_totalItemSold += log[i].quantity;
 					_totalRevenue += (log[i].salePrice * log[i].quantity);
 					_totalCost += (log[i].price * log[i].quantity);
 				}
-				else if (log[i].year == time && option == 3)
+                else if (log[i].year == year && option == 3)
 				{
 					_totalItemSold += log[i].quantity;
 					_totalRevenue += (log[i].salePrice * log[i].quantity);
@@ -582,20 +591,29 @@ bool Admin::SaleLog(int& totalItemSold, float& totalRevenue, float& totalCost, f
 }
 bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTotal, std::string ofTime = "DateType(date)")
 {
-	int option = 0;
-	int time = 0;
 
-	if (ofTime[0] == 'd')
-		option = 1;
-	else if (ofTime[0] == 'm')
-		option = 2;
-	else if (ofTime[0] == 'y')
-		option = 3;
-	else
-		option = 0;
-	ofTime.erase(0, 1);
-	if (option != 0)
-		time = stoi(ofTime);
+    int option = 0;
+    if (ofTime[0] == 'd')
+        option = 1;
+    else if (ofTime[0] == 'm')
+        option = 2;
+    else if (ofTime[0] == 'y')
+        option = 3;
+    else
+        option = 0;
+    ofTime.erase(0,1);
+
+    int firstSlash = ofTime.find('/');
+    int secondSlash = ofTime.find('/', firstSlash + 1);
+
+    std::string dayString = ofTime.substr(0, firstSlash);
+    std::string monthString = ofTime.substr(firstSlash + 1, secondSlash - firstSlash - 1);
+    std::string yearString = ofTime.substr(secondSlash + 1);
+
+    int day = std::stoi(dayString);
+    int month = std::stoi(monthString);
+    int year = std::stoi(yearString);
+
 
 	if (logedIn)
 	{
@@ -607,19 +625,19 @@ bool Admin::PurchaseLog(int& totalItemPurchased, float& totalCost, float& netTot
 		{
 			if (log[i].price < 0)
 			{
-				if (log[i].day == time && option == 1)
+                if (log[i].day == day && option == 1 && log[i].month == month && log[i].year==year)
 				{
 					_totalItemPurchased += log[i].quantity;
 					_totalCost += (log[i].salePrice * log[i].quantity);
 					_netTotal += -(log[i].price * log[i].quantity);
 				}
-				else if (log[i].month == time && option == 2)
+                else if (log[i].month == month && option == 2 && log[i].year==year)
 				{
 					_totalItemPurchased += log[i].quantity;
 					_totalCost += (log[i].salePrice * log[i].quantity);
 					_netTotal += -(log[i].price * log[i].quantity);
 				}
-				if (log[i].year == time && option == 3)
+                if (log[i].year == year && option == 3)
 				{
 					_totalItemPurchased += log[i].quantity;
 					_totalCost += (log[i].salePrice * log[i].quantity);

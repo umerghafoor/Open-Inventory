@@ -1,16 +1,16 @@
 #include "InventorySysytemGUI.h"
 #include <QMessageBox>
 
-InventorySysytemGUI::InventorySysytemGUI(QWidget *parent)
+SignInMenu::SignInMenu(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
 }
 
-InventorySysytemGUI::~InventorySysytemGUI()
+SignInMenu::~SignInMenu()
 {}
 
-void InventorySysytemGUI::on_logIn_button_clicked()
+void SignInMenu::on_logIn_button_clicked()
 {
     try 
     {
@@ -40,6 +40,7 @@ void InventorySysytemGUI::on_logIn_button_clicked()
         this->hide();
         customerPtr = new Customer(stoi(userID), password);
         customerMenu=new CustomerView(this,customerPtr);
+        connect(customerMenu, &CustomerView::finished, this, &SignInMenu::onChildWindowClosed);
         customerMenu->show();
     }
     else if(ui.userType->currentIndex() == 0)
@@ -47,6 +48,7 @@ void InventorySysytemGUI::on_logIn_button_clicked()
         this->hide();
         adminPtr = new Admin(stoi(userID),password);
         adminMenu=new AdminMenu(this,adminPtr);
+        connect(adminMenu, &AdminMenu::finished, this, &SignInMenu::onChildWindowClosed);
         adminMenu->show();
     }
     else
@@ -55,3 +57,8 @@ void InventorySysytemGUI::on_logIn_button_clicked()
     }
 }
 
+void SignInMenu::onChildWindowClosed()
+{
+    ui.password->setText("");
+    this->show();
+}

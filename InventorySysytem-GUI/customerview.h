@@ -6,7 +6,7 @@
 #include "Class/customer.h"
 
 namespace Ui {
-class CustomerView;
+class CustomerMenu;
 }
 
 class CustomerView : public QMainWindow
@@ -42,10 +42,14 @@ private slots:
     void on_logOut_clicked();
 
 private:
-    Ui::CustomerView *ui;
+    Ui::CustomerMenu *ui;
     Customer *customerMenu;
     std::vector<Item> allItem;
     std::vector<std::string> allCatagory;
+signals:
+    void finished();
+protected:
+    void closeEvent(QCloseEvent* event) override;
 };
 
 #endif // CUSTOMERVIEW_H

@@ -8,6 +8,7 @@
 #include<fstream>
 #include <sstream>
 #include <vector>
+#include <ctime>
 
 #include"user.h"
 #include"../comman/constants.h"
@@ -23,7 +24,20 @@ struct Log
 	int month;
 	int year;
 };
-
+struct users
+{
+    int ID;
+    std::string name;
+    std::string email;
+    bool specialUser;
+    users(int ID,std::string _name,std::string _email,bool specialUser)
+{
+    this->ID=ID;
+    this->name=_name;
+    this->email=_email;
+    this->specialUser=specialUser;
+}
+};
 class Admin :public user, public inventory
 {
 	//private data
@@ -31,8 +45,6 @@ class Admin :public user, public inventory
     std::vector<Item> cart;
 	//private funtions
 	std::vector<Log> returnReport();
-	//std::vector<user> returnAllUser();
-	//std::vector<user> returnAllEmployee();
 
 public:
 	Admin(int, std::string);
@@ -58,6 +70,8 @@ public:
 	//Customer managment
 	bool deleteCustomer(int);
 	bool markSpecial(int,bool);
+    std::vector<users> returnAllUser();
+    std::vector<users> returnAllEmployee();
 
 	//Inventory mangment
     bool addItem(int,std::string,std::string,float,float,int);

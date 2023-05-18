@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VendorMenu</class>
+ <widget class="QMainWindow" name="VendorMenu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>724</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableWidget" name="allItems">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>621</width>
+      <height>651</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableView QHeaderView::section {
+    background-color: #4DA6FF;
+    color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    padding: 5px;
+}
+
+QTableView QHeaderView::section:checked {
+    background-color: #4DA6FF;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+QScrollBar:vertical {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4DA6FF;
+    border-radius: 10px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableWidget::item {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableWidget::item:selected {
+    background-color: #4DA6FF;
+    color: white;
+}
+
+QTableWidget::item:selected:focus {
+    outline: none;
+}
+
+QTableWidget::item:selected:active {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+QTableWidget::item:selected:first {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+QTableWidget::item:selected:last {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+</string>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Catagory</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Sale Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Quantity</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>All Items</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="venderCart">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>60</y>
+      <width>621</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableView QHeaderView::section {
+    background-color: #4DA6FF;
+    color: white;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    padding: 5px;
+}
+
+QTableView QHeaderView::section:checked {
+    background-color: #4DA6FF;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+QScrollBar:vertical {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4DA6FF;
+    border-radius: 10px;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableWidget::item {
+    background-color: white;
+    border-radius: 10px;
+}
+
+QTableWidget::item:selected {
+    background-color: #4DA6FF;
+    color: white;
+}
+
+QTableWidget::item:selected:focus {
+    outline: none;
+}
+
+QTableWidget::item:selected:active {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+QTableWidget::item:selected:first {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+QTableWidget::item:selected:last {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+</string>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::DashLine</enum>
+    </property>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Catagory</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Sale Price</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Quantity</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="aprove">
+    <property name="geometry">
+     <rect>
+      <x>1122</x>
+      <y>680</y>
+      <width>141</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Aprove</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="reload">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>680</y>
+      <width>141</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reload</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deny">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>680</y>
+      <width>141</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Deny</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

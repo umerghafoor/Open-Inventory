@@ -23,7 +23,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_InventorySysytemGUIClass
+class Ui_SignInMenu
 {
 public:
     QWidget *centralWidget;
@@ -43,13 +43,13 @@ public:
     QLabel *label_3;
     QLabel *label_4;
 
-    void setupUi(QMainWindow *InventorySysytemGUIClass)
+    void setupUi(QMainWindow *SignInMenu)
     {
-        if (InventorySysytemGUIClass->objectName().isEmpty())
-            InventorySysytemGUIClass->setObjectName("InventorySysytemGUIClass");
-        InventorySysytemGUIClass->resize(749, 442);
-        InventorySysytemGUIClass->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
-        centralWidget = new QWidget(InventorySysytemGUIClass);
+        if (SignInMenu->objectName().isEmpty())
+            SignInMenu->setObjectName("SignInMenu");
+        SignInMenu->resize(749, 442);
+        SignInMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
+        centralWidget = new QWidget(SignInMenu);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setEnabled(true);
         groupBox = new QGroupBox(centralWidget);
@@ -248,38 +248,38 @@ public:
 
         title->addWidget(label_4);
 
-        InventorySysytemGUIClass->setCentralWidget(centralWidget);
+        SignInMenu->setCentralWidget(centralWidget);
 
-        retranslateUi(InventorySysytemGUIClass);
+        retranslateUi(SignInMenu);
 
-        QMetaObject::connectSlotsByName(InventorySysytemGUIClass);
+        QMetaObject::connectSlotsByName(SignInMenu);
     } // setupUi
 
-    void retranslateUi(QMainWindow *InventorySysytemGUIClass)
+    void retranslateUi(QMainWindow *SignInMenu)
     {
-        InventorySysytemGUIClass->setWindowTitle(QCoreApplication::translate("InventorySysytemGUIClass", "InventorySysytemGUI", nullptr));
-        groupBox->setTitle(QCoreApplication::translate("InventorySysytemGUIClass", "Login", nullptr));
-        userType->setItemText(0, QCoreApplication::translate("InventorySysytemGUIClass", "Admin", nullptr));
-        userType->setItemText(1, QCoreApplication::translate("InventorySysytemGUIClass", "Customer", nullptr));
-        userType->setItemText(2, QCoreApplication::translate("InventorySysytemGUIClass", "Employee", nullptr));
+        SignInMenu->setWindowTitle(QCoreApplication::translate("SignInMenu", "InventorySysytemGUI", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("SignInMenu", "Login", nullptr));
+        userType->setItemText(0, QCoreApplication::translate("SignInMenu", "Admin", nullptr));
+        userType->setItemText(1, QCoreApplication::translate("SignInMenu", "Customer", nullptr));
+        userType->setItemText(2, QCoreApplication::translate("SignInMenu", "Employee", nullptr));
 
         ID->setText(QString());
         ID->setPlaceholderText(QString());
-        UserID_text->setText(QCoreApplication::translate("InventorySysytemGUIClass", "UserID :", nullptr));
-        Pass_text->setText(QCoreApplication::translate("InventorySysytemGUIClass", "Password :", nullptr));
-        logIn_button->setText(QCoreApplication::translate("InventorySysytemGUIClass", "LogIn", nullptr));
+        UserID_text->setText(QCoreApplication::translate("SignInMenu", "UserID :", nullptr));
+        Pass_text->setText(QCoreApplication::translate("SignInMenu", "Password :", nullptr));
+        logIn_button->setText(QCoreApplication::translate("SignInMenu", "LogIn", nullptr));
         password->setText(QString());
         password->setPlaceholderText(QString());
-        label_5->setText(QCoreApplication::translate("InventorySysytemGUIClass", "donot have an accocunt", nullptr));
-        label_6->setText(QCoreApplication::translate("InventorySysytemGUIClass", "SignUp", nullptr));
-        label_3->setText(QCoreApplication::translate("InventorySysytemGUIClass", "Inventory", nullptr));
-        label_4->setText(QCoreApplication::translate("InventorySysytemGUIClass", "System", nullptr));
+        label_5->setText(QCoreApplication::translate("SignInMenu", "donot have an accocunt", nullptr));
+        label_6->setText(QCoreApplication::translate("SignInMenu", "SignUp", nullptr));
+        label_3->setText(QCoreApplication::translate("SignInMenu", "Inventory", nullptr));
+        label_4->setText(QCoreApplication::translate("SignInMenu", "System", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class InventorySysytemGUIClass: public Ui_InventorySysytemGUIClass {};
+    class SignInMenu: public Ui_SignInMenu {};
 } // namespace Ui
 
 QT_END_NAMESPACE

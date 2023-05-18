@@ -24,7 +24,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_CustomerView
+class Ui_CustomerMenu
 {
 public:
     QWidget *centralwidget;
@@ -56,12 +56,12 @@ public:
     QFrame *line;
     QPushButton *logOut;
 
-    void setupUi(QMainWindow *CustomerView)
+    void setupUi(QMainWindow *CustomerMenu)
     {
-        if (CustomerView->objectName().isEmpty())
-            CustomerView->setObjectName("CustomerView");
-        CustomerView->resize(1108, 633);
-        centralwidget = new QWidget(CustomerView);
+        if (CustomerMenu->objectName().isEmpty())
+            CustomerMenu->setObjectName("CustomerMenu");
+        CustomerMenu->resize(1108, 633);
+        centralwidget = new QWidget(CustomerMenu);
         centralwidget->setObjectName("centralwidget");
         nameLabel = new QLabel(centralwidget);
         nameLabel->setObjectName("nameLabel");
@@ -660,56 +660,56 @@ public:
 "    background-color: #0D47A1;\n"
 "}\n"
 ""));
-        CustomerView->setCentralWidget(centralwidget);
+        CustomerMenu->setCentralWidget(centralwidget);
 
-        retranslateUi(CustomerView);
+        retranslateUi(CustomerMenu);
 
-        QMetaObject::connectSlotsByName(CustomerView);
+        QMetaObject::connectSlotsByName(CustomerMenu);
     } // setupUi
 
-    void retranslateUi(QMainWindow *CustomerView)
+    void retranslateUi(QMainWindow *CustomerMenu)
     {
-        CustomerView->setWindowTitle(QCoreApplication::translate("CustomerView", "MainWindow", nullptr));
-        nameLabel->setText(QCoreApplication::translate("CustomerView", "name", nullptr));
-        emailLabel->setText(QCoreApplication::translate("CustomerView", "email", nullptr));
+        CustomerMenu->setWindowTitle(QCoreApplication::translate("CustomerMenu", "MainWindow", nullptr));
+        nameLabel->setText(QCoreApplication::translate("CustomerMenu", "name", nullptr));
+        emailLabel->setText(QCoreApplication::translate("CustomerMenu", "email", nullptr));
         QTableWidgetItem *___qtablewidgetitem = allItems->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("CustomerView", "ID", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("CustomerMenu", "ID", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = allItems->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("CustomerView", "Name", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("CustomerMenu", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem2 = allItems->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("CustomerView", "Catagory", nullptr));
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("CustomerMenu", "Catagory", nullptr));
         QTableWidgetItem *___qtablewidgetitem3 = allItems->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("CustomerView", "Price", nullptr));
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("CustomerMenu", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = itemCart->horizontalHeaderItem(0);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("CustomerView", "item No.", nullptr));
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("CustomerMenu", "item No.", nullptr));
         QTableWidgetItem *___qtablewidgetitem5 = itemCart->horizontalHeaderItem(1);
-        ___qtablewidgetitem5->setText(QCoreApplication::translate("CustomerView", "Name", nullptr));
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("CustomerMenu", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem6 = itemCart->horizontalHeaderItem(2);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("CustomerView", "Catagory", nullptr));
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("CustomerMenu", "Catagory", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = itemCart->horizontalHeaderItem(3);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("CustomerView", "Price", nullptr));
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("CustomerMenu", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = itemCart->horizontalHeaderItem(4);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("CustomerView", "Quantity", nullptr));
-        label_2->setText(QCoreApplication::translate("CustomerView", "All Items", nullptr));
-        label_3->setText(QCoreApplication::translate("CustomerView", "Cart", nullptr));
-        doneShoping->setText(QCoreApplication::translate("CustomerView", "Done Shoping", nullptr));
-        addToCart->setText(QCoreApplication::translate("CustomerView", "Add to Cart", nullptr));
-        selectedItem->setText(QCoreApplication::translate("CustomerView", "Selected Item", nullptr));
-        selectedItem_Cart->setText(QCoreApplication::translate("CustomerView", "Selected Item", nullptr));
-        removeFromCart->setText(QCoreApplication::translate("CustomerView", "Remove From Cart", nullptr));
-        pushButton->setText(QCoreApplication::translate("CustomerView", "Refresh", nullptr));
-        label_8->setText(QCoreApplication::translate("CustomerView", "Cash", nullptr));
-        label_10->setText(QCoreApplication::translate("CustomerView", "Change", nullptr));
-        label_5->setText(QCoreApplication::translate("CustomerView", "Total Price", nullptr));
-        label_4->setText(QCoreApplication::translate("CustomerView", "Total Items", nullptr));
-        label_6->setText(QCoreApplication::translate("CustomerView", "Discount", nullptr));
-        logOut->setText(QCoreApplication::translate("CustomerView", "Log Out", nullptr));
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("CustomerMenu", "Quantity", nullptr));
+        label_2->setText(QCoreApplication::translate("CustomerMenu", "All Items", nullptr));
+        label_3->setText(QCoreApplication::translate("CustomerMenu", "Cart", nullptr));
+        doneShoping->setText(QCoreApplication::translate("CustomerMenu", "Done Shoping", nullptr));
+        addToCart->setText(QCoreApplication::translate("CustomerMenu", "Add to Cart", nullptr));
+        selectedItem->setText(QCoreApplication::translate("CustomerMenu", "Selected Item", nullptr));
+        selectedItem_Cart->setText(QCoreApplication::translate("CustomerMenu", "Selected Item", nullptr));
+        removeFromCart->setText(QCoreApplication::translate("CustomerMenu", "Remove From Cart", nullptr));
+        pushButton->setText(QCoreApplication::translate("CustomerMenu", "Refresh", nullptr));
+        label_8->setText(QCoreApplication::translate("CustomerMenu", "Cash", nullptr));
+        label_10->setText(QCoreApplication::translate("CustomerMenu", "Change", nullptr));
+        label_5->setText(QCoreApplication::translate("CustomerMenu", "Total Price", nullptr));
+        label_4->setText(QCoreApplication::translate("CustomerMenu", "Total Items", nullptr));
+        label_6->setText(QCoreApplication::translate("CustomerMenu", "Discount", nullptr));
+        logOut->setText(QCoreApplication::translate("CustomerMenu", "Log Out", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class CustomerView: public Ui_CustomerView {};
+    class CustomerMenu: public Ui_CustomerMenu {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -11,7 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -32,6 +34,30 @@ public:
     QWidget *centralwidget;
     QTabWidget *tabWidget;
     QWidget *report;
+    QLabel *label;
+    QLabel *label_6;
+    QLabel *label_7;
+    QLineEdit *itemSold;
+    QLineEdit *itemSoldCost;
+    QLineEdit *itemProfit;
+    QDateEdit *dateEdit;
+    QLineEdit *itemPurchase;
+    QLineEdit *itemCost;
+    QLineEdit *netTotal;
+    QLabel *label_8;
+    QLabel *label_9;
+    QLabel *label_10;
+    QPushButton *ofYear;
+    QPushButton *odMonth;
+    QPushButton *ofDay;
+    QLineEdit *itemRevenue;
+    QLabel *label_11;
+    QTableWidget *allUsers;
+    QLabel *label_12;
+    QTableWidget *allEmployee;
+    QCheckBox *checkSpecical;
+    QPushButton *deleteUser;
+    QPushButton *deleteEmployee;
     QWidget *inventoryTab;
     QLabel *label_2;
     QWidget *layoutWidget_2;
@@ -63,12 +89,13 @@ public:
     QPushButton *removeItem;
     QLabel *emailLabel;
     QLabel *nameLabel;
+    QPushButton *logOut;
 
     void setupUi(QMainWindow *AdminMenu)
     {
         if (AdminMenu->objectName().isEmpty())
             AdminMenu->setObjectName("AdminMenu");
-        AdminMenu->resize(1195, 759);
+        AdminMenu->resize(1183, 759);
         centralwidget = new QWidget(AdminMenu);
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
@@ -77,6 +104,223 @@ public:
         tabWidget->setMovable(false);
         report = new QWidget();
         report->setObjectName("report");
+        label = new QLabel(report);
+        label->setObjectName("label");
+        label->setGeometry(QRect(10, 20, 101, 20));
+        label_6 = new QLabel(report);
+        label_6->setObjectName("label_6");
+        label_6->setGeometry(QRect(10, 50, 111, 20));
+        label_7 = new QLabel(report);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(10, 110, 121, 20));
+        itemSold = new QLineEdit(report);
+        itemSold->setObjectName("itemSold");
+        itemSold->setGeometry(QRect(130, 20, 113, 28));
+        itemSold->setReadOnly(true);
+        itemSold->setClearButtonEnabled(false);
+        itemSoldCost = new QLineEdit(report);
+        itemSoldCost->setObjectName("itemSoldCost");
+        itemSoldCost->setGeometry(QRect(130, 50, 113, 28));
+        itemSoldCost->setReadOnly(true);
+        itemProfit = new QLineEdit(report);
+        itemProfit->setObjectName("itemProfit");
+        itemProfit->setGeometry(QRect(130, 110, 113, 28));
+        itemProfit->setReadOnly(true);
+        dateEdit = new QDateEdit(report);
+        dateEdit->setObjectName("dateEdit");
+        dateEdit->setGeometry(QRect(369, 120, 111, 29));
+        itemPurchase = new QLineEdit(report);
+        itemPurchase->setObjectName("itemPurchase");
+        itemPurchase->setGeometry(QRect(370, 20, 113, 28));
+        itemPurchase->setReadOnly(true);
+        itemPurchase->setClearButtonEnabled(false);
+        itemCost = new QLineEdit(report);
+        itemCost->setObjectName("itemCost");
+        itemCost->setGeometry(QRect(370, 50, 113, 28));
+        itemCost->setReadOnly(true);
+        itemCost->setClearButtonEnabled(false);
+        netTotal = new QLineEdit(report);
+        netTotal->setObjectName("netTotal");
+        netTotal->setGeometry(QRect(370, 80, 113, 28));
+        netTotal->setReadOnly(true);
+        netTotal->setClearButtonEnabled(false);
+        label_8 = new QLabel(report);
+        label_8->setObjectName("label_8");
+        label_8->setGeometry(QRect(260, 20, 101, 20));
+        label_9 = new QLabel(report);
+        label_9->setObjectName("label_9");
+        label_9->setGeometry(QRect(260, 50, 111, 20));
+        label_10 = new QLabel(report);
+        label_10->setObjectName("label_10");
+        label_10->setGeometry(QRect(260, 80, 121, 20));
+        ofYear = new QPushButton(report);
+        ofYear->setObjectName("ofYear");
+        ofYear->setGeometry(QRect(290, 150, 71, 29));
+        odMonth = new QPushButton(report);
+        odMonth->setObjectName("odMonth");
+        odMonth->setGeometry(QRect(210, 150, 71, 29));
+        ofDay = new QPushButton(report);
+        ofDay->setObjectName("ofDay");
+        ofDay->setGeometry(QRect(140, 150, 61, 29));
+        itemRevenue = new QLineEdit(report);
+        itemRevenue->setObjectName("itemRevenue");
+        itemRevenue->setGeometry(QRect(130, 80, 113, 28));
+        itemRevenue->setReadOnly(true);
+        label_11 = new QLabel(report);
+        label_11->setObjectName("label_11");
+        label_11->setGeometry(QRect(10, 80, 101, 20));
+        allUsers = new QTableWidget(report);
+        if (allUsers->columnCount() < 4)
+            allUsers->setColumnCount(4);
+        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
+        allUsers->setHorizontalHeaderItem(0, __qtablewidgetitem);
+        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
+        allUsers->setHorizontalHeaderItem(1, __qtablewidgetitem1);
+        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
+        allUsers->setHorizontalHeaderItem(2, __qtablewidgetitem2);
+        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
+        allUsers->setHorizontalHeaderItem(3, __qtablewidgetitem3);
+        allUsers->setObjectName("allUsers");
+        allUsers->setEnabled(true);
+        allUsers->setGeometry(QRect(600, 50, 541, 541));
+        allUsers->setStyleSheet(QString::fromUtf8("QTableWidget\n"
+" {\n"
+"    background-color: white;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QTableView \n"
+"{\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    background-color: #FFFFFF;\n"
+"    border-radius: 10px;\n"
+"	margin-right: 5px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: #4DA6FF;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:focus {\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:active {\n"
+"    border-top-left-radius: 12px;\n"
+"    border-bottom-left-radius: 12px;\n"
+"    border-top-right-radius: 12px;\n"
+"    border-bottom-right-radius: 12px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:first {\n"
+"    border-top-left-radius: 12px;\n"
+"    border-bottom-left-radius: 12px;\n"
+"}\n"
+"\n"
+"QTableWidget:"
+                        ":item:selected:last {\n"
+"    border-top-right-radius: 12px;\n"
+"    border-bottom-right-radius: 12px;\n"
+"}\n"
+""));
+        allUsers->setShowGrid(false);
+        allUsers->setGridStyle(Qt::DashLine);
+        label_12 = new QLabel(report);
+        label_12->setObjectName("label_12");
+        label_12->setGeometry(QRect(600, 10, 181, 20));
+        allEmployee = new QTableWidget(report);
+        if (allEmployee->columnCount() < 3)
+            allEmployee->setColumnCount(3);
+        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
+        allEmployee->setHorizontalHeaderItem(0, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
+        allEmployee->setHorizontalHeaderItem(1, __qtablewidgetitem5);
+        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
+        allEmployee->setHorizontalHeaderItem(2, __qtablewidgetitem6);
+        allEmployee->setObjectName("allEmployee");
+        allEmployee->setEnabled(true);
+        allEmployee->setGeometry(QRect(20, 190, 541, 401));
+        allEmployee->setStyleSheet(QString::fromUtf8("QTableWidget\n"
+" {\n"
+"    background-color: white;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QTableView \n"
+"{\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    background-color: #FFFFFF;\n"
+"    border-radius: 10px;\n"
+"	margin-right: 5px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background-color: #4DA6FF;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    height: 0px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:focus {\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:active {\n"
+"    border-top-left-radius: 12px;\n"
+"    border-bottom-left-radius: 12px;\n"
+"    border-top-right-radius: 12px;\n"
+"    border-bottom-right-radius: 12px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected:first {\n"
+"    border-top-left-radius: 12px;\n"
+"    border-bottom-left-radius: 12px;\n"
+"}\n"
+"\n"
+"QTableWidget:"
+                        ":item:selected:last {\n"
+"    border-top-right-radius: 12px;\n"
+"    border-bottom-right-radius: 12px;\n"
+"}\n"
+""));
+        allEmployee->setShowGrid(false);
+        allEmployee->setGridStyle(Qt::DashLine);
+        checkSpecical = new QCheckBox(report);
+        checkSpecical->setObjectName("checkSpecical");
+        checkSpecical->setGeometry(QRect(850, 600, 93, 26));
+        deleteUser = new QPushButton(report);
+        deleteUser->setObjectName("deleteUser");
+        deleteUser->setGeometry(QRect(1012, 600, 121, 29));
+        deleteEmployee = new QPushButton(report);
+        deleteEmployee->setObjectName("deleteEmployee");
+        deleteEmployee->setGeometry(QRect(400, 600, 161, 29));
         tabWidget->addTab(report, QString());
         inventoryTab = new QWidget();
         inventoryTab->setObjectName("inventoryTab");
@@ -124,16 +368,16 @@ public:
         itemCart = new QTableWidget(inventoryTab);
         if (itemCart->columnCount() < 5)
             itemCart->setColumnCount(5);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(4, __qtablewidgetitem4);
+        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
+        itemCart->setHorizontalHeaderItem(0, __qtablewidgetitem7);
+        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
+        itemCart->setHorizontalHeaderItem(1, __qtablewidgetitem8);
+        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
+        itemCart->setHorizontalHeaderItem(2, __qtablewidgetitem9);
+        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
+        itemCart->setHorizontalHeaderItem(3, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
+        itemCart->setHorizontalHeaderItem(4, __qtablewidgetitem11);
         itemCart->setObjectName("itemCart");
         itemCart->setGeometry(QRect(630, 50, 511, 451));
         itemCart->setStyleSheet(QString::fromUtf8("QTableWidget\n"
@@ -198,18 +442,18 @@ public:
         allItems = new QTableWidget(inventoryTab);
         if (allItems->columnCount() < 6)
             allItems->setColumnCount(6);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(0, __qtablewidgetitem5);
-        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(1, __qtablewidgetitem6);
-        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(2, __qtablewidgetitem7);
-        QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(3, __qtablewidgetitem8);
-        QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(4, __qtablewidgetitem9);
-        QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        allItems->setHorizontalHeaderItem(5, __qtablewidgetitem10);
+        QTableWidgetItem *__qtablewidgetitem12 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(0, __qtablewidgetitem12);
+        QTableWidgetItem *__qtablewidgetitem13 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(1, __qtablewidgetitem13);
+        QTableWidgetItem *__qtablewidgetitem14 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(2, __qtablewidgetitem14);
+        QTableWidgetItem *__qtablewidgetitem15 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(3, __qtablewidgetitem15);
+        QTableWidgetItem *__qtablewidgetitem16 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(4, __qtablewidgetitem16);
+        QTableWidgetItem *__qtablewidgetitem17 = new QTableWidgetItem();
+        allItems->setHorizontalHeaderItem(5, __qtablewidgetitem17);
         allItems->setObjectName("allItems");
         allItems->setEnabled(true);
         allItems->setGeometry(QRect(0, 50, 621, 491));
@@ -521,11 +765,30 @@ public:
 "	 text-align: right;\n"
 " 	color:black;\n"
 "}"));
+        logOut = new QPushButton(centralwidget);
+        logOut->setObjectName("logOut");
+        logOut->setGeometry(QRect(1050, 30, 121, 31));
+        logOut->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         AdminMenu->setCentralWidget(centralwidget);
 
         retranslateUi(AdminMenu);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(AdminMenu);
@@ -534,33 +797,61 @@ public:
     void retranslateUi(QMainWindow *AdminMenu)
     {
         AdminMenu->setWindowTitle(QCoreApplication::translate("AdminMenu", "MainWindow", nullptr));
+        label->setText(QCoreApplication::translate("AdminMenu", "Item Sold", nullptr));
+        label_6->setText(QCoreApplication::translate("AdminMenu", "Total Cost", nullptr));
+        label_7->setText(QCoreApplication::translate("AdminMenu", "Total profit", nullptr));
+        label_8->setText(QCoreApplication::translate("AdminMenu", "Item Purchase", nullptr));
+        label_9->setText(QCoreApplication::translate("AdminMenu", "Total Cost", nullptr));
+        label_10->setText(QCoreApplication::translate("AdminMenu", "Net Total", nullptr));
+        ofYear->setText(QCoreApplication::translate("AdminMenu", "Year", nullptr));
+        odMonth->setText(QCoreApplication::translate("AdminMenu", "Month", nullptr));
+        ofDay->setText(QCoreApplication::translate("AdminMenu", "Day", nullptr));
+        label_11->setText(QCoreApplication::translate("AdminMenu", "Revenue", nullptr));
+        QTableWidgetItem *___qtablewidgetitem = allUsers->horizontalHeaderItem(0);
+        ___qtablewidgetitem->setText(QCoreApplication::translate("AdminMenu", "ID", nullptr));
+        QTableWidgetItem *___qtablewidgetitem1 = allUsers->horizontalHeaderItem(1);
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem2 = allUsers->horizontalHeaderItem(2);
+        ___qtablewidgetitem2->setText(QCoreApplication::translate("AdminMenu", "Email", nullptr));
+        QTableWidgetItem *___qtablewidgetitem3 = allUsers->horizontalHeaderItem(3);
+        ___qtablewidgetitem3->setText(QCoreApplication::translate("AdminMenu", "Special User", nullptr));
+        label_12->setText(QCoreApplication::translate("AdminMenu", "Customer Managment", nullptr));
+        QTableWidgetItem *___qtablewidgetitem4 = allEmployee->horizontalHeaderItem(0);
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("AdminMenu", "ID", nullptr));
+        QTableWidgetItem *___qtablewidgetitem5 = allEmployee->horizontalHeaderItem(1);
+        ___qtablewidgetitem5->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem6 = allEmployee->horizontalHeaderItem(2);
+        ___qtablewidgetitem6->setText(QCoreApplication::translate("AdminMenu", "Email", nullptr));
+        checkSpecical->setText(QCoreApplication::translate("AdminMenu", "Special", nullptr));
+        deleteUser->setText(QCoreApplication::translate("AdminMenu", "Delete User", nullptr));
+        deleteEmployee->setText(QCoreApplication::translate("AdminMenu", "Delete Employee", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(report), QCoreApplication::translate("AdminMenu", "Report", nullptr));
         label_2->setText(QCoreApplication::translate("AdminMenu", "All Items", nullptr));
         label_5->setText(QCoreApplication::translate("AdminMenu", "Total Price", nullptr));
         label_4->setText(QCoreApplication::translate("AdminMenu", "Total Items", nullptr));
-        QTableWidgetItem *___qtablewidgetitem = itemCart->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("AdminMenu", "item No.", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = itemCart->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
-        QTableWidgetItem *___qtablewidgetitem2 = itemCart->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QCoreApplication::translate("AdminMenu", "Catagory", nullptr));
-        QTableWidgetItem *___qtablewidgetitem3 = itemCart->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QCoreApplication::translate("AdminMenu", "Price", nullptr));
-        QTableWidgetItem *___qtablewidgetitem4 = itemCart->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("AdminMenu", "Quantity", nullptr));
+        QTableWidgetItem *___qtablewidgetitem7 = itemCart->horizontalHeaderItem(0);
+        ___qtablewidgetitem7->setText(QCoreApplication::translate("AdminMenu", "item No.", nullptr));
+        QTableWidgetItem *___qtablewidgetitem8 = itemCart->horizontalHeaderItem(1);
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem9 = itemCart->horizontalHeaderItem(2);
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("AdminMenu", "Catagory", nullptr));
+        QTableWidgetItem *___qtablewidgetitem10 = itemCart->horizontalHeaderItem(3);
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("AdminMenu", "Price", nullptr));
+        QTableWidgetItem *___qtablewidgetitem11 = itemCart->horizontalHeaderItem(4);
+        ___qtablewidgetitem11->setText(QCoreApplication::translate("AdminMenu", "Quantity", nullptr));
         label_3->setText(QCoreApplication::translate("AdminMenu", "Cart", nullptr));
-        QTableWidgetItem *___qtablewidgetitem5 = allItems->horizontalHeaderItem(0);
-        ___qtablewidgetitem5->setText(QCoreApplication::translate("AdminMenu", "ID", nullptr));
-        QTableWidgetItem *___qtablewidgetitem6 = allItems->horizontalHeaderItem(1);
-        ___qtablewidgetitem6->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = allItems->horizontalHeaderItem(2);
-        ___qtablewidgetitem7->setText(QCoreApplication::translate("AdminMenu", "Catagory", nullptr));
-        QTableWidgetItem *___qtablewidgetitem8 = allItems->horizontalHeaderItem(3);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("AdminMenu", "Price", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = allItems->horizontalHeaderItem(4);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("AdminMenu", "Sale Price", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = allItems->horizontalHeaderItem(5);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("AdminMenu", "Quantity", nullptr));
+        QTableWidgetItem *___qtablewidgetitem12 = allItems->horizontalHeaderItem(0);
+        ___qtablewidgetitem12->setText(QCoreApplication::translate("AdminMenu", "ID", nullptr));
+        QTableWidgetItem *___qtablewidgetitem13 = allItems->horizontalHeaderItem(1);
+        ___qtablewidgetitem13->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
+        QTableWidgetItem *___qtablewidgetitem14 = allItems->horizontalHeaderItem(2);
+        ___qtablewidgetitem14->setText(QCoreApplication::translate("AdminMenu", "Catagory", nullptr));
+        QTableWidgetItem *___qtablewidgetitem15 = allItems->horizontalHeaderItem(3);
+        ___qtablewidgetitem15->setText(QCoreApplication::translate("AdminMenu", "Price", nullptr));
+        QTableWidgetItem *___qtablewidgetitem16 = allItems->horizontalHeaderItem(4);
+        ___qtablewidgetitem16->setText(QCoreApplication::translate("AdminMenu", "Sale Price", nullptr));
+        QTableWidgetItem *___qtablewidgetitem17 = allItems->horizontalHeaderItem(5);
+        ___qtablewidgetitem17->setText(QCoreApplication::translate("AdminMenu", "Quantity", nullptr));
         sendToVendor->setText(QCoreApplication::translate("AdminMenu", "Send to Vendor", nullptr));
         itemID_add->setText(QCoreApplication::translate("AdminMenu", "ID", nullptr));
         itemName_add->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
@@ -576,6 +867,7 @@ public:
         tabWidget->setTabText(tabWidget->indexOf(inventoryTab), QCoreApplication::translate("AdminMenu", "Inventory", nullptr));
         emailLabel->setText(QCoreApplication::translate("AdminMenu", "email", nullptr));
         nameLabel->setText(QCoreApplication::translate("AdminMenu", "name", nullptr));
+        logOut->setText(QCoreApplication::translate("AdminMenu", "Log Out", nullptr));
     } // retranslateUi
 
 };
