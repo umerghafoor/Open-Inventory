@@ -32,6 +32,7 @@ private slots:
     void on_reload_clicked();
     void on_deny_clicked();
     void on_aprove_clicked();
+    void on_logOut_clicked();
 };
 
 #endif // VENDORMENU_H

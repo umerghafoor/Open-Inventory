@@ -64,6 +64,8 @@ private slots:
 
     void on_vendorCart_cellActivated(int row, int column);
 
+    void on_deleteEmployee_clicked();
+
 private:
     Ui::AdminMenu *ui;
     Admin *admin;

@@ -438,3 +438,12 @@ void AdminMenu::on_vendorCart_cellActivated(int row, int column)
 
 }
 
+
+void AdminMenu::on_deleteEmployee_clicked()
+{
+    int row = ui->allEmployee->currentRow();
+    int userID = ui->allEmployee->item(row,0)->text().toInt();
+    admin->deleteEmployee(userID);
+    refreshAllEmployee();
+}
+

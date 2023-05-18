@@ -358,6 +358,41 @@ bool Admin::deleteCustomer(int deleteID)
 		return false;
 	}
 }
+bool Admin::deleteEmployee(int deleteID)
+{
+    if (logedIn)
+    {
+        std::ofstream tempDataBase(tempDataBaseFile);
+
+        std::ifstream employeeDataBase(employeeDataBaseFile);
+        std::string line;
+        while (getline(employeeDataBase, line))
+        {
+            std::istringstream ss(line);
+            std::string id;
+            getline(ss, id, ',');
+
+            if (stoi(id) == deleteID)
+            {
+                continue;
+            }
+            else
+            {
+                tempDataBase << line << "\n";
+            }
+        }
+        employeeDataBase.close();
+        tempDataBase.close();
+
+        std::remove(employeeDataBaseFile.c_str());
+        std::rename(tempDataBaseFile.c_str(), employeeDataBaseFile.c_str());
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 bool Admin::markSpecial(int markID, bool special = true)
 {
 	if (logedIn)

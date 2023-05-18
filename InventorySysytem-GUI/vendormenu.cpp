@@ -148,3 +148,12 @@ void VendorMenu::on_aprove_clicked()
     refreshAllItems();
 }
 
+
+void VendorMenu::on_logOut_clicked()
+{
+    vendor->logOut();
+    this->close();
+    parentWidget()->show();
+    delete this;
+}
+

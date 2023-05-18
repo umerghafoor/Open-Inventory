@@ -69,6 +69,7 @@ public:
 
 	//Customer managment
 	bool deleteCustomer(int);
+    bool deleteEmployee(int);
 	bool markSpecial(int,bool);
     std::vector<users> returnAllUser();
     std::vector<users> returnAllEmployee();
