@@ -21,7 +21,14 @@ public:
 
 	bool editQuantity(int, int);
 	bool addItemsFromLog();
+    std::vector<Item> showItemsFromLog();
     float totalAmount();
+    bool removeFromRequest(int);
+
+    int getID();
+    std::string getName();
+    std::string getEmail();
+
     std::vector<Item> displayAll();
 
 	bool checkID(std::string, std::string);

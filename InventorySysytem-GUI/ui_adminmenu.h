@@ -68,7 +68,7 @@ public:
     QVBoxLayout *verticalLayout;
     QLineEdit *totalPrice;
     QLineEdit *totalItems;
-    QTableWidget *itemCart;
+    QTableWidget *vendorCart;
     QLabel *label_3;
     QTableWidget *allItems;
     QPushButton *sendToVendor;
@@ -365,22 +365,22 @@ public:
 
         horizontalLayout_2->addLayout(verticalLayout);
 
-        itemCart = new QTableWidget(inventoryTab);
-        if (itemCart->columnCount() < 5)
-            itemCart->setColumnCount(5);
+        vendorCart = new QTableWidget(inventoryTab);
+        if (vendorCart->columnCount() < 5)
+            vendorCart->setColumnCount(5);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(0, __qtablewidgetitem7);
+        vendorCart->setHorizontalHeaderItem(0, __qtablewidgetitem7);
         QTableWidgetItem *__qtablewidgetitem8 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(1, __qtablewidgetitem8);
+        vendorCart->setHorizontalHeaderItem(1, __qtablewidgetitem8);
         QTableWidgetItem *__qtablewidgetitem9 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(2, __qtablewidgetitem9);
+        vendorCart->setHorizontalHeaderItem(2, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(3, __qtablewidgetitem10);
+        vendorCart->setHorizontalHeaderItem(3, __qtablewidgetitem10);
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        itemCart->setHorizontalHeaderItem(4, __qtablewidgetitem11);
-        itemCart->setObjectName("itemCart");
-        itemCart->setGeometry(QRect(630, 50, 511, 451));
-        itemCart->setStyleSheet(QString::fromUtf8("QTableWidget\n"
+        vendorCart->setHorizontalHeaderItem(4, __qtablewidgetitem11);
+        vendorCart->setObjectName("vendorCart");
+        vendorCart->setGeometry(QRect(630, 50, 501, 451));
+        vendorCart->setStyleSheet(QString::fromUtf8("QTableWidget\n"
 " {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
@@ -435,7 +435,7 @@ public:
 "    border-bottom-right-radius: 5px;\n"
 "}\n"
 ""));
-        itemCart->setShowGrid(false);
+        vendorCart->setShowGrid(false);
         label_3 = new QLabel(inventoryTab);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(630, 20, 63, 20));
@@ -456,7 +456,7 @@ public:
         allItems->setHorizontalHeaderItem(5, __qtablewidgetitem17);
         allItems->setObjectName("allItems");
         allItems->setEnabled(true);
-        allItems->setGeometry(QRect(0, 50, 621, 491));
+        allItems->setGeometry(QRect(0, 50, 611, 491));
         allItems->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
@@ -829,15 +829,15 @@ public:
         label_2->setText(QCoreApplication::translate("AdminMenu", "All Items", nullptr));
         label_5->setText(QCoreApplication::translate("AdminMenu", "Total Price", nullptr));
         label_4->setText(QCoreApplication::translate("AdminMenu", "Total Items", nullptr));
-        QTableWidgetItem *___qtablewidgetitem7 = itemCart->horizontalHeaderItem(0);
+        QTableWidgetItem *___qtablewidgetitem7 = vendorCart->horizontalHeaderItem(0);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("AdminMenu", "item No.", nullptr));
-        QTableWidgetItem *___qtablewidgetitem8 = itemCart->horizontalHeaderItem(1);
+        QTableWidgetItem *___qtablewidgetitem8 = vendorCart->horizontalHeaderItem(1);
         ___qtablewidgetitem8->setText(QCoreApplication::translate("AdminMenu", "Name", nullptr));
-        QTableWidgetItem *___qtablewidgetitem9 = itemCart->horizontalHeaderItem(2);
+        QTableWidgetItem *___qtablewidgetitem9 = vendorCart->horizontalHeaderItem(2);
         ___qtablewidgetitem9->setText(QCoreApplication::translate("AdminMenu", "Catagory", nullptr));
-        QTableWidgetItem *___qtablewidgetitem10 = itemCart->horizontalHeaderItem(3);
+        QTableWidgetItem *___qtablewidgetitem10 = vendorCart->horizontalHeaderItem(3);
         ___qtablewidgetitem10->setText(QCoreApplication::translate("AdminMenu", "Price", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = itemCart->horizontalHeaderItem(4);
+        QTableWidgetItem *___qtablewidgetitem11 = vendorCart->horizontalHeaderItem(4);
         ___qtablewidgetitem11->setText(QCoreApplication::translate("AdminMenu", "Quantity", nullptr));
         label_3->setText(QCoreApplication::translate("AdminMenu", "Cart", nullptr));
         QTableWidgetItem *___qtablewidgetitem12 = allItems->horizontalHeaderItem(0);

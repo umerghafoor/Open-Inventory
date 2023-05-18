@@ -15,12 +15,23 @@ class VendorMenu : public QMainWindow
 
 public:
     explicit VendorMenu(QWidget *parent = nullptr,Vendor *_vendorMenu=nullptr);
+    void refreshAllItems();
+    void refreshCart();
     ~VendorMenu();
 
 private:
     Ui::VendorMenu *ui;
     Vendor *vendor;
     std::vector<Item> allItem;
+signals:
+    void finished();
+protected:
+    void closeEvent(QCloseEvent* event) override;
+private slots:
+    void on_venderCart_cellActivated(int row, int column);
+    void on_reload_clicked();
+    void on_deny_clicked();
+    void on_aprove_clicked();
 };
 
 #endif // VENDORMENU_H

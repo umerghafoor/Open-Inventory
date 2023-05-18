@@ -72,6 +72,19 @@ Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _pass
 	logedIn = false;
 }
 
+int Vendor::getID()
+{
+    return ID;
+}
+std::string Vendor::getName()
+{
+    return name;
+}
+std::string Vendor::getEmail()
+{
+    return email;
+}
+
 bool Vendor::editQuantity(int itemNo, int changeQuantity)
 {
 	if (logedIn && changeQuantity > 0)
@@ -112,6 +125,7 @@ bool Vendor::editQuantity(int itemNo, int changeQuantity)
 					//time and date
 					<< now.tm_mday << '/' << now.tm_mon + 1 << '/' << now.tm_year + 1900 << ' ' << now.tm_hour << ':' << now.tm_min
 					<< std::endl;
+                removeFromRequest(itemNo);
 			}
 			else
 			{
@@ -127,7 +141,9 @@ bool Vendor::editQuantity(int itemNo, int changeQuantity)
 	}
 	return false;
 }
-bool Vendor::addItemsFromLog() {
+
+bool Vendor::addItemsFromLog()
+{
 	std::ifstream logFile(VendorMessageFile);
 	std::string line;
 
@@ -148,6 +164,38 @@ bool Vendor::addItemsFromLog() {
 	logFile.close();
 	return true;
 }
+std::vector<Item> Vendor::showItemsFromLog()
+{
+    Item _item;
+    if(logedIn)
+    {
+    std::ifstream logFile(VendorMessageFile);
+    std::string line;
+    cart.clear();
+    while (std::getline(logFile, line))
+    {
+        std::stringstream ss(line);
+        std::string _quantity, _itemNo, _itemName;
+
+        std::getline(ss, _quantity, ',');
+        std::getline(ss, _itemNo, ',');
+        std::getline(ss, _itemName, ',');
+
+        int quantity = std::stoi(_quantity);
+        int itemNo = std::stoi(_itemNo);
+        _item = ReturnItemByNo(itemNo);
+
+        cart.push_back(Item(itemNo,_itemName,_item.price,_item.salePrice,quantity,"\0"));
+    }
+
+    logFile.close();
+    return cart;
+    }
+    std::vector<Item> emptyItem;
+    emptyItem.push_back(Item());
+    return emptyItem;
+}
+
 std::vector<Item> Vendor::displayAll()
 {
     if (logedIn)
@@ -178,7 +226,6 @@ float Vendor::totalAmount()
     }
 }
 
-
 bool Vendor::checkID(std::string password, std::string newpassword)
 {
 	if (password == newpassword)
@@ -190,4 +237,23 @@ bool Vendor::checkID(std::string password, std::string newpassword)
 void Vendor::logOut()
 {
 	logedIn = false;
+}
+
+bool Vendor::removeFromRequest(int itemNo)
+{
+    if (logedIn)
+    {
+        std::ofstream outputFile(VendorMessageFile);
+
+        for (int i = 0 ; i<cart.size();i++)
+        {
+            std::cout<<i;
+            if(itemNo != i)
+                outputFile <<  cart[i].quantity  << "," << cart[i].itemNo << "," << cart[i].itemName << '\n';
+        }
+            outputFile.close();
+            return true;
+    }
+    else
+        return false;
 }

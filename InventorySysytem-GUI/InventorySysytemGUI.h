@@ -5,6 +5,7 @@
 
 #include "customerview.h"
 #include "adminmenu.h"
+#include "vendormenu.h"
 
 #include "Class/customer.h"
 #include "Class/admin.h"
@@ -26,11 +27,12 @@ private:
     Ui::SignInMenu ui;
     Customer *customerPtr;
     Admin *adminPtr;
-    user *userPtr;
     Vendor *vendorPtr;
+    user *userPtr;
+
     CustomerView *customerMenu;
     AdminMenu *adminMenu;
-
+    VendorMenu *vendorMenu;
 };
 
 

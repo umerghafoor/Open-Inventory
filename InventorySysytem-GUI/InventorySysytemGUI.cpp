@@ -29,6 +29,8 @@ void SignInMenu::on_logIn_button_clicked()
         userPtr = new Customer(stoi(userID), password);
     else if(ui.userType->currentIndex() == 0)
         userPtr = new Admin(stoi(userID), password);
+    else if(ui.userType->currentIndex() == 2)
+        userPtr = new Vendor(stoi(userID), password);
 
     if (userPtr->getID() == -1)
     {
@@ -50,6 +52,14 @@ void SignInMenu::on_logIn_button_clicked()
         adminMenu=new AdminMenu(this,adminPtr);
         connect(adminMenu, &AdminMenu::finished, this, &SignInMenu::onChildWindowClosed);
         adminMenu->show();
+    }
+    else if(ui.userType->currentIndex() == 2)
+    {
+        this->hide();
+        vendorPtr = new Vendor(stoi(userID), password);
+        vendorMenu=new VendorMenu(this,vendorPtr);
+        connect(vendorMenu, &VendorMenu::finished, this, &SignInMenu::onChildWindowClosed);
+        vendorMenu->show();
     }
     else
     {

@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
@@ -30,6 +31,14 @@ public:
     QPushButton *aprove;
     QPushButton *reload;
     QPushButton *deny;
+    QLineEdit *totalNo;
+    QLabel *label_2;
+    QLineEdit *totalPrice;
+    QLabel *label_3;
+    QPushButton *logOut;
+    QLabel *emailLabel;
+    QLabel *nameLabel;
+    QLabel *label_4;
 
     void setupUi(QMainWindow *VendorMenu)
     {
@@ -55,7 +64,7 @@ public:
         allItems->setHorizontalHeaderItem(5, __qtablewidgetitem5);
         allItems->setObjectName("allItems");
         allItems->setEnabled(true);
-        allItems->setGeometry(QRect(10, 60, 621, 651));
+        allItems->setGeometry(QRect(10, 90, 621, 621));
         allItems->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
@@ -128,10 +137,10 @@ public:
         allItems->setGridStyle(Qt::DashLine);
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(10, 20, 63, 20));
+        label->setGeometry(QRect(10, 60, 63, 20));
         venderCart = new QTableWidget(centralwidget);
-        if (venderCart->columnCount() < 6)
-            venderCart->setColumnCount(6);
+        if (venderCart->columnCount() < 5)
+            venderCart->setColumnCount(5);
         QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
         venderCart->setHorizontalHeaderItem(0, __qtablewidgetitem6);
         QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
@@ -142,11 +151,9 @@ public:
         venderCart->setHorizontalHeaderItem(3, __qtablewidgetitem9);
         QTableWidgetItem *__qtablewidgetitem10 = new QTableWidgetItem();
         venderCart->setHorizontalHeaderItem(4, __qtablewidgetitem10);
-        QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
-        venderCart->setHorizontalHeaderItem(5, __qtablewidgetitem11);
         venderCart->setObjectName("venderCart");
         venderCart->setEnabled(true);
-        venderCart->setGeometry(QRect(640, 60, 621, 581));
+        venderCart->setGeometry(QRect(640, 90, 621, 551));
         venderCart->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
@@ -219,13 +226,58 @@ public:
         venderCart->setGridStyle(Qt::DashLine);
         aprove = new QPushButton(centralwidget);
         aprove->setObjectName("aprove");
-        aprove->setGeometry(QRect(1122, 680, 141, 29));
+        aprove->setGeometry(QRect(1182, 680, 81, 29));
         reload = new QPushButton(centralwidget);
         reload->setObjectName("reload");
-        reload->setGeometry(QRect(970, 680, 141, 29));
+        reload->setGeometry(QRect(1100, 680, 71, 29));
         deny = new QPushButton(centralwidget);
         deny->setObjectName("deny");
-        deny->setGeometry(QRect(820, 680, 141, 29));
+        deny->setGeometry(QRect(1030, 680, 61, 29));
+        totalNo = new QLineEdit(centralwidget);
+        totalNo->setObjectName("totalNo");
+        totalNo->setGeometry(QRect(710, 680, 113, 28));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName("label_2");
+        label_2->setGeometry(QRect(650, 680, 63, 20));
+        totalPrice = new QLineEdit(centralwidget);
+        totalPrice->setObjectName("totalPrice");
+        totalPrice->setGeometry(QRect(910, 680, 113, 28));
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(840, 680, 63, 20));
+        logOut = new QPushButton(centralwidget);
+        logOut->setObjectName("logOut");
+        logOut->setGeometry(QRect(1050, 10, 121, 31));
+        logOut->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
+        emailLabel = new QLabel(centralwidget);
+        emailLabel->setObjectName("emailLabel");
+        emailLabel->setGeometry(QRect(300, 10, 151, 20));
+        nameLabel = new QLabel(centralwidget);
+        nameLabel->setObjectName("nameLabel");
+        nameLabel->setGeometry(QRect(20, 10, 151, 20));
+        nameLabel->setStyleSheet(QString::fromUtf8("QLabel \n"
+"{\n"
+"	 text-align: right;\n"
+" 	color:black;\n"
+"}"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(640, 60, 241, 20));
         VendorMenu->setCentralWidget(centralwidget);
 
         retranslateUi(VendorMenu);
@@ -254,16 +306,20 @@ public:
         QTableWidgetItem *___qtablewidgetitem7 = venderCart->horizontalHeaderItem(1);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("VendorMenu", "Name", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = venderCart->horizontalHeaderItem(2);
-        ___qtablewidgetitem8->setText(QCoreApplication::translate("VendorMenu", "Catagory", nullptr));
+        ___qtablewidgetitem8->setText(QCoreApplication::translate("VendorMenu", "Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem9 = venderCart->horizontalHeaderItem(3);
-        ___qtablewidgetitem9->setText(QCoreApplication::translate("VendorMenu", "Price", nullptr));
+        ___qtablewidgetitem9->setText(QCoreApplication::translate("VendorMenu", "Sale Price", nullptr));
         QTableWidgetItem *___qtablewidgetitem10 = venderCart->horizontalHeaderItem(4);
-        ___qtablewidgetitem10->setText(QCoreApplication::translate("VendorMenu", "Sale Price", nullptr));
-        QTableWidgetItem *___qtablewidgetitem11 = venderCart->horizontalHeaderItem(5);
-        ___qtablewidgetitem11->setText(QCoreApplication::translate("VendorMenu", "Quantity", nullptr));
+        ___qtablewidgetitem10->setText(QCoreApplication::translate("VendorMenu", "Quantity", nullptr));
         aprove->setText(QCoreApplication::translate("VendorMenu", "Aprove", nullptr));
         reload->setText(QCoreApplication::translate("VendorMenu", "Reload", nullptr));
         deny->setText(QCoreApplication::translate("VendorMenu", "Deny", nullptr));
+        label_2->setText(QCoreApplication::translate("VendorMenu", "Total", nullptr));
+        label_3->setText(QCoreApplication::translate("VendorMenu", "Price", nullptr));
+        logOut->setText(QCoreApplication::translate("VendorMenu", "Log Out", nullptr));
+        emailLabel->setText(QCoreApplication::translate("VendorMenu", "email", nullptr));
+        nameLabel->setText(QCoreApplication::translate("VendorMenu", "name", nullptr));
+        label_4->setText(QCoreApplication::translate("VendorMenu", "Requested by Admin", nullptr));
     } // retranslateUi
 
 };

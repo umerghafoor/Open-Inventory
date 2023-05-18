@@ -40,9 +40,9 @@ AdminMenu::AdminMenu(QWidget *parent,Admin *newAdmin) :
     ui->allItems->horizontalHeader()->setStretchLastSection(true);
 
     //for itemCart Table
-    ui->itemCart->horizontalHeader()->setVisible(false);
-    ui->itemCart->verticalHeader()->setVisible(false);
-    ui->itemCart->horizontalHeader()->setStretchLastSection(true);
+    ui->vendorCart->horizontalHeader()->setVisible(false);
+    ui->vendorCart->verticalHeader()->setVisible(false);
+    ui->vendorCart->horizontalHeader()->setStretchLastSection(true);
 
     allCatagory= admin->getCategoryFromItems(allItem);
     ui->itemCatagory_forCart->clear();
@@ -92,8 +92,8 @@ void AdminMenu::on_allItems_cellActivated(int row, int column)
 
 void AdminMenu::on_itemCart_cellActivated(int row, int column)
 {
-    row = ui->itemCart->currentRow();
-    QTableWidgetItem* item = ui->itemCart->item(row, 1);
+    row = ui->vendorCart->currentRow();
+    QTableWidgetItem* item = ui->vendorCart->item(row, 1);
     if (item != nullptr)
     {
         QString element = item->text();
@@ -107,7 +107,7 @@ void AdminMenu::on_itemCart_cellActivated(int row, int column)
 
 void AdminMenu::on_removeFromCart_clicked()
 {
-    int row = ui->itemCart->currentRow();
+    int row = ui->vendorCart->currentRow();
     std::string itemName=ui->selectedItem_Cart->text().toStdString();
 
     admin->removeFromCart(row);
@@ -118,24 +118,24 @@ void AdminMenu::refreshCart()
 {
     std::vector<Item> cart = admin->displayCart();
 
-    ui->itemCart->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->itemCart->setSelectionMode(QAbstractItemView::SingleSelection );
-    ui->itemCart->setSelectionBehavior(QAbstractItemView::SelectRows );
+    ui->vendorCart->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->vendorCart->setSelectionMode(QAbstractItemView::SingleSelection );
+    ui->vendorCart->setSelectionBehavior(QAbstractItemView::SelectRows );
     int totalItems=0;
 
-    ui->itemCart->setRowCount(cart.size());
+    ui->vendorCart->setRowCount(cart.size());
     for (int i = 0; i < cart.size(); i++)
     {
         QTableWidgetItem* item = new QTableWidgetItem(QString::number(cart[i].itemNo));
-        ui->itemCart->setItem(i, 0, item);
+        ui->vendorCart->setItem(i, 0, item);
         item = new QTableWidgetItem(QString::fromStdString(cart[i].itemName));
-        ui->itemCart->setItem(i, 1, item);
+        ui->vendorCart->setItem(i, 1, item);
         item = new QTableWidgetItem(QString::fromStdString(cart[i].category));
-        ui->itemCart->setItem(i, 2, item);
+        ui->vendorCart->setItem(i, 2, item);
         item = new QTableWidgetItem(QString::number(cart[i].salePrice));
-        ui->itemCart->setItem(i, 3, item);
+        ui->vendorCart->setItem(i, 3, item);
         item = new QTableWidgetItem(QString::number(cart[i].quantity));
-        ui->itemCart->setItem(i, 4, item);
+        ui->vendorCart->setItem(i, 4, item);
         totalItems+=cart[i].quantity;
     }
     ui->totalItems->setText(QString::number(totalItems));
@@ -334,7 +334,7 @@ void AdminMenu::on_refeshCart_clicked()
 
 void AdminMenu::on_itemQuantity_Cart_valueChanged(int arg1)
 {
-    int row = ui->itemCart->currentRow();
+    int row = ui->vendorCart->currentRow();
 
     admin->editCartQuantity(row,arg1);
     refreshCart();
@@ -430,5 +430,11 @@ void AdminMenu::on_logOut_clicked()
     this->close();
     parentWidget()->show();
     delete this;
+}
+
+
+void AdminMenu::on_vendorCart_cellActivated(int row, int column)
+{
+
 }
 

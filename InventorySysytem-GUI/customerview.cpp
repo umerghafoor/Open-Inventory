@@ -236,13 +236,11 @@ void CustomerView::on_doneShoping_clicked()
     }
 }
 
-
 void CustomerView::on_pushButton_clicked()
 {
     refreshAllItems();
     refreshCart();
 }
-
 
 void CustomerView::on_logOut_clicked()
 {

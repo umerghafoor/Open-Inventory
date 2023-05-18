@@ -579,12 +579,12 @@ QTableWidget::item:selected:last {
        </item>
       </layout>
      </widget>
-     <widget class="QTableWidget" name="itemCart">
+     <widget class="QTableWidget" name="vendorCart">
       <property name="geometry">
        <rect>
         <x>630</x>
         <y>50</y>
-        <width>511</width>
+        <width>501</width>
         <height>451</height>
        </rect>
       </property>
@@ -694,7 +694,7 @@ QTableWidget::item:selected:last {
        <rect>
         <x>0</x>
         <y>50</y>
-        <width>621</width>
+        <width>611</width>
         <height>491</height>
        </rect>
       </property>

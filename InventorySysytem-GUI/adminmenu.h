@@ -62,6 +62,8 @@ private slots:
 
     void on_logOut_clicked();
 
+    void on_vendorCart_cellActivated(int row, int column);
+
 private:
     Ui::AdminMenu *ui;
     Admin *admin;
