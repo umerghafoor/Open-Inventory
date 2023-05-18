@@ -7,6 +7,7 @@
 #include "adminmenu.h"
 
 #include "Class/customer.h"
+#include "Class/admin.h"
 
 class InventorySysytemGUI : public QMainWindow
 {
@@ -22,6 +23,8 @@ private slots:
 private:
     Ui::InventorySysytemGUIClass ui;
     Customer *customerPtr;
+    Admin *adminPtr;
+    user *userPtr;
     CustomerView *customerMenu;
     AdminMenu *adminMenu;
 };

@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -52,17 +53,19 @@ public:
     QLabel *label_5;
     QLabel *label_4;
     QLabel *label_6;
+    QFrame *line;
+    QPushButton *logOut;
 
     void setupUi(QMainWindow *CustomerView)
     {
         if (CustomerView->objectName().isEmpty())
             CustomerView->setObjectName("CustomerView");
-        CustomerView->resize(1070, 636);
+        CustomerView->resize(1108, 633);
         centralwidget = new QWidget(CustomerView);
         centralwidget->setObjectName("centralwidget");
         nameLabel = new QLabel(centralwidget);
         nameLabel->setObjectName("nameLabel");
-        nameLabel->setGeometry(QRect(20, 10, 451, 31));
+        nameLabel->setGeometry(QRect(20, 10, 451, 41));
         nameLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #2196F3;\n"
 "    font-weight: bold;\n"
@@ -71,7 +74,7 @@ public:
 ""));
         emailLabel = new QLabel(centralwidget);
         emailLabel->setObjectName("emailLabel");
-        emailLabel->setGeometry(QRect(500, 10, 451, 41));
+        emailLabel->setGeometry(QRect(500, 10, 411, 41));
         emailLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #2196F3;\n"
 "    font-weight: bold;\n"
@@ -238,7 +241,7 @@ public:
 ""));
         doneShoping = new QPushButton(centralwidget);
         doneShoping->setObjectName("doneShoping");
-        doneShoping->setGeometry(QRect(900, 560, 151, 41));
+        doneShoping->setGeometry(QRect(900, 570, 151, 41));
         doneShoping->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: #2196F3;\n"
 "    color: #FFFFFF;\n"
@@ -277,6 +280,7 @@ public:
         itemQuantity = new QSpinBox(centralwidget);
         itemQuantity->setObjectName("itemQuantity");
         itemQuantity->setGeometry(QRect(280, 560, 61, 31));
+        itemQuantity->setMinimumSize(QSize(61, 31));
         itemQuantity->setStyleSheet(QString::fromUtf8("QSpinBox {\n"
 "                           background-color: rgb(85, 170, 255);\n"
 "                           color: #FFFFFF;\n"
@@ -553,7 +557,7 @@ public:
         change->setReadOnly(true);
         totalItems = new QLineEdit(centralwidget);
         totalItems->setObjectName("totalItems");
-        totalItems->setGeometry(QRect(650, 470, 74, 31));
+        totalItems->setGeometry(QRect(620, 470, 74, 31));
         totalItems->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border-radius: 15px;\n"
 "    background-color: white;\n"
@@ -571,7 +575,7 @@ public:
         totalItems->setReadOnly(true);
         totalPrice = new QLineEdit(centralwidget);
         totalPrice->setObjectName("totalPrice");
-        totalPrice->setGeometry(QRect(650, 430, 74, 31));
+        totalPrice->setGeometry(QRect(620, 430, 74, 31));
         totalPrice->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border-radius: 15px;\n"
 "    background-color: white;\n"
@@ -589,7 +593,7 @@ public:
         totalPrice->setReadOnly(true);
         discount = new QLineEdit(centralwidget);
         discount->setObjectName("discount");
-        discount->setGeometry(QRect(650, 510, 74, 31));
+        discount->setGeometry(QRect(620, 510, 74, 31));
         discount->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "    border-radius: 15px;\n"
 "    background-color: white;\n"
@@ -607,7 +611,7 @@ public:
         discount->setReadOnly(true);
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
-        label_5->setGeometry(QRect(540, 430, 84, 28));
+        label_5->setGeometry(QRect(510, 430, 84, 28));
         label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #2196F3;\n"
 "    font-weight: bold;\n"
@@ -616,7 +620,7 @@ public:
 ""));
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(540, 470, 84, 31));
+        label_4->setGeometry(QRect(510, 470, 84, 31));
         label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #2196F3;\n"
 "    font-weight: bold;\n"
@@ -625,11 +629,35 @@ public:
 ""));
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(540, 510, 79, 31));
+        label_6->setGeometry(QRect(510, 510, 79, 31));
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: #2196F3;\n"
 "    font-weight: bold;\n"
 "	font-size:16px;\n"
+"}\n"
+""));
+        line = new QFrame(centralwidget);
+        line->setObjectName("line");
+        line->setGeometry(QRect(507, 544, 541, 21));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        logOut = new QPushButton(centralwidget);
+        logOut->setObjectName("logOut");
+        logOut->setGeometry(QRect(930, 30, 121, 31));
+        logOut->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
 "}\n"
 ""));
         CustomerView->setCentralWidget(centralwidget);
@@ -675,6 +703,7 @@ public:
         label_5->setText(QCoreApplication::translate("CustomerView", "Total Price", nullptr));
         label_4->setText(QCoreApplication::translate("CustomerView", "Total Items", nullptr));
         label_6->setText(QCoreApplication::translate("CustomerView", "Discount", nullptr));
+        logOut->setText(QCoreApplication::translate("CustomerView", "Log Out", nullptr));
     } // retranslateUi
 
 };

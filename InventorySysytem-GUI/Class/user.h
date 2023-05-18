@@ -19,5 +19,8 @@ public:
 	//virtual funtions
 	virtual bool editQuantity(int itemId, int quantity) = 0;
 	virtual bool checkID(std::string, std::string) = 0;
-	virtual void logOut() = 0;
+    virtual void logOut() = 0;
+    virtual int getID() = 0;
+    virtual std::string getName() = 0;
+    virtual std::string getEmail() = 0;
 };

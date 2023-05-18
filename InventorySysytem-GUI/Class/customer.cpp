@@ -94,8 +94,8 @@ float Customer::totalAmount()
 {
 	float total = 0;
 	if (logedIn)
-	{
-		for (auto i = 0; i != cart.size(); i++)
+    {
+        for (int i=0;i<cart.size(); i++)
 		{
 			total += cart[i].salePrice * cart[i].quantity;
 		}

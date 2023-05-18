@@ -13,7 +13,7 @@
 #include "../comman/constants.h"
 
 
-class Customer :private user, private inventory
+class Customer :public user, private inventory
 {	
 	std::vector<Item> cart;
 public:

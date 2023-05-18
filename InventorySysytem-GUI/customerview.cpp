@@ -1,6 +1,7 @@
 #include "customerview.h"
 #include "ui_customerview.h"
 
+
 #include <QMessageBox>
 
 CustomerView::CustomerView(QWidget *parent,Customer *_custmerMenu) :
@@ -45,7 +46,7 @@ CustomerView::CustomerView(QWidget *parent,Customer *_custmerMenu) :
     {
         ui->itemCatagory->addItem(QString::fromStdString(allCatagory[i]));
     }
-
+    ui->itemQuantity->setValue(1);
     refreshAllItems();
 }
 
@@ -69,8 +70,6 @@ void CustomerView::on_allItems_cellActivated(int row, int column)
 
 void CustomerView::on_addToCart_clicked()
 {
-//    int row = ui->allItems->currentRow();
-//    QTableWidgetItem* item = ui->allItems->item(row, 1);
     std::string itemName=ui->selectedItem->text().toStdString();
 
     int itemQuantity=ui->itemQuantity->value();
@@ -97,7 +96,6 @@ void CustomerView::on_itemCart_cellActivated(int row, int column)
 void CustomerView::on_removeFromCart_clicked()
 {
     int row = ui->itemCart->currentRow();
-//    QTableWidgetItem* item = ui->itemCart->item(row, 1);
     std::string itemName=ui->selectedItem_Cart->text().toStdString();
 
     int itemQuantity=ui->itemQuantity->value();
@@ -109,7 +107,6 @@ void CustomerView::on_removeFromCart_clicked()
 void CustomerView::on_itemQuantity_2_valueChanged(int arg1)
 {
         int row = ui->itemCart->currentRow();
-//    std::string itemName=ui->selectedItem_Cart->text().toStdString();
 
     customerMenu->editQuantity(row,arg1);
     refreshCart();
@@ -242,5 +239,13 @@ void CustomerView::on_pushButton_clicked()
 {
     refreshAllItems();
     refreshCart();
+}
+
+
+void CustomerView::on_logOut_clicked()
+{
+    customerMenu->logOut();
+    this->close();
+    parentWidget()->show();
 }
 

@@ -153,46 +153,76 @@ bool Admin::sendToVendor()
 				//usefull information
 				<< cart[i].quantity << "," << cart[i].itemNo << ',' << cart[i].itemName << "\n";
 		}
-
 		logFile.close();
+        cart.clear();
+        return true;
 	}
 	else
-		return true;
+        return false;
+}
+float Admin::totalAmount()
+{
+    float total = 0;
+    if (logedIn)
+    {
+        for (int i=0;i<cart.size(); i++)
+        {
+            total += cart[i].salePrice * cart[i].quantity;
+        }
+        return total;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
-void Admin::displayAll()
+std::vector<Item> Admin::displayAll()
 {
-	if (logedIn)
-	{
-		std::vector<Item> dispalyItems = ReturnAllItems();
-		for (auto i = 0; i != dispalyItems.size(); i++)
-		{
-			std::cout << dispalyItems[i].itemNo << '\t' << dispalyItems[i].itemName << '\t' << dispalyItems[i].price << '\t' << dispalyItems[i].category << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "Please Login\n";
-	}
+    if (logedIn)
+    {
+        std::vector<Item> dispalyItems = ReturnAllItems();
+        return dispalyItems;
+    }
+    else
+    {
+        std::vector<Item> emptyItem;
+        return emptyItem;
+    }
 }
-void Admin::displayCart()
+std::vector<std::string> Admin::getCategoryFromItems(std::vector<Item> items)
 {
-	float total = 0;
-	if (logedIn)
-	{
-		std::cout << "No." << '\t' << "Code" << '\t' << "Name"
-			<< '\t' << "Price" << '\t' << "Quant" << '\t' << "Sub Total" << std::endl;
-		for (auto i = 0; i != cart.size(); i++)
-		{
-			total = cart[i].price * cart[i].quantity;
-			std::cout << i + 1 << '\t' << cart[i].itemNo << '\t' << cart[i].itemName
-				<< '\t' << cart[i].price << '\t' << cart[i].quantity << '\t' << total << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "Please Login\n";
-	}
+    if (logedIn)
+    {
+        std::vector<Item> dispalyItems = ReturnAllItems();
+        std::vector<std::string> categories;
+        for (int i=0;i< dispalyItems.size();i++ )
+        {
+            if (std::find(categories.begin(), categories.end(), dispalyItems[i].category) == categories.end())
+            {
+                categories.push_back(dispalyItems[i].category);
+            }
+        }
+        return categories;
+    }
+    else
+    {
+        std::vector<std::string> emptyItem;
+        return emptyItem;
+    }
+}
+
+std::vector<Item> Admin::displayCart()
+{
+    if (logedIn)
+    {
+        return cart;
+    }
+    else
+    {
+        std::vector<Item> emptyItem;
+        return emptyItem;
+    }
 }
 
 std::vector<Log> Admin::returnReport()
@@ -369,6 +399,25 @@ bool Admin::markSpecial(int markID, bool special = true)
 	}
 }
 
+bool Admin::addItem(int _ID,std::string _name,std::string _category,float _salePrice,float _price,int _quantity = 0)
+{
+    if (logedIn)
+    {
+        if (itemExistsInDatabase(_ID))
+        {
+            return false;
+        }
+
+        std::ofstream itemDataBase(itemDataBaseFile, std::ios::app);
+
+        itemDataBase << _ID << "," << _name << "," << _salePrice << "," << _quantity << "," << _category << "," << _price << std::endl;
+
+        itemDataBase.close();
+
+        return true;
+    }
+    return false;
+}
 bool Admin::deleteItem(int deleteID)
 {
 	if (logedIn)
@@ -520,7 +569,6 @@ bool Admin::SaleLog(int& totalItemSold, float& totalRevenue, float& totalCost, f
 					_totalItemSold += log[i].quantity;
 					_totalRevenue += (log[i].salePrice * log[i].quantity);
 					_totalCost += (log[i].price * log[i].quantity);
-
 				}
 			}
 		}
@@ -601,6 +649,34 @@ bool Admin::checkID(std::string password, std::string newpassword)
 	else
 		return false;
 }
+bool Admin::itemExistsInDatabase(int _ID)
+{
+    std::ifstream itemDataBase(itemDataBaseFile);
+
+    if (itemDataBase)
+    {
+        std::string line;
+        while (std::getline(itemDataBase, line))
+        {
+            std::istringstream iss(line);
+            std::string idString;
+            std::getline(iss, idString, ',');
+
+            // Convert the ID string to an integer
+            int id = std::stoi(idString);
+
+            if (id == _ID)
+            {
+                itemDataBase.close();
+                return true;
+            }
+        }
+    }
+
+    itemDataBase.close();
+    return false;
+}
+
 
 void Admin::logOut()
 {

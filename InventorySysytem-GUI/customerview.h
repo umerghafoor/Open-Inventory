@@ -39,6 +39,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_logOut_clicked();
+
 private:
     Ui::CustomerView *ui;
     Customer *customerMenu;

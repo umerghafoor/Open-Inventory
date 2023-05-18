@@ -1,7 +1,5 @@
 #include "InventorySysytemGUI.h"
 #include <QMessageBox>
-//#include"customerview.h"
-
 
 InventorySysytemGUI::InventorySysytemGUI(QWidget *parent)
     : QMainWindow(parent)
@@ -27,9 +25,12 @@ void InventorySysytemGUI::on_logIn_button_clicked()
     std::string userID = ui.ID->text().toStdString();
     std::string password = ui.password->text().toStdString();
 
-    customerPtr = new Customer(stoi(userID), password);
+    if(ui.userType->currentIndex() == 1)
+        userPtr = new Customer(stoi(userID), password);
+    else if(ui.userType->currentIndex() == 0)
+        userPtr = new Admin(stoi(userID), password);
 
-    if (customerPtr->getID() == -1)
+    if (userPtr->getID() == -1)
     {
         QMessageBox ::warning(this, "Login Error", "Invalid User ID or Password");
         return;
@@ -37,8 +38,16 @@ void InventorySysytemGUI::on_logIn_button_clicked()
     else if(ui.userType->currentIndex() == 1)
     {
         this->hide();
+        customerPtr = new Customer(stoi(userID), password);
         customerMenu=new CustomerView(this,customerPtr);
         customerMenu->show();
+    }
+    else if(ui.userType->currentIndex() == 0)
+    {
+        this->hide();
+        adminPtr = new Admin(stoi(userID),password);
+        adminMenu=new AdminMenu(this,adminPtr);
+        adminMenu->show();
     }
     else
     {

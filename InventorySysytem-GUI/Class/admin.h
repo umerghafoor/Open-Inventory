@@ -24,13 +24,13 @@ struct Log
 	int year;
 };
 
-class Admin :private user, public inventory
+class Admin :public user, public inventory
 {
 	//private data
 	std::vector<user> allUser;
+    std::vector<Item> cart;
 	//private funtions
 	std::vector<Log> returnReport();
-	std::vector<Item> cart;
 	//std::vector<user> returnAllUser();
 	//std::vector<user> returnAllEmployee();
 
@@ -43,23 +43,27 @@ public:
 	std::string getName();
 	std::string getEmail();
 
-	void displayAll();
+    std::vector<Item> displayAll();
+    std::vector<std::string> getCategoryFromItems(std::vector<Item>);
 
 	//Cart managment to be send to venderor
-	void displayCart();
+    std::vector<Item> displayCart();
 	bool addToCartbyNo(int, int);
 	bool addToCartbyName(std::string, int);
 	bool removeFromCart(int);
 	bool editCartQuantity(int, int);
 	bool sendToVendor();
+    float totalAmount();
 
 	//Customer managment
 	bool deleteCustomer(int);
 	bool markSpecial(int,bool);
 
 	//Inventory mangment
+    bool addItem(int,std::string,std::string,float,float,int);
 	bool deleteItem(int);
 	bool editQuantity(int, int);
+    bool itemExistsInDatabase(int);
 
 	//Report managment
 	bool SaleLog(int&, float&, float&, float&, std::string);
