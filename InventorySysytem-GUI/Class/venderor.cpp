@@ -248,7 +248,7 @@ bool Vendor::removeFromRequest(int itemNo)
         for (int i = 0 ; i<cart.size();i++)
         {
             std::cout<<i;
-            if(itemNo != i)
+            if(itemNo != cart[i].itemNo)
                 outputFile <<  cart[i].quantity  << "," << cart[i].itemNo << "," << cart[i].itemName << '\n';
         }
             outputFile.close();

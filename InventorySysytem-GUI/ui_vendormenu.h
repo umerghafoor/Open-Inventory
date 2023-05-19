@@ -45,6 +45,7 @@ public:
         if (VendorMenu->objectName().isEmpty())
             VendorMenu->setObjectName("VendorMenu");
         VendorMenu->resize(1280, 724);
+        VendorMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
         centralwidget = new QWidget(VendorMenu);
         centralwidget->setObjectName("centralwidget");
         allItems = new QTableWidget(centralwidget);
@@ -138,6 +139,11 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName("label");
         label->setGeometry(QRect(10, 60, 63, 20));
+        label->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         venderCart = new QTableWidget(centralwidget);
         if (venderCart->columnCount() < 5)
             venderCart->setColumnCount(5);
@@ -226,25 +232,111 @@ public:
         venderCart->setGridStyle(Qt::DashLine);
         aprove = new QPushButton(centralwidget);
         aprove->setObjectName("aprove");
-        aprove->setGeometry(QRect(1182, 680, 81, 29));
+        aprove->setGeometry(QRect(1182, 678, 81, 31));
+        aprove->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         reload = new QPushButton(centralwidget);
         reload->setObjectName("reload");
-        reload->setGeometry(QRect(1100, 680, 71, 29));
+        reload->setGeometry(QRect(1100, 678, 71, 31));
+        reload->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         deny = new QPushButton(centralwidget);
         deny->setObjectName("deny");
-        deny->setGeometry(QRect(1030, 680, 61, 29));
+        deny->setGeometry(QRect(1030, 678, 61, 31));
+        deny->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         totalNo = new QLineEdit(centralwidget);
         totalNo->setObjectName("totalNo");
-        totalNo->setGeometry(QRect(710, 680, 113, 28));
+        totalNo->setGeometry(QRect(710, 677, 113, 31));
+        totalNo->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(650, 680, 63, 20));
+        label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         totalPrice = new QLineEdit(centralwidget);
         totalPrice->setObjectName("totalPrice");
-        totalPrice->setGeometry(QRect(910, 680, 113, 28));
+        totalPrice->setGeometry(QRect(910, 677, 113, 31));
+        totalPrice->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(840, 680, 63, 20));
+        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         logOut = new QPushButton(centralwidget);
         logOut->setObjectName("logOut");
         logOut->setGeometry(QRect(1050, 10, 121, 31));
@@ -266,18 +358,30 @@ public:
 ""));
         emailLabel = new QLabel(centralwidget);
         emailLabel->setObjectName("emailLabel");
-        emailLabel->setGeometry(QRect(300, 10, 151, 20));
+        emailLabel->setGeometry(QRect(300, 10, 421, 41));
+        emailLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	font-size:32px;\n"
+"}\n"
+""));
         nameLabel = new QLabel(centralwidget);
         nameLabel->setObjectName("nameLabel");
-        nameLabel->setGeometry(QRect(20, 10, 151, 20));
-        nameLabel->setStyleSheet(QString::fromUtf8("QLabel \n"
-"{\n"
-"	 text-align: right;\n"
-" 	color:black;\n"
-"}"));
+        nameLabel->setGeometry(QRect(20, 10, 281, 41));
+        nameLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	font-size:32px;\n"
+"}\n"
+""));
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(640, 60, 241, 20));
+        label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         VendorMenu->setCentralWidget(centralwidget);
 
         retranslateUi(VendorMenu);

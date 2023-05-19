@@ -7,3 +7,5 @@ const std::string customerDataBaseFile = "DataBases/customerDataBase.csv";
 const std::string employeeDataBaseFile = "DataBases/employeeDataBase.csv";
 const std::string itemDataBaseFile = "DataBases/ItemDataBase.csv";
 const std::string tempDataBaseFile = "DataBases/temp.csv";
+
+const std::string iconPath="Icons/icon.png";

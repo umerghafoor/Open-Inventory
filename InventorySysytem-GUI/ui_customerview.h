@@ -60,7 +60,8 @@ public:
     {
         if (CustomerMenu->objectName().isEmpty())
             CustomerMenu->setObjectName("CustomerMenu");
-        CustomerMenu->resize(1108, 633);
+        CustomerMenu->resize(1072, 633);
+        CustomerMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
         centralwidget = new QWidget(CustomerMenu);
         centralwidget->setObjectName("centralwidget");
         nameLabel = new QLabel(centralwidget);

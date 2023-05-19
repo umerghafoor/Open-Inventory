@@ -14,7 +14,6 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -23,7 +22,6 @@
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -58,16 +56,9 @@ public:
     QCheckBox *checkSpecical;
     QPushButton *deleteUser;
     QPushButton *deleteEmployee;
+    QLabel *label_13;
     QWidget *inventoryTab;
     QLabel *label_2;
-    QWidget *layoutWidget_2;
-    QHBoxLayout *horizontalLayout_2;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label_5;
-    QLabel *label_4;
-    QVBoxLayout *verticalLayout;
-    QLineEdit *totalPrice;
-    QLineEdit *totalItems;
     QTableWidget *vendorCart;
     QLabel *label_3;
     QTableWidget *allItems;
@@ -87,6 +78,10 @@ public:
     QPushButton *removeFromCart;
     QPushButton *refeshCart;
     QPushButton *removeItem;
+    QLabel *label_4;
+    QLabel *label_5;
+    QLineEdit *totalPrice;
+    QLineEdit *totalItems;
     QLabel *emailLabel;
     QLabel *nameLabel;
     QPushButton *logOut;
@@ -96,79 +91,336 @@ public:
         if (AdminMenu->objectName().isEmpty())
             AdminMenu->setObjectName("AdminMenu");
         AdminMenu->resize(1183, 759);
+        AdminMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
         centralwidget = new QWidget(AdminMenu);
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
         tabWidget->setGeometry(QRect(10, 70, 1161, 681));
+        tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget {\n"
+"    background-color: #ffffff;\n"
+"    border-radius: 15px;\n"
+"    color: #4da6ff;\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QTabWidget::pane {\n"
+"    border: none;\n"
+"}\n"
+"\n"
+"QTabWidget::tab-bar {\n"
+"    alignment: left;\n"
+"}\n"
+"\n"
+"QTabBar::tab {\n"
+"    background-color: #ffffff;\n"
+"    border-top-left-radius: 15px;\n"
+"    border-top-right-radius: 15px;\n"
+"    padding: 5px;\n"
+"    margin-right: 4px;\n"
+"    color: #4da6ff;\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected {\n"
+"    background-color: #4da6ff;\n"
+"    color: #ffffff;\n"
+"}\n"
+"\n"
+"QTabBar::tab:hover {\n"
+"    background-color: #e6f3ff;\n"
+"}\n"
+"\n"
+"QTabBar::tab:last {\n"
+"    margin-right: 0;\n"
+"}\n"
+"\n"
+"QTabWidget::tab:disabled {\n"
+"    color: #999999;\n"
+"}\n"
+"\n"
+"QTabWidget::tab:disabled:hover {\n"
+"    background-color: #ffffff;\n"
+"}\n"
+""));
         tabWidget->setMovable(false);
         report = new QWidget();
         report->setObjectName("report");
         label = new QLabel(report);
         label->setObjectName("label");
         label->setGeometry(QRect(10, 20, 101, 20));
+        label->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         label_6 = new QLabel(report);
         label_6->setObjectName("label_6");
-        label_6->setGeometry(QRect(10, 50, 111, 20));
+        label_6->setGeometry(QRect(10, 70, 111, 20));
+        label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         label_7 = new QLabel(report);
         label_7->setObjectName("label_7");
-        label_7->setGeometry(QRect(10, 110, 121, 20));
+        label_7->setGeometry(QRect(10, 150, 111, 20));
+        label_7->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         itemSold = new QLineEdit(report);
         itemSold->setObjectName("itemSold");
-        itemSold->setGeometry(QRect(130, 20, 113, 28));
+        itemSold->setGeometry(QRect(130, 20, 113, 31));
+        itemSold->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemSold->setReadOnly(true);
         itemSold->setClearButtonEnabled(false);
         itemSoldCost = new QLineEdit(report);
         itemSoldCost->setObjectName("itemSoldCost");
-        itemSoldCost->setGeometry(QRect(130, 50, 113, 28));
+        itemSoldCost->setGeometry(QRect(130, 60, 113, 31));
+        itemSoldCost->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemSoldCost->setReadOnly(true);
         itemProfit = new QLineEdit(report);
         itemProfit->setObjectName("itemProfit");
-        itemProfit->setGeometry(QRect(130, 110, 113, 28));
+        itemProfit->setGeometry(QRect(130, 140, 113, 31));
+        itemProfit->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemProfit->setReadOnly(true);
         dateEdit = new QDateEdit(report);
         dateEdit->setObjectName("dateEdit");
-        dateEdit->setGeometry(QRect(369, 120, 111, 29));
+        dateEdit->setGeometry(QRect(340, 140, 141, 31));
+        dateEdit->setStyleSheet(QString::fromUtf8("QDateEdit {\n"
+"    background-color: rgb(85, 170, 255);\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 15px;\n"
+"    padding: 8px;\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button,\n"
+"QDateEdit::down-button {\n"
+"    background-color: white;\n"
+"    border-radius: 6px;\n"
+"    padding: 5px;\n"
+"    padding-right: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button:hover,\n"
+"QDateEdit::down-button:hover {\n"
+"    background-color: #0D47A1;\n"
+"    padding-right: 10px;\n"
+"}\n"
+"\n"
+"QDateEdit::up-button:pressed,\n"
+"QDateEdit::down-button:pressed {\n"
+"    background-color: #0D47A1;\n"
+"    padding-right: 10px;\n"
+"}\n"
+""));
         itemPurchase = new QLineEdit(report);
         itemPurchase->setObjectName("itemPurchase");
-        itemPurchase->setGeometry(QRect(370, 20, 113, 28));
+        itemPurchase->setGeometry(QRect(370, 20, 113, 31));
+        itemPurchase->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemPurchase->setReadOnly(true);
         itemPurchase->setClearButtonEnabled(false);
         itemCost = new QLineEdit(report);
         itemCost->setObjectName("itemCost");
-        itemCost->setGeometry(QRect(370, 50, 113, 28));
+        itemCost->setGeometry(QRect(370, 60, 113, 31));
+        itemCost->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemCost->setReadOnly(true);
         itemCost->setClearButtonEnabled(false);
         netTotal = new QLineEdit(report);
         netTotal->setObjectName("netTotal");
-        netTotal->setGeometry(QRect(370, 80, 113, 28));
+        netTotal->setGeometry(QRect(370, 100, 113, 31));
+        netTotal->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         netTotal->setReadOnly(true);
         netTotal->setClearButtonEnabled(false);
         label_8 = new QLabel(report);
         label_8->setObjectName("label_8");
         label_8->setGeometry(QRect(260, 20, 101, 20));
+        label_8->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         label_9 = new QLabel(report);
         label_9->setObjectName("label_9");
-        label_9->setGeometry(QRect(260, 50, 111, 20));
+        label_9->setGeometry(QRect(260, 60, 91, 20));
+        label_9->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         label_10 = new QLabel(report);
         label_10->setObjectName("label_10");
-        label_10->setGeometry(QRect(260, 80, 121, 20));
+        label_10->setGeometry(QRect(260, 100, 101, 20));
+        label_10->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         ofYear = new QPushButton(report);
         ofYear->setObjectName("ofYear");
-        ofYear->setGeometry(QRect(290, 150, 71, 29));
+        ofYear->setGeometry(QRect(290, 180, 71, 29));
+        ofYear->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         odMonth = new QPushButton(report);
         odMonth->setObjectName("odMonth");
-        odMonth->setGeometry(QRect(210, 150, 71, 29));
+        odMonth->setGeometry(QRect(210, 180, 71, 29));
+        odMonth->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         ofDay = new QPushButton(report);
         ofDay->setObjectName("ofDay");
-        ofDay->setGeometry(QRect(140, 150, 61, 29));
+        ofDay->setGeometry(QRect(140, 180, 61, 29));
+        ofDay->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         itemRevenue = new QLineEdit(report);
         itemRevenue->setObjectName("itemRevenue");
-        itemRevenue->setGeometry(QRect(130, 80, 113, 28));
+        itemRevenue->setGeometry(QRect(130, 100, 113, 31));
+        itemRevenue->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemRevenue->setReadOnly(true);
         label_11 = new QLabel(report);
         label_11->setObjectName("label_11");
-        label_11->setGeometry(QRect(10, 80, 101, 20));
+        label_11->setGeometry(QRect(10, 110, 101, 20));
+        label_11->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         allUsers = new QTableWidget(report);
         if (allUsers->columnCount() < 4)
             allUsers->setColumnCount(4);
@@ -183,22 +435,30 @@ public:
         allUsers->setObjectName("allUsers");
         allUsers->setEnabled(true);
         allUsers->setGeometry(QRect(600, 50, 541, 541));
-        allUsers->setStyleSheet(QString::fromUtf8("QTableWidget\n"
-" {\n"
+        allUsers->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
 "}\n"
 "\n"
-"QTableView \n"
-"{\n"
-"    border: none;\n"
+"QTableView QHeaderView::section {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"	border-top-left-radius: 10px;\n"
+"	border-top-right-radius: 10px;\n"
+"    padding: 5px;\n"
 "}\n"
 "\n"
+"QTableView QHeaderView::section:checked {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"}\n"
 "\n"
 "QScrollBar:vertical {\n"
 "    background-color: #FFFFFF;\n"
 "    border-radius: 10px;\n"
-"	margin-right: 5px;\n"
+"    margin-right: 5px;\n"
 "}\n"
 "\n"
 "QScrollBar::handle:vertical {\n"
@@ -211,12 +471,18 @@ public:
 "    height: 0px;\n"
 "}\n"
 "\n"
+"QTableWidget::item {\n"
+"    background-color: white;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
 "QTableWidget::item:selected {\n"
 "    background-color: #4DA6FF;\n"
 "    color: white;\n"
 "}\n"
 "\n"
-"QTableWidget::item:selected:focus {\n"
+"QTableWidget::item:selected:f"
+                        "ocus {\n"
 "    outline: none;\n"
 "}\n"
 "\n"
@@ -232,8 +498,7 @@ public:
 "    border-bottom-left-radius: 12px;\n"
 "}\n"
 "\n"
-"QTableWidget:"
-                        ":item:selected:last {\n"
+"QTableWidget::item:selected:last {\n"
 "    border-top-right-radius: 12px;\n"
 "    border-bottom-right-radius: 12px;\n"
 "}\n"
@@ -243,6 +508,11 @@ public:
         label_12 = new QLabel(report);
         label_12->setObjectName("label_12");
         label_12->setGeometry(QRect(600, 10, 181, 20));
+        label_12->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         allEmployee = new QTableWidget(report);
         if (allEmployee->columnCount() < 3)
             allEmployee->setColumnCount(3);
@@ -254,23 +524,31 @@ public:
         allEmployee->setHorizontalHeaderItem(2, __qtablewidgetitem6);
         allEmployee->setObjectName("allEmployee");
         allEmployee->setEnabled(true);
-        allEmployee->setGeometry(QRect(20, 190, 541, 401));
-        allEmployee->setStyleSheet(QString::fromUtf8("QTableWidget\n"
-" {\n"
+        allEmployee->setGeometry(QRect(10, 260, 551, 331));
+        allEmployee->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
 "}\n"
 "\n"
-"QTableView \n"
-"{\n"
-"    border: none;\n"
+"QTableView QHeaderView::section {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"	border-top-left-radius: 10px;\n"
+"	border-top-right-radius: 10px;\n"
+"    padding: 5px;\n"
 "}\n"
 "\n"
+"QTableView QHeaderView::section:checked {\n"
+"    background-color: #4DA6FF;\n"
+"    color: white;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"}\n"
 "\n"
 "QScrollBar:vertical {\n"
 "    background-color: #FFFFFF;\n"
 "    border-radius: 10px;\n"
-"	margin-right: 5px;\n"
+"    margin-right: 5px;\n"
 "}\n"
 "\n"
 "QScrollBar::handle:vertical {\n"
@@ -283,12 +561,18 @@ public:
 "    height: 0px;\n"
 "}\n"
 "\n"
+"QTableWidget::item {\n"
+"    background-color: white;\n"
+"    border-radius: 10px;\n"
+"}\n"
+"\n"
 "QTableWidget::item:selected {\n"
 "    background-color: #4DA6FF;\n"
 "    color: white;\n"
 "}\n"
 "\n"
-"QTableWidget::item:selected:focus {\n"
+"QTableWidget::item:selected:f"
+                        "ocus {\n"
 "    outline: none;\n"
 "}\n"
 "\n"
@@ -304,8 +588,7 @@ public:
 "    border-bottom-left-radius: 12px;\n"
 "}\n"
 "\n"
-"QTableWidget:"
-                        ":item:selected:last {\n"
+"QTableWidget::item:selected:last {\n"
 "    border-top-right-radius: 12px;\n"
 "    border-bottom-right-radius: 12px;\n"
 "}\n"
@@ -315,56 +598,108 @@ public:
         checkSpecical = new QCheckBox(report);
         checkSpecical->setObjectName("checkSpecical");
         checkSpecical->setGeometry(QRect(850, 600, 93, 26));
+        checkSpecical->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    background-color: transparent;\n"
+"    border-radius: 15px;\n"
+"    padding: 5px;\n"
+"    color: #4da6ff;\n"
+"    font-size: 14px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid #4da6ff;\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: #4da6ff;\n"
+"    border: 2px solid #4da6ff;\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:disabled {\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:disabled {\n"
+"    background-color: #cccccc;\n"
+"    border: 2px solid #cccccc;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:hover {\n"
+"    border: 2px solid #4da6ff;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    background-color: #4da6ff;\n"
+"    border: 2px solid #4da6ff;\n"
+"}\n"
+""));
         deleteUser = new QPushButton(report);
         deleteUser->setObjectName("deleteUser");
         deleteUser->setGeometry(QRect(1012, 600, 121, 29));
+        deleteUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         deleteEmployee = new QPushButton(report);
         deleteEmployee->setObjectName("deleteEmployee");
         deleteEmployee->setGeometry(QRect(400, 600, 161, 29));
+        deleteEmployee->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
+        label_13 = new QLabel(report);
+        label_13->setObjectName("label_13");
+        label_13->setGeometry(QRect(10, 220, 181, 20));
+        label_13->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         tabWidget->addTab(report, QString());
         inventoryTab = new QWidget();
         inventoryTab->setObjectName("inventoryTab");
         label_2 = new QLabel(inventoryTab);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(0, 20, 63, 20));
-        layoutWidget_2 = new QWidget(inventoryTab);
-        layoutWidget_2->setObjectName("layoutWidget_2");
-        layoutWidget_2->setGeometry(QRect(630, 560, 221, 71));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget_2);
-        horizontalLayout_2->setObjectName("horizontalLayout_2");
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName("verticalLayout_2");
-        label_5 = new QLabel(layoutWidget_2);
-        label_5->setObjectName("label_5");
-
-        verticalLayout_2->addWidget(label_5);
-
-        label_4 = new QLabel(layoutWidget_2);
-        label_4->setObjectName("label_4");
-
-        verticalLayout_2->addWidget(label_4);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_2);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName("verticalLayout");
-        totalPrice = new QLineEdit(layoutWidget_2);
-        totalPrice->setObjectName("totalPrice");
-        totalPrice->setReadOnly(true);
-
-        verticalLayout->addWidget(totalPrice);
-
-        totalItems = new QLineEdit(layoutWidget_2);
-        totalItems->setObjectName("totalItems");
-        totalItems->setReadOnly(true);
-
-        verticalLayout->addWidget(totalItems);
-
-
-        horizontalLayout_2->addLayout(verticalLayout);
-
+        label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         vendorCart = new QTableWidget(inventoryTab);
         if (vendorCart->columnCount() < 5)
             vendorCart->setColumnCount(5);
@@ -379,7 +714,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem11 = new QTableWidgetItem();
         vendorCart->setHorizontalHeaderItem(4, __qtablewidgetitem11);
         vendorCart->setObjectName("vendorCart");
-        vendorCart->setGeometry(QRect(630, 50, 501, 451));
+        vendorCart->setGeometry(QRect(640, 50, 501, 451));
         vendorCart->setStyleSheet(QString::fromUtf8("QTableWidget\n"
 " {\n"
 "    background-color: white;\n"
@@ -438,7 +773,12 @@ public:
         vendorCart->setShowGrid(false);
         label_3 = new QLabel(inventoryTab);
         label_3->setObjectName("label_3");
-        label_3->setGeometry(QRect(630, 20, 63, 20));
+        label_3->setGeometry(QRect(640, 20, 63, 20));
+        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
         allItems = new QTableWidget(inventoryTab);
         if (allItems->columnCount() < 6)
             allItems->setColumnCount(6);
@@ -456,7 +796,7 @@ public:
         allItems->setHorizontalHeaderItem(5, __qtablewidgetitem17);
         allItems->setObjectName("allItems");
         allItems->setEnabled(true);
-        allItems->setGeometry(QRect(0, 50, 611, 491));
+        allItems->setGeometry(QRect(0, 50, 631, 491));
         allItems->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "    background-color: white;\n"
 "    border-radius: 10px;\n"
@@ -529,39 +869,141 @@ public:
         allItems->setGridStyle(Qt::DashLine);
         sendToVendor = new QPushButton(inventoryTab);
         sendToVendor->setObjectName("sendToVendor");
-        sendToVendor->setGeometry(QRect(950, 590, 151, 29));
+        sendToVendor->setGeometry(QRect(950, 588, 151, 31));
+        sendToVendor->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         itemID_add = new QLineEdit(inventoryTab);
         itemID_add->setObjectName("itemID_add");
-        itemID_add->setGeometry(QRect(0, 600, 61, 28));
+        itemID_add->setGeometry(QRect(0, 600, 61, 31));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(itemID_add->sizePolicy().hasHeightForWidth());
         itemID_add->setSizePolicy(sizePolicy);
         itemID_add->setMaximumSize(QSize(167772, 16777215));
+        itemID_add->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemName_add = new QLineEdit(inventoryTab);
         itemName_add->setObjectName("itemName_add");
-        itemName_add->setGeometry(QRect(70, 600, 171, 28));
+        itemName_add->setGeometry(QRect(70, 600, 151, 31));
+        itemName_add->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemCatagory_add = new QLineEdit(inventoryTab);
         itemCatagory_add->setObjectName("itemCatagory_add");
-        itemCatagory_add->setGeometry(QRect(250, 600, 111, 28));
+        itemCatagory_add->setGeometry(QRect(230, 600, 111, 31));
+        itemCatagory_add->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemPrice_add = new QLineEdit(inventoryTab);
         itemPrice_add->setObjectName("itemPrice_add");
-        itemPrice_add->setGeometry(QRect(370, 600, 51, 28));
+        itemPrice_add->setGeometry(QRect(350, 600, 71, 31));
         sizePolicy.setHeightForWidth(itemPrice_add->sizePolicy().hasHeightForWidth());
         itemPrice_add->setSizePolicy(sizePolicy);
+        itemPrice_add->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         itemSalePrice_add = new QLineEdit(inventoryTab);
         itemSalePrice_add->setObjectName("itemSalePrice_add");
-        itemSalePrice_add->setGeometry(QRect(430, 600, 61, 28));
+        itemSalePrice_add->setGeometry(QRect(430, 600, 61, 31));
         QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(itemSalePrice_add->sizePolicy().hasHeightForWidth());
         itemSalePrice_add->setSizePolicy(sizePolicy1);
         itemSalePrice_add->setMaximumSize(QSize(16777, 16777215));
+        itemSalePrice_add->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         addItem = new QPushButton(inventoryTab);
         addItem->setObjectName("addItem");
-        addItem->setGeometry(QRect(498, 600, 121, 29));
+        addItem->setGeometry(QRect(498, 600, 121, 31));
+        addItem->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         itemCatagory_forCart = new QComboBox(inventoryTab);
         itemCatagory_forCart->setObjectName("itemCatagory_forCart");
         itemCatagory_forCart->setGeometry(QRect(180, 560, 151, 31));
@@ -724,16 +1166,87 @@ public:
 " }"));
         itemQuantity_Cart = new QSpinBox(inventoryTab);
         itemQuantity_Cart->setObjectName("itemQuantity_Cart");
-        itemQuantity_Cart->setGeometry(QRect(850, 520, 71, 29));
+        itemQuantity_Cart->setGeometry(QRect(850, 518, 71, 31));
+        itemQuantity_Cart->setStyleSheet(QString::fromUtf8("QSpinBox {\n"
+"                           background-color: rgb(85, 170, 255);\n"
+"                           color: #FFFFFF;\n"
+"                           border-radius: 15px;\n"
+"                           padding: 8px;\n"
+"		font-size: 14px;\n"
+"                           font-weight: bold;\n"
+"}\n"
+" QSpinBox::up-button, QSpinBox::down-button \n"
+"{\n"
+"	background-color: white;\n"
+"	border-radius: 6px;\n"
+"	padding: 5px;\n"
+"	padding-right: 10px;\n"
+"}\n"
+" QSpinBox::up-button:hover, QSpinBox::down-button:hover \n"
+"{\n"
+"	background-color: #0D47A1;\n"
+"	padding-right: 10px;\n"
+" }\n"
+" QSpinBox::up-button:pressed, QSpinBox::down-button:pressed \n"
+"{\n"
+"	background-color: #0D47A1;\n"
+"	padding-right: 10px;\n"
+" }"));
         selectedItem_Cart = new QLineEdit(inventoryTab);
         selectedItem_Cart->setObjectName("selectedItem_Cart");
-        selectedItem_Cart->setGeometry(QRect(630, 520, 211, 28));
+        selectedItem_Cart->setGeometry(QRect(640, 517, 201, 31));
+        selectedItem_Cart->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
         removeFromCart = new QPushButton(inventoryTab);
         removeFromCart->setObjectName("removeFromCart");
-        removeFromCart->setGeometry(QRect(1040, 520, 101, 29));
+        removeFromCart->setGeometry(QRect(1040, 518, 101, 31));
+        removeFromCart->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         refeshCart = new QPushButton(inventoryTab);
         refeshCart->setObjectName("refeshCart");
-        refeshCart->setGeometry(QRect(930, 520, 101, 29));
+        refeshCart->setGeometry(QRect(930, 518, 101, 31));
+        refeshCart->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #2196F3;\n"
+"    color: #FFFFFF;\n"
+"    border-radius: 14px;\n"
+"    padding: 4px 10px;\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #1976D2;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #0D47A1;\n"
+"}\n"
+""));
         removeItem = new QPushButton(inventoryTab);
         removeItem->setObjectName("removeItem");
         removeItem->setGeometry(QRect(530, 560, 91, 31));
@@ -753,18 +1266,77 @@ public:
 "    background-color: #0D47A1;\n"
 "}\n"
 ""));
+        label_4 = new QLabel(inventoryTab);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(640, 600, 81, 30));
+        label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
+        label_5 = new QLabel(inventoryTab);
+        label_5->setObjectName("label_5");
+        label_5->setGeometry(QRect(640, 560, 91, 31));
+        label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"}\n"
+""));
+        totalPrice = new QLineEdit(inventoryTab);
+        totalPrice->setObjectName("totalPrice");
+        totalPrice->setGeometry(QRect(768, 560, 111, 31));
+        totalPrice->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
+        totalPrice->setReadOnly(true);
+        totalItems = new QLineEdit(inventoryTab);
+        totalItems->setObjectName("totalItems");
+        totalItems->setGeometry(QRect(768, 600, 111, 31));
+        totalItems->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"    border-radius: 15px;\n"
+"    background-color: white;\n"
+"	padding-left: 10px;\n"
+"    padding-right: 10px; \n"
+"	font-size: 14px;\n"
+" 	color: #4da6ff;\n"
+"    font-weight: bold;\n"
+"	text-align: center;\n"
+"}\n"
+"\n"
+"QLineEdit:focus, QLineEdit:hover {\n"
+"    border: 1px solid #4da6ff;\n"
+"}"));
+        totalItems->setReadOnly(true);
         tabWidget->addTab(inventoryTab, QString());
         emailLabel = new QLabel(centralwidget);
         emailLabel->setObjectName("emailLabel");
-        emailLabel->setGeometry(QRect(300, 30, 151, 20));
+        emailLabel->setGeometry(QRect(300, 20, 381, 41));
+        emailLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	font-size:32px;\n"
+"}\n"
+""));
         nameLabel = new QLabel(centralwidget);
         nameLabel->setObjectName("nameLabel");
-        nameLabel->setGeometry(QRect(20, 30, 151, 20));
-        nameLabel->setStyleSheet(QString::fromUtf8("QLabel \n"
-"{\n"
-"	 text-align: right;\n"
-" 	color:black;\n"
-"}"));
+        nameLabel->setGeometry(QRect(20, 20, 261, 41));
+        nameLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	font-size:32px;\n"
+"}\n"
+""));
         logOut = new QPushButton(centralwidget);
         logOut->setObjectName("logOut");
         logOut->setGeometry(QRect(1050, 30, 121, 31));
@@ -788,7 +1360,7 @@ public:
 
         retranslateUi(AdminMenu);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(AdminMenu);
@@ -796,7 +1368,7 @@ public:
 
     void retranslateUi(QMainWindow *AdminMenu)
     {
-        AdminMenu->setWindowTitle(QCoreApplication::translate("AdminMenu", "MainWindow", nullptr));
+        AdminMenu->setWindowTitle(QCoreApplication::translate("AdminMenu", "Admin Menu", nullptr));
         label->setText(QCoreApplication::translate("AdminMenu", "Item Sold", nullptr));
         label_6->setText(QCoreApplication::translate("AdminMenu", "Total Cost", nullptr));
         label_7->setText(QCoreApplication::translate("AdminMenu", "Total profit", nullptr));
@@ -825,10 +1397,9 @@ public:
         checkSpecical->setText(QCoreApplication::translate("AdminMenu", "Special", nullptr));
         deleteUser->setText(QCoreApplication::translate("AdminMenu", "Delete User", nullptr));
         deleteEmployee->setText(QCoreApplication::translate("AdminMenu", "Delete Employee", nullptr));
+        label_13->setText(QCoreApplication::translate("AdminMenu", "Employee Managment", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(report), QCoreApplication::translate("AdminMenu", "Report", nullptr));
         label_2->setText(QCoreApplication::translate("AdminMenu", "All Items", nullptr));
-        label_5->setText(QCoreApplication::translate("AdminMenu", "Total Price", nullptr));
-        label_4->setText(QCoreApplication::translate("AdminMenu", "Total Items", nullptr));
         QTableWidgetItem *___qtablewidgetitem7 = vendorCart->horizontalHeaderItem(0);
         ___qtablewidgetitem7->setText(QCoreApplication::translate("AdminMenu", "item No.", nullptr));
         QTableWidgetItem *___qtablewidgetitem8 = vendorCart->horizontalHeaderItem(1);
@@ -864,6 +1435,8 @@ public:
         removeFromCart->setText(QCoreApplication::translate("AdminMenu", "Remove", nullptr));
         refeshCart->setText(QCoreApplication::translate("AdminMenu", "Refresh", nullptr));
         removeItem->setText(QCoreApplication::translate("AdminMenu", "Remove", nullptr));
+        label_4->setText(QCoreApplication::translate("AdminMenu", "Total Items", nullptr));
+        label_5->setText(QCoreApplication::translate("AdminMenu", "Total Price", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(inventoryTab), QCoreApplication::translate("AdminMenu", "Inventory", nullptr));
         emailLabel->setText(QCoreApplication::translate("AdminMenu", "email", nullptr));
         nameLabel->setText(QCoreApplication::translate("AdminMenu", "name", nullptr));

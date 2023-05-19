@@ -70,6 +70,7 @@ AdminMenu::AdminMenu(QWidget *parent,Admin *newAdmin) :
     ui->allEmployee->verticalHeader()->setVisible(false);
     ui->allEmployee->horizontalHeader()->setStretchLastSection(true);
     refreshAllEmployee();
+
 }
 
 AdminMenu::~AdminMenu()
@@ -90,7 +91,7 @@ void AdminMenu::on_allItems_cellActivated(int row, int column)
     }
 }
 
-void AdminMenu::on_itemCart_cellActivated(int row, int column)
+void AdminMenu::on_vendorCart_cellActivated(int row, int column)
 {
     row = ui->vendorCart->currentRow();
     QTableWidgetItem* item = ui->vendorCart->item(row, 1);
@@ -430,12 +431,6 @@ void AdminMenu::on_logOut_clicked()
     this->close();
     parentWidget()->show();
     delete this;
-}
-
-
-void AdminMenu::on_vendorCart_cellActivated(int row, int column)
-{
-
 }
 
 

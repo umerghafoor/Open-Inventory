@@ -97,20 +97,30 @@ bool Admin::addToCartbyNo(int itemNo, int quantity)
 		return false;
 	}
 }
-bool Admin::addToCartbyName(std::string itemName, int quantity)
+bool Admin::addToCartbyName(std::string _itemName, int _quantity)
 {
-	if (logedIn)
-	{
-		Item itemTemp = ReturnItemByName(itemName);
-		itemTemp.quantity = quantity;
-		cart.push_back(itemTemp);
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+    if (logedIn)
+    {
+        for (int i=0;i<cart.size();i++)
+        {
+            if (cart[i].itemName == _itemName)
+            {
+                cart[i].quantity += _quantity;
+                return true;
+            }
+        }
+
+        Item itemTemp = ReturnItemByName(_itemName);
+        itemTemp.quantity = _quantity;
+        cart.push_back(itemTemp);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
+
 bool Admin::removeFromCart(int itemNo)
 {
 	if (logedIn)

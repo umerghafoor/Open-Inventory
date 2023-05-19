@@ -134,7 +134,7 @@ void VendorMenu::on_reload_clicked()
 
 void VendorMenu::on_deny_clicked()
 {
-    vendor->removeFromRequest((ui->venderCart->currentRow()));
+    vendor->removeFromRequest((ui->venderCart->item((ui->venderCart->currentRow()),0)->text().toInt() ));
     refreshCart();
 }
 

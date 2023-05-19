@@ -5,6 +5,9 @@ SignInMenu::SignInMenu(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+    QPixmap icon(QString::fromStdString(iconPath));
+    ui.picture->setPixmap(icon);
+
 }
 
 SignInMenu::~SignInMenu()
@@ -41,7 +44,7 @@ void SignInMenu::on_logIn_button_clicked()
     {
         this->hide();
         customerPtr = new Customer(stoi(userID), password);
-        customerMenu=new CustomerView(this,customerPtr);
+        customerMenu=new CustomerView(nullptr,customerPtr);
         connect(customerMenu, &CustomerView::finished, this, &SignInMenu::onChildWindowClosed);
         customerMenu->show();
     }
@@ -49,7 +52,7 @@ void SignInMenu::on_logIn_button_clicked()
     {
         this->hide();
         adminPtr = new Admin(stoi(userID),password);
-        adminMenu=new AdminMenu(this,adminPtr);
+        adminMenu=new AdminMenu(nullptr,adminPtr);
         connect(adminMenu, &AdminMenu::finished, this, &SignInMenu::onChildWindowClosed);
         adminMenu->show();
     }
@@ -57,7 +60,7 @@ void SignInMenu::on_logIn_button_clicked()
     {
         this->hide();
         vendorPtr = new Vendor(stoi(userID), password);
-        vendorMenu=new VendorMenu(this,vendorPtr);
+        vendorMenu=new VendorMenu(nullptr,vendorPtr);
         connect(vendorMenu, &VendorMenu::finished, this, &SignInMenu::onChildWindowClosed);
         vendorMenu->show();
     }

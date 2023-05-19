@@ -1,11 +1,11 @@
-2,Oliver Jones,oliver.jones@hotmail.com,pass456,1
+2,Oliver Jones,oliver.jones@hotmail.com,pass456,0
 3,Ava Rodriguez,ava.rodriguez@gmail.com,pass789,1
 5,Mia Chen,mia.chen@gmail.com,pass202,0
 6,Liam Wilson,liam.wilson@hotmail.com,pass303,1
 7,Sophia Davis,sophia.davis@gmail.com,pass404,0
-8,Logan Taylor,logan.taylor@hotmail.com,pass505,1
-10,Noah Wright,noah.wright@hotmail.com,pass707,1
-11,Lily Scott,lily.scott@gmail.com,pass808,0
+8,Logan Taylor,logan.taylor@hotmail.com,pass505,0
+10,Noah Wright,noah.wright@hotmail.com,pass707,0
+11,Lily Scott,lily.scott@gmail.com,pass808,1
 12,Ethan Baker,ethan.baker@hotmail.com,pass909,1
 13,Emily Green,emily.green@gmail.com,pass1010,0
 14,Mason Adams,mason.adams@hotmail.com,pass1111,1
@@ -29,7 +29,7 @@
 33,Caleb Ward,caleb.ward@gmail.com,pass3030,0
 34,Sofia Coleman,sofia.coleman@hotmail.com,pass3131,0
 35,Owen Sanders,owen.sanders@gmail.com,pass3232,0
-36,Victoria West,victoria.west@hotmail.com,pass3333,0
+36,Victoria West,victoria.west@hotmail.com,pass3333,1
 37,Jack Nelson,jack.nelson@gmail.com,pass3434,0
 38,Julia Collins,julia.collins@hotmail.com,pass3535,0
 39,Cameron Baker,cameron.baker@gmail.com,pass3636,0

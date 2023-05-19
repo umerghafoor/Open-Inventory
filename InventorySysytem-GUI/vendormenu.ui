@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(214, 231, 243);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTableWidget" name="allItems">
     <property name="enabled">
@@ -141,6 +144,13 @@ QTableWidget::item:selected:last {
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+}
+</string>
+    </property>
     <property name="text">
      <string>All Items</string>
     </property>
@@ -262,10 +272,28 @@ QTableWidget::item:selected:last {
     <property name="geometry">
      <rect>
       <x>1182</x>
-      <y>680</y>
+      <y>678</y>
       <width>81</width>
-      <height>29</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
     </property>
     <property name="text">
      <string>Aprove</string>
@@ -275,10 +303,28 @@ QTableWidget::item:selected:last {
     <property name="geometry">
      <rect>
       <x>1100</x>
-      <y>680</y>
+      <y>678</y>
       <width>71</width>
-      <height>29</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
     </property>
     <property name="text">
      <string>Reload</string>
@@ -288,10 +334,28 @@ QTableWidget::item:selected:last {
     <property name="geometry">
      <rect>
       <x>1030</x>
-      <y>680</y>
+      <y>678</y>
       <width>61</width>
-      <height>29</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 14px;
+    padding: 4px 10px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
     </property>
     <property name="text">
      <string>Deny</string>
@@ -301,10 +365,26 @@ QTableWidget::item:selected:last {
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>680</y>
+      <y>677</y>
       <width>113</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	padding-left: 10px;
+    padding-right: 10px; 
+	font-size: 14px;
+ 	color: #4da6ff;
+    font-weight: bold;
+	text-align: center;
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -316,6 +396,13 @@ QTableWidget::item:selected:last {
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+}
+</string>
+    </property>
     <property name="text">
      <string>Total</string>
     </property>
@@ -324,10 +411,26 @@ QTableWidget::item:selected:last {
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>680</y>
+      <y>677</y>
       <width>113</width>
-      <height>28</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	padding-left: 10px;
+    padding-right: 10px; 
+	font-size: 14px;
+ 	color: #4da6ff;
+    font-weight: bold;
+	text-align: center;
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -338,6 +441,13 @@ QTableWidget::item:selected:last {
       <width>63</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+}
+</string>
     </property>
     <property name="text">
      <string>Price</string>
@@ -379,9 +489,17 @@ QPushButton:pressed {
      <rect>
       <x>300</x>
       <y>10</y>
-      <width>151</width>
-      <height>20</height>
+      <width>421</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+	font-size:32px;
+}
+</string>
     </property>
     <property name="text">
      <string>email</string>
@@ -392,16 +510,17 @@ QPushButton:pressed {
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>151</width>
-      <height>20</height>
+      <width>281</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel 
-{
-	 text-align: right;
- 	color:black;
-}</string>
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+	font-size:32px;
+}
+</string>
     </property>
     <property name="text">
      <string>name</string>
@@ -415,6 +534,13 @@ QPushButton:pressed {
       <width>241</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+}
+</string>
     </property>
     <property name="text">
      <string>Requested by Admin</string>

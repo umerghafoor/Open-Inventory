@@ -18,7 +18,6 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -38,10 +37,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QLabel *label_5;
     QLabel *label_6;
-    QWidget *layoutWidget1;
-    QVBoxLayout *title;
-    QLabel *label_3;
-    QLabel *label_4;
+    QLabel *picture;
 
     void setupUi(QMainWindow *SignInMenu)
     {
@@ -55,6 +51,27 @@ public:
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName("groupBox");
         groupBox->setGeometry(QRect(320, 70, 321, 281));
+        groupBox->setStyleSheet(QString::fromUtf8("QGroupBox {\n"
+"    border-radius: 15px;\n"
+"	background-color: #c2dcf2;\n"
+"	\n"
+"}\n"
+"\n"
+"QGroupBox::title {\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top center;\n"
+"    padding: 5px;\n"
+"    padding-left: 10px;\n"
+"    padding-right: 10px;\n"
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"    font-size: 16px;\n"
+"}\n"
+"\n"
+"QGroupBox:hover, QGroupBox:focus {\n"
+"    border: 1px solid #4da6ff;\n"
+"}\n"
+""));
         groupBox->setFlat(false);
         groupBox->setCheckable(false);
         userType = new QComboBox(groupBox);
@@ -64,12 +81,14 @@ public:
         userType->setObjectName("userType");
         userType->setGeometry(QRect(200, 40, 111, 31));
         userType->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"    background-color: #4da6ff;\n"
+"    background-color: #ffffff;\n"
 "    border-radius: 15px;\n"
 "    padding: 5px;\n"
-"    color: #FFFFFF;\n"
+"	padding-left: 14px;\n"
+"    color: #4da6ff;\n"
+"    font-size: 14px;\n"
 "    font-weight: bold;\n"
-"	text-align: center;\n"
+"    text-align: center;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -81,8 +100,7 @@ public:
 "    border-bottom-right-radius: 20px;\n"
 "}\n"
 "\n"
-"QComboBox::down-arrow\n"
-" {\n"
+"QComboBox::down-arrow {\n"
 "    image: url(icons/down-arrow.png);\n"
 "    width: 16px;\n"
 "    height: 16px;\n"
@@ -97,19 +115,19 @@ public:
 "    color: black;\n"
 "    border: none;\n"
 "    outline: none;\n"
+"    scrollbar-color: #CCCCCC #F5F5F5;\n"
+"    font-weight: regular;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView::item {\n"
 "    height: 30px;\n"
-"	\n"
-"}\n"
+""
+                        "}\n"
 "\n"
 "QComboBox QAbstractItemView::item:hover {\n"
 "    background-color: white;\n"
-"    border-radius: 15px;"
-                        "\n"
+"    border-radius: 15px;\n"
 "    font-weight: bold;\n"
-"    \n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView::item:selected {\n"
@@ -122,9 +140,37 @@ public:
 "    font-weight: bold;\n"
 "}\n"
 "\n"
-"QComboBox::focus \n"
-"{\n"
+"QComboBox::focus {\n"
 "    border: none;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar {\n"
+"    background-color: #F5F5F5;\n"
+"    width: 10px;\n"
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar:vertical {\n"
+"    margin-right: 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar-handle:vertical {\n"
+"    background-color: #CCCCCC;\n"
+"    border-radius: 5px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar-handle:vertical:hover {\n"
+"    background-color: #BBBBBB;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar:horizontal {\n"
+"    margin-bot"
+                        "tom: 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::scrollbar-handle:horizontal {\n"
+"    min-width: 20px;\n"
 "}\n"
 ""));
         ID = new QLineEdit(groupBox);
@@ -146,14 +192,20 @@ public:
         UserID_text->setObjectName("UserID_text");
         UserID_text->setGeometry(QRect(10, 120, 71, 16));
         UserID_text->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"    color: black;\n"
-"}"));
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	background-color: transparent;\n"
+"}\n"
+""));
         Pass_text = new QLabel(groupBox);
         Pass_text->setObjectName("Pass_text");
         Pass_text->setGeometry(QRect(10, 170, 81, 16));
         Pass_text->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"    color: black;\n"
-"}"));
+"    color: #2196F3;\n"
+"    font-weight: bold;\n"
+"	background-color: transparent;\n"
+"}\n"
+""));
         logIn_button = new QPushButton(groupBox);
         logIn_button->setObjectName("logIn_button");
         logIn_button->setGeometry(QRect(210, 200, 91, 41));
@@ -191,7 +243,7 @@ public:
         password->setEchoMode(QLineEdit::Password);
         layoutWidget = new QWidget(groupBox);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(50, 250, 212, 22));
+        layoutWidget->setGeometry(QRect(50, 250, 220, 22));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -201,6 +253,7 @@ public:
         label_5->setObjectName("label_5");
         label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: black;\n"
+"	background-color: transparent;\n"
 "}"));
 
         horizontalLayout->addWidget(label_5);
@@ -212,42 +265,14 @@ public:
         label_6->setFont(font);
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    color: blue;\n"
+"	background-color: transparent;\n"
 "}"));
 
         horizontalLayout->addWidget(label_6);
 
-        layoutWidget1 = new QWidget(centralWidget);
-        layoutWidget1->setObjectName("layoutWidget1");
-        layoutWidget1->setGeometry(QRect(80, 180, 161, 97));
-        title = new QVBoxLayout(layoutWidget1);
-        title->setSpacing(6);
-        title->setContentsMargins(11, 11, 11, 11);
-        title->setObjectName("title");
-        title->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(layoutWidget1);
-        label_3->setObjectName("label_3");
-        QFont font1;
-        font1.setFamilies({QString::fromUtf8("Segoe UI Black")});
-        font1.setPointSize(20);
-        font1.setBold(true);
-        label_3->setFont(font1);
-        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"    color: black;\n"
-"}"));
-        label_3->setLineWidth(5);
-
-        title->addWidget(label_3);
-
-        label_4 = new QLabel(layoutWidget1);
-        label_4->setObjectName("label_4");
-        label_4->setFont(font1);
-        label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"    color: black;\n"
-"}"));
-        label_4->setLineWidth(5);
-
-        title->addWidget(label_4);
-
+        picture = new QLabel(centralWidget);
+        picture->setObjectName("picture");
+        picture->setGeometry(QRect(40, 100, 241, 251));
         SignInMenu->setCentralWidget(centralWidget);
 
         retranslateUi(SignInMenu);
@@ -272,8 +297,7 @@ public:
         password->setPlaceholderText(QString());
         label_5->setText(QCoreApplication::translate("SignInMenu", "donot have an accocunt", nullptr));
         label_6->setText(QCoreApplication::translate("SignInMenu", "SignUp", nullptr));
-        label_3->setText(QCoreApplication::translate("SignInMenu", "Inventory", nullptr));
-        label_4->setText(QCoreApplication::translate("SignInMenu", "System", nullptr));
+        picture->setText(QString());
     } // retranslateUi
 
 };

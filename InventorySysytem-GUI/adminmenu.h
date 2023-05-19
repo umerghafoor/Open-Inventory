@@ -28,7 +28,7 @@ private slots:
 
     void on_removeFromCart_clicked();
 
-    void on_itemCart_cellActivated(int row, int column);
+    void on_vendorCart_cellActivated(int row, int column);
 
     void on_pushButton_clicked();
 
@@ -62,9 +62,8 @@ private slots:
 
     void on_logOut_clicked();
 
-    void on_vendorCart_cellActivated(int row, int column);
-
     void on_deleteEmployee_clicked();
+
 
 private:
     Ui::AdminMenu *ui;
