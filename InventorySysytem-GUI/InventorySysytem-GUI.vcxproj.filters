@@ -29,35 +29,15 @@
     <QtUic Include="InventorySysytemGUI.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Class\admin.h">
+    <QtMoc Include="InventorySysytemGUI.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\customer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\inventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\venderor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="comman\constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Class\user.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
+    </QtMoc>
     <ClCompile Include="InventorySysytemGUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Class\user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Class\admin.cpp">
@@ -69,24 +49,78 @@
     <ClCompile Include="Class\inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Class\user.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Class\venderor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="adminmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="customerview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="vendormenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="InventorySysytemGUI.h">
+    <ClInclude Include="Class\admin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\customer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\user.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Class\venderor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="comman\constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_adminmenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_customerview.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_inventorysysytemgui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_vendormenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="adminmenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="customerview.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="vendormenu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="adminmenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="customerview.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="vendormenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InventorySysytem-GUI.pro" />
+    <None Include="readme.md" />
   </ItemGroup>
 </Project>

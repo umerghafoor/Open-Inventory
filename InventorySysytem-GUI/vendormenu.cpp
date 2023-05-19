@@ -153,7 +153,7 @@ void VendorMenu::on_logOut_clicked()
 {
     vendor->logOut();
     this->close();
-    parentWidget()->show();
+//    parentWidget()->show();
     delete this;
 }
 

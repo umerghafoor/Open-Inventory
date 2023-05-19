@@ -246,7 +246,7 @@ void CustomerView::on_logOut_clicked()
 {
     customerMenu->logOut();
     this->close();
-    parentWidget()->show();
+//    parentWidget()->show();
     delete this;
 }
 

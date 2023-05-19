@@ -429,7 +429,7 @@ void AdminMenu::on_logOut_clicked()
 {
     admin->logOut();
     this->close();
-    parentWidget()->show();
+//    parentWidget()->show();
     delete this;
 }
 
