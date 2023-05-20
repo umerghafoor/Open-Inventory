@@ -48,7 +48,7 @@ class Admin :public user, public inventory
 
 public:
 	Admin(int, std::string);
-	Admin(int, std::string, std::string, std::string);
+     bool UserSignUp(int _ID, std::string, std::string, std::string,bool);
 
 	//getter
 	int getID();

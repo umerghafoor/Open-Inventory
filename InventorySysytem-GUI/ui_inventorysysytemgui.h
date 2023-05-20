@@ -33,18 +33,19 @@ public:
     QLabel *Pass_text;
     QPushButton *logIn_button;
     QLineEdit *password;
+    QLabel *picture;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QLabel *label_5;
-    QLabel *label_6;
-    QLabel *picture;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *SignInMenu)
     {
         if (SignInMenu->objectName().isEmpty())
             SignInMenu->setObjectName("SignInMenu");
         SignInMenu->resize(749, 442);
-        SignInMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);"));
+        SignInMenu->setStyleSheet(QString::fromUtf8("background-color:rgb(214, 231, 243);\n"
+""));
         centralWidget = new QWidget(SignInMenu);
         centralWidget->setObjectName("centralWidget");
         centralWidget->setEnabled(true);
@@ -79,7 +80,7 @@ public:
         userType->addItem(QString());
         userType->addItem(QString());
         userType->setObjectName("userType");
-        userType->setGeometry(QRect(200, 40, 111, 31));
+        userType->setGeometry(QRect(180, 40, 131, 31));
         userType->setStyleSheet(QString::fromUtf8("QComboBox {\n"
 "    background-color: #ffffff;\n"
 "    border-radius: 15px;\n"
@@ -241,9 +242,12 @@ public:
 "}"));
         password->setFrame(false);
         password->setEchoMode(QLineEdit::Password);
-        layoutWidget = new QWidget(groupBox);
+        picture = new QLabel(centralWidget);
+        picture->setObjectName("picture");
+        picture->setGeometry(QRect(40, 100, 241, 251));
+        layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(50, 250, 220, 22));
+        layoutWidget->setGeometry(QRect(370, 350, 221, 24));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
@@ -258,21 +262,17 @@ public:
 
         horizontalLayout->addWidget(label_5);
 
-        label_6 = new QLabel(layoutWidget);
-        label_6->setObjectName("label_6");
-        QFont font;
-        font.setItalic(true);
-        label_6->setFont(font);
-        label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        pushButton = new QPushButton(layoutWidget);
+        pushButton->setObjectName("pushButton");
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: transparent;\n"
 "    color: blue;\n"
-"	background-color: transparent;\n"
-"}"));
+"    padding: 0px 0px;\n"
+"}\n"
+""));
 
-        horizontalLayout->addWidget(label_6);
+        horizontalLayout->addWidget(pushButton);
 
-        picture = new QLabel(centralWidget);
-        picture->setObjectName("picture");
-        picture->setGeometry(QRect(40, 100, 241, 251));
         SignInMenu->setCentralWidget(centralWidget);
 
         retranslateUi(SignInMenu);
@@ -295,9 +295,9 @@ public:
         logIn_button->setText(QCoreApplication::translate("SignInMenu", "LogIn", nullptr));
         password->setText(QString());
         password->setPlaceholderText(QString());
-        label_5->setText(QCoreApplication::translate("SignInMenu", "donot have an accocunt", nullptr));
-        label_6->setText(QCoreApplication::translate("SignInMenu", "SignUp", nullptr));
         picture->setText(QString());
+        label_5->setText(QCoreApplication::translate("SignInMenu", "donot have an accocunt", nullptr));
+        pushButton->setText(QCoreApplication::translate("SignInMenu", "Sign Up", nullptr));
     } // retranslateUi
 
 };

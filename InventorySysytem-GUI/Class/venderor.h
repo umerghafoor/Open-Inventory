@@ -17,7 +17,7 @@ class Vendor :public user, public inventory, public Item
 	std::vector<Item> cart;
 public:
     Vendor(int, std::string);
-    Vendor(int, std::string, std::string, std::string);
+    bool UserSignUp(int _ID, std::string, std::string, std::string,bool);
 
 	bool editQuantity(int, int);
 	bool addItemsFromLog();

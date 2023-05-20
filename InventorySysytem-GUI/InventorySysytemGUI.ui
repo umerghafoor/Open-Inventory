@@ -14,7 +14,8 @@
    <string>InventorySysytemGUI</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(214, 231, 243);</string>
+   <string notr="true">background-color:rgb(214, 231, 243);
+</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
@@ -64,9 +65,9 @@ QGroupBox:hover, QGroupBox:focus {
     <widget class="QComboBox" name="userType">
      <property name="geometry">
       <rect>
-       <x>200</x>
+       <x>180</x>
        <y>40</y>
-       <width>111</width>
+       <width>131</width>
        <height>31</height>
       </rect>
      </property>
@@ -319,49 +320,6 @@ QLineEdit:focus, QLineEdit:hover {
       <string/>
      </property>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>50</x>
-       <y>250</y>
-       <width>220</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label_5">
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-    color: black;
-	background-color: transparent;
-}</string>
-        </property>
-        <property name="text">
-         <string>donot have an accocunt</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <italic>true</italic>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-    color: blue;
-	background-color: transparent;
-}</string>
-        </property>
-        <property name="text">
-         <string>SignUp</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
    </widget>
    <widget class="QLabel" name="picture">
     <property name="geometry">
@@ -375,6 +333,46 @@ QLineEdit:focus, QLineEdit:hover {
     <property name="text">
      <string/>
     </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>350</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: black;
+	background-color: transparent;
+}</string>
+       </property>
+       <property name="text">
+        <string>donot have an accocunt</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: transparent;
+    color: blue;
+    padding: 0px 0px;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Sign Up</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

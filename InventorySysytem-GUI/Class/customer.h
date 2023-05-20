@@ -17,8 +17,8 @@ class Customer :public user, private inventory
 {	
 	std::vector<Item> cart;
 public:
-	Customer(int,std::string);
-	Customer(int _ID, std::string, std::string, std::string,bool);
+    Customer(int,std::string);
+    bool UserSignUp(int _ID, std::string, std::string, std::string,bool);
 
 	//getter
 	int getID();

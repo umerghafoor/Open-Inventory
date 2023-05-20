@@ -38,7 +38,7 @@ Customer::Customer(int _ID, std::string password)
 		password = '\0';
 	}
 }
-Customer::Customer(int _ID, std::string _name, std::string _email, std::string _password, bool specialCustomer)
+bool Customer::UserSignUp(int _ID, std::string _name, std::string _email, std::string _password, bool specialCustomer)
 {
 	this->ID = _ID;
 	this->name = _name;
@@ -53,7 +53,6 @@ Customer::Customer(int _ID, std::string _name, std::string _email, std::string _
 		std::stringstream ss(line);
 		std::string _ID;
 		std::getline(ss, _ID, ',');
-		std::cout << _ID;
 
 		int existingID = std::stoi(_ID);
 		if (existingID == ID)
@@ -69,8 +68,10 @@ Customer::Customer(int _ID, std::string _name, std::string _email, std::string _
 		std::ofstream customerDataBase(customerDataBaseFile, std::ios::app);
 		customerDataBase << ID << "," << name << "," << email << "," << password << ',' << specialCustomer << "\n";
 		customerDataBase.close();
+        return true;
 	}
 	logedIn = false;
+    return false;
 }
 
 int Customer::getID()

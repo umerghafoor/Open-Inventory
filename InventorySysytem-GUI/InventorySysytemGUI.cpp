@@ -7,7 +7,6 @@ SignInMenu::SignInMenu(QWidget *parent)
     ui.setupUi(this);
     QPixmap icon(QString::fromStdString(iconPath));
     ui.picture->setPixmap(icon);
-
 }
 
 SignInMenu::~SignInMenu()
@@ -75,3 +74,20 @@ void SignInMenu::onChildWindowClosed()
     ui.password->setText("");
     this->show();
 }
+
+void SignInMenu::on_label_6_linkActivated(const QString &link)
+{
+    this->hide();
+    signUpMenu = new SignUp(nullptr);
+    signUpMenu->show();
+}
+
+
+void SignInMenu::on_pushButton_clicked()
+{
+    this->hide();
+    signUpMenu = new SignUp(nullptr);
+    connect(signUpMenu, &SignUp::finished, this, &SignInMenu::onChildWindowClosed);
+    signUpMenu->show();
+}
+

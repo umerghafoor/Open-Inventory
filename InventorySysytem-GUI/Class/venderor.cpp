@@ -38,7 +38,7 @@ Vendor::Vendor(int _ID, std::string password)
 	}
 
 }
-Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _password)
+bool Vendor::UserSignUp(int _ID, std::string _name, std::string _email, std::string _password,bool specialUser)
 {
 	this->ID = _ID;
 	this->name = _name;
@@ -68,8 +68,10 @@ Vendor::Vendor(int _ID, std::string _name, std::string _email, std::string _pass
 		std::ofstream vendorDataBase(employeeDataBaseFile, std::ios::app);
 		vendorDataBase << ID << "," << name << "," << email << "," << password << "\n";
 		vendorDataBase.close();
+        return true;
 	}
 	logedIn = false;
+    return false;
 }
 
 int Vendor::getID()

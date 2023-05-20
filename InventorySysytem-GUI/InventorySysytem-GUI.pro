@@ -19,6 +19,7 @@ SOURCES += \
     customerview.cpp \
     inventorysysytemgui.cpp \
     main.cpp \
+    signup.cpp \
     vendormenu.cpp
 
 HEADERS += \
@@ -31,12 +32,14 @@ HEADERS += \
     comman/constants.h \
     customerview.h \
     inventorysysytemgui.h \
+    signup.h \
     vendormenu.h
 
 FORMS += \
     adminmenu.ui \
     customerview.ui \
     inventorysysytemgui.ui \
+    signup.ui \
     vendormenu.ui
 
 # Default rules for deployment.

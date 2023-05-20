@@ -23,4 +23,6 @@ public:
     virtual int getID() = 0;
     virtual std::string getName() = 0;
     virtual std::string getEmail() = 0;
+    virtual bool UserSignUp(int _ID, std::string, std::string, std::string,bool) = 0;
+
 };

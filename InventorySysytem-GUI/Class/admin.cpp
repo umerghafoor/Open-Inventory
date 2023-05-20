@@ -36,7 +36,7 @@ Admin::Admin(int _ID, std::string password)
 		password = '\0';
 	}
 }
-Admin::Admin(int _ID, std::string _name, std::string _email, std::string _password)
+bool Admin::UserSignUp(int _ID, std::string _name, std::string _email, std::string _password,bool specialUser)
 {
 	this->ID = _ID;
 	this->name = _name;
@@ -66,8 +66,10 @@ Admin::Admin(int _ID, std::string _name, std::string _email, std::string _passwo
 		std::ofstream adminDataBase(adminDataBaseFile, std::ios::app);
 		adminDataBase << ID << "," << name << "," << email << "," << password << "\n";
 		adminDataBase.close();
+        return true;
 	}
 	logedIn = false;
+    return false;
 }
 
 int Admin::getID()
