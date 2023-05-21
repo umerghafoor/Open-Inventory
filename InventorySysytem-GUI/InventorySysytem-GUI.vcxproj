@@ -83,6 +83,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="signup.cpp" />
     <ClCompile Include="vendormenu.cpp" />
     <QtRcc Include="InventorySysytemGUI.qrc" />
     <QtUic Include="adminmenu.ui" />
@@ -98,9 +99,11 @@
     <ClCompile Include="customerview.cpp" />
     <ClCompile Include="InventorySysytemGUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="signup.ui" />
     <QtUic Include="vendormenu.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="signup.h" />
     <ClInclude Include="ui_adminmenu.h" />
     <ClInclude Include="ui_customerview.h" />
     <ClInclude Include="ui_inventorysysytemgui.h" />

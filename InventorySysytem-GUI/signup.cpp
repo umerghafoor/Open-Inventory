@@ -17,6 +17,7 @@ SignUp::SignUp(QWidget *parent) :
 SignUp::~SignUp()
 {
     delete ui;
+    delete userPtr;
 }
 
 void SignUp::closeEvent(QCloseEvent* event)
@@ -51,7 +52,10 @@ void SignUp::on_SignUp_button_clicked()
                 this->close();
             }
             else
+            {
                 QMessageBox::warning(this, "SignUp Error", "UserAlreadyExist");
+                delete userPtr;
+            }
         }
         else
         {
@@ -60,16 +64,19 @@ void SignUp::on_SignUp_button_clicked()
     }
     else if(ui->userType->currentIndex() == 0)
     {
-        if(ui->password_1->text()==ui->password_2->text())
+        if (ui->password_1->text() == ui->password_2->text())
         {
-            userPtr = new  Admin(1,"1");
-            if(userPtr->UserSignUp(stoi(userID),ui->Name->text().toStdString(),ui->Email->text().toStdString(),password,0))
+            userPtr = new  Admin(1, "1");
+            if (userPtr->UserSignUp(stoi(userID), ui->Name->text().toStdString(), ui->Email->text().toStdString(), password, 0))
             {
                 QMessageBox::information(this, "SignUp Succes", "User has been Created");
                 this->close();
             }
             else
+            {
                 QMessageBox::warning(this, "SignUp Error", "UserAlreadyExist");
+                delete userPtr;
+            }
         }
         else
         {
@@ -87,7 +94,10 @@ void SignUp::on_SignUp_button_clicked()
                 this->close();
             }
             else
+            {
                 QMessageBox::warning(this, "SignUp Error", "UserAlreadyExist");
+                delete userPtr;
+            }
         }
         else
         {

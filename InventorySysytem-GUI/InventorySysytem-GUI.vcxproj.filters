@@ -64,6 +64,9 @@
     <ClCompile Include="vendormenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="signup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Class\admin.h">
@@ -107,6 +110,9 @@
     <QtMoc Include="vendormenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="signup.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="adminmenu.ui">
@@ -116,6 +122,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="vendormenu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="signup.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
