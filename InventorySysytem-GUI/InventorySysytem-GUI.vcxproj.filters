@@ -99,6 +99,9 @@
     <ClInclude Include="ui_vendormenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="adminmenu.h">
@@ -131,5 +134,15 @@
   <ItemGroup>
     <None Include="InventorySysytem-GUI.pro" />
     <None Include="readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="InventorySysytem-GUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Icons\icon.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

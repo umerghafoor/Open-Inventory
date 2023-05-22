@@ -1,11 +1,11 @@
 1,Tomato,0.6,116,Vegetable,0.25
 2,Apple,0.3,110,Fruit,0.5
-3,Chicken Breast,2.5,50,Meat,0.2
-5,Beef,3.5,57,Meat,0.1
+3,Chicken Breast,2.5,60,Meat,0.2
+5,Beef,3.5,67,Meat,0.1
 6,Banana,0.4,110,Fruit,0.4
 7,Cucumber,0.3,67,Vegetable,0.3
 9,Potato,0.2,172,Vegetable,0.5
-10,Orange,0.5,90,Fruit,0.3
+10,Orange,0.5,140,Fruit,0.3
 011,Salmon,4.5,10,Seafood,0.2
 012,Onion,0.2,70,Vegetable,0.4
 13,Strawberry,0.2,121,Fruit,0.6

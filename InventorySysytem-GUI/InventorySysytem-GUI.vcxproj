@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="signup.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ui_adminmenu.h" />
     <ClInclude Include="ui_customerview.h" />
     <ClInclude Include="ui_inventorysysytemgui.h" />
@@ -121,6 +122,12 @@
   <ItemGroup>
     <None Include="InventorySysytem-GUI.pro" />
     <None Include="readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="InventorySysytem-GUI.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Icons\icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
