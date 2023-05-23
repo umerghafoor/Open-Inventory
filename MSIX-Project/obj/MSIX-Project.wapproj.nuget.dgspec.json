@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\GitHub\\InventorySysytem\\MSIX-Project\\MSIX-Project.wapproj": {}
+  },
+  "projects": {
+    "D:\\GitHub\\InventorySysytem\\InventorySysytem-GUI\\InventorySysytem-GUI.vcxproj": {
+      "restore": {
+        "projectUniqueName": "D:\\GitHub\\InventorySysytem\\InventorySysytem-GUI\\InventorySysytem-GUI.vcxproj",
+        "projectName": "InventorySysytem-GUI",
+        "projectPath": "D:\\GitHub\\InventorySysytem\\InventorySysytem-GUI\\InventorySysytem-GUI.vcxproj",
+        "frameworks": {
+          "native": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "native": {}
+      }
+    },
+    "D:\\GitHub\\InventorySysytem\\MSIX-Project\\MSIX-Project.wapproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitHub\\InventorySysytem\\MSIX-Project\\MSIX-Project.wapproj",
+        "projectName": "MSIX-Project",
+        "projectPath": "D:\\GitHub\\InventorySysytem\\MSIX-Project\\MSIX-Project.wapproj",
+        "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHub\\InventorySysytem\\MSIX-Project\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net451"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "uap10.0.14393": {
+            "targetAlias": "net451",
+            "projectReferences": {
+              "D:\\GitHub\\InventorySysytem\\InventorySysytem-GUI\\InventorySysytem-GUI.vcxproj": {
+                "projectPath": "D:\\GitHub\\InventorySysytem\\InventorySysytem-GUI\\InventorySysytem-GUI.vcxproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1702"
+          ]
+        }
+      },
+      "frameworks": {
+        "uap10.0.14393": {
+          "targetAlias": "net451",
+          "dependencies": {
+            "Microsoft.Windows.SDK.BuildTools": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.22621.755, )"
+            }
+          },
+          "imports": [
+            "netcoreapp3.1",
+            "netcoreapp3.0",
+            "netcoreapp2.0",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net7.0-windows10.0.22621"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win10-arm": {
+          "#import": []
+        },
+        "win10-arm-aot": {
+          "#import": []
+        },
+        "win10-arm64-aot": {
+          "#import": []
+        },
+        "win10-x64": {
+          "#import": []
+        },
+        "win10-x64-aot": {
+          "#import": []
+        },
+        "win10-x86": {
+          "#import": []
+        },
+        "win10-x86-aot": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

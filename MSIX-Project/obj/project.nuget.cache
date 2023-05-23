@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gIMZFl+31EIQYSZQrSKnylRI0FuAc74e9HesFRtduwB+c/4ns4SGRyM/T/hSEx2ZaAWOkq+I3DTRH6h3zaPRAw==",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\InventorySysytem\\MSIX-Project\\MSIX-Project.wapproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages\\microsoft.windows.sdk.buildtools\\10.0.22621.755\\microsoft.windows.sdk.buildtools.10.0.22621.755.nupkg.sha512"
+  ],
+  "logs": []
+}
