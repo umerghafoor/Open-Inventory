@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SignUp</class>
+ <widget class="QMainWindow" name="SignUp">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(214, 231, 243);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="SignUp_button">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>420</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>SignUp</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ID">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>180</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+    </property>
+    <property name="text">
+     <string>ID</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Email">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>260</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+    </property>
+    <property name="text">
+     <string>example@email.com</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="Name">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>220</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+    </property>
+    <property name="text">
+     <string>Name</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password_1">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>300</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>340</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="picture">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>150</y>
+      <width>241</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="UserID_text">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>140</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+	background-color: transparent;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Sign Up</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="userType">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>380</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 5px;
+	padding-left: 14px;
+    color: #4da6ff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left-width: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(icons/down-arrow.png);
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox QAbstractItemView {
+    selection-background-color: transparent;
+    selection-color: white;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+    border: none;
+    outline: none;
+    scrollbar-color: #CCCCCC #F5F5F5;
+    font-weight: regular;
+}
+
+QComboBox QAbstractItemView::item {
+    height: 30px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: white;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+QComboBox QAbstractItemView::item:selected {
+    border-radius: 15px;
+    color: #4da6ff;
+}
+
+QComboBox QAbstractItemView::item:focus {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+QComboBox::focus {
+    border: none;
+}
+
+QComboBox QAbstractItemView::scrollbar {
+    background-color: #F5F5F5;
+    width: 10px;
+    border-radius: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar:vertical {
+    margin-right: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:vertical {
+    background-color: #CCCCCC;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:vertical:hover {
+    background-color: #BBBBBB;
+}
+
+QComboBox QAbstractItemView::scrollbar:horizontal {
+    margin-bottom: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:horizontal {
+    min-width: 20px;
+}
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Admin</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Customer</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Employee</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

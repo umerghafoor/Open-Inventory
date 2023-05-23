@@ -21,11 +21,14 @@
     <ClCompile Include="Features\customer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Adminmenu.cpp">
+    <ClCompile Include="customermenucpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="comman\constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Class\admin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -39,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Class\venderor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="comman\constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

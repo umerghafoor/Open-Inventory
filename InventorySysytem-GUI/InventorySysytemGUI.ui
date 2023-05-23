@@ -1,28 +1,382 @@
-<UI version="4.0" >
- <class>InventorySysytemGUIClass</class>
- <widget class="QMainWindow" name="InventorySysytemGUIClass" >
-  <property name="objectName" >
-   <string notr="true">InventorySysytemGUIClass</string>
-  </property>
-  <property name="geometry" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SignInMenu</class>
+ <widget class="QMainWindow" name="SignInMenu">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>749</width>
+    <height>442</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>InventorySysytemGUI</string>
-  </property>  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(214, 231, 243);
+</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>70</y>
+      <width>321</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    border-radius: 15px;
+	background-color: #c2dcf2;
+	
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #2196F3;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+QGroupBox:hover, QGroupBox:focus {
+    border: 1px solid #4da6ff;
+}
+</string>
+    </property>
+    <property name="title">
+     <string>Login</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <widget class="QComboBox" name="userType">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>40</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 5px;
+	padding-left: 14px;
+    color: #4da6ff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 30px;
+    border-left-width: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(icons/down-arrow.png);
+    width: 16px;
+    height: 16px;
+}
+
+QComboBox QAbstractItemView {
+    selection-background-color: transparent;
+    selection-color: white;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px;
+    color: black;
+    border: none;
+    outline: none;
+    scrollbar-color: #CCCCCC #F5F5F5;
+    font-weight: regular;
+}
+
+QComboBox QAbstractItemView::item {
+    height: 30px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: white;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+QComboBox QAbstractItemView::item:selected {
+    border-radius: 15px;
+    color: #4da6ff;
+}
+
+QComboBox QAbstractItemView::item:focus {
+    background-color: transparent;
+    font-weight: bold;
+}
+
+QComboBox::focus {
+    border: none;
+}
+
+QComboBox QAbstractItemView::scrollbar {
+    background-color: #F5F5F5;
+    width: 10px;
+    border-radius: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar:vertical {
+    margin-right: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:vertical {
+    background-color: #CCCCCC;
+    border-radius: 5px;
+    min-height: 20px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:vertical:hover {
+    background-color: #BBBBBB;
+}
+
+QComboBox QAbstractItemView::scrollbar:horizontal {
+    margin-bottom: 5px;
+}
+
+QComboBox QAbstractItemView::scrollbar-handle:horizontal {
+    min-width: 20px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Admin</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Customer</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Employee</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="ID">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>110</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string comment="123"/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="UserID_text">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+	background-color: transparent;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>UserID :</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Pass_text">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>170</y>
+       <width>81</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #2196F3;
+    font-weight: bold;
+	background-color: transparent;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Password :</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="logIn_button">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>200</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #2196F3;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #1976D2;
+}
+
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>LogIn</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="password">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>160</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    border-radius: 15px;
+    background-color: white;
+	font-size: 16px;
+	padding-left: 10px;
+    padding-right: 10px; 
+}
+
+QLineEdit:focus, QLineEdit:hover {
+    border: 1px solid #4da6ff;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="picture">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>100</y>
+      <width>241</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>350</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    color: black;
+	background-color: transparent;
+}</string>
+       </property>
+       <property name="text">
+        <string>donot have an accocunt</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: transparent;
+    color: blue;
+    padding: 0px 0px;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Sign Up</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
- <resources>
-   <include location="InventorySysytemGUI.qrc"/>
- </resources>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
  <connections/>
-</UI>
+</ui>
