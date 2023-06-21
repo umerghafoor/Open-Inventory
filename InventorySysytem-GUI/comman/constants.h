@@ -9,3 +9,4 @@ const std::string itemDataBaseFile = "DataBases/ItemDataBase.csv";
 const std::string tempDataBaseFile = "DataBases/temp.csv";
 
 const std::string iconPath="Icons/icon.png";
+const std::string backgroundImage="Icons/bg.png";

@@ -263,22 +263,23 @@ public:
     {
         SignUp->setWindowTitle(QCoreApplication::translate("SignUp", "MainWindow", nullptr));
         SignUp_button->setText(QCoreApplication::translate("SignUp", "SignUp", nullptr));
-        ID->setText(QCoreApplication::translate("SignUp", "ID", nullptr));
-        ID->setPlaceholderText(QString());
-        Email->setText(QCoreApplication::translate("SignUp", "example@email.com", nullptr));
-        Email->setPlaceholderText(QString());
-        Name->setText(QCoreApplication::translate("SignUp", "Name", nullptr));
-        Name->setPlaceholderText(QString());
+        ID->setText(QString());
+        ID->setPlaceholderText(QCoreApplication::translate("SignUp", "ID (int)", nullptr));
+        Email->setText(QString());
+        Email->setPlaceholderText(QCoreApplication::translate("SignUp", "Email", nullptr));
+        Name->setText(QString());
+        Name->setPlaceholderText(QCoreApplication::translate("SignUp", "Name", nullptr));
         password_1->setText(QString());
-        password_1->setPlaceholderText(QString());
+        password_1->setPlaceholderText(QCoreApplication::translate("SignUp", "password", nullptr));
         password_2->setText(QString());
-        password_2->setPlaceholderText(QString());
+        password_2->setPlaceholderText(QCoreApplication::translate("SignUp", "password", nullptr));
         picture->setText(QString());
         UserID_text->setText(QCoreApplication::translate("SignUp", "Sign Up", nullptr));
         userType->setItemText(0, QCoreApplication::translate("SignUp", "Admin", nullptr));
         userType->setItemText(1, QCoreApplication::translate("SignUp", "Customer", nullptr));
         userType->setItemText(2, QCoreApplication::translate("SignUp", "Employee", nullptr));
 
+        userType->setPlaceholderText(QCoreApplication::translate("SignUp", "User Type", nullptr));
     } // retranslateUi
 
 };

@@ -14,8 +14,7 @@
    <string>InventorySysytemGUI</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:rgb(214, 231, 243);
-</string>
+   <string notr="true">background:rgb(1, 3, 31);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
@@ -24,32 +23,49 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>310</x>
       <y>70</y>
-      <width>321</width>
-      <height>281</height>
+      <width>331</width>
+      <height>271</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QGroupBox {
-    border-radius: 15px;
-	background-color: #c2dcf2;
-	
+  /* GroupBox styles */
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
 }
 
 QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top center;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: #2196F3;
-    font-weight: bold;
-    font-size: 16px;
+  /* Title styles */
+  color: white;
+  subcontrol-origin: margin;
+  subcontrol-position: top center;
+  padding: 5px;
 }
 
-QGroupBox:hover, QGroupBox:focus {
-    border: 1px solid #4da6ff;
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QGroupBox:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  border: 1px solid #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QGroupBox:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  border: 1px solid #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
 }
 </string>
     </property>
@@ -73,94 +89,63 @@ QGroupBox:hover, QGroupBox:focus {
      </property>
      <property name="styleSheet">
       <string notr="true">QComboBox {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 5px;
-	padding-left: 14px;
-    color: #4da6ff;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
+  /* Combobox styles */
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
 }
 
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 30px;
-    border-left-width: 0px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QComboBox:hover {
+  /* Neon effect on hover */
+  border: 1px solid #38FFD8;
+  animation: glowing 1s infinite;
+  color: white;
+}
+
+QComboBox:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  border: 1px solid #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/down-arrow.png);
-    width: 16px;
-    height: 16px;
+  /* Dropdown arrow styles */
+  image: url(down_arrow.png); /* Replace with your own arrow image */
+  width: 12px;
+  height: 12px;
+  padding-right: 5px;
+  padding-bottom: 2px;
 }
 
-QComboBox QAbstractItemView {
-    selection-background-color: transparent;
-    selection-color: white;
-    background-color: white;
-    border-radius: 15px;
-    padding: 5px;
-    color: black;
-    border: none;
-    outline: none;
-    scrollbar-color: #CCCCCC #F5F5F5;
-    font-weight: regular;
+QComboBox::drop-down {
+  /* Dropdown button styles */
+  width: 15px;
+  height: 15px;
+  border: none;
+  background-color: transparent;
+  color: white;
 }
 
-QComboBox QAbstractItemView::item {
-    height: 30px;
+QComboBox::drop-down:hover {
+  /* Neon effect on dropdown button hover */
+  color: #38FFD8;
+  animation: glowing 1s infinite;
 }
 
-QComboBox QAbstractItemView::item:hover {
-    background-color: white;
-    border-radius: 15px;
-    font-weight: bold;
-}
-
-QComboBox QAbstractItemView::item:selected {
-    border-radius: 15px;
-    color: #4da6ff;
-}
-
-QComboBox QAbstractItemView::item:focus {
-    background-color: transparent;
-    font-weight: bold;
-}
-
-QComboBox::focus {
-    border: none;
-}
-
-QComboBox QAbstractItemView::scrollbar {
-    background-color: #F5F5F5;
-    width: 10px;
-    border-radius: 5px;
-}
-
-QComboBox QAbstractItemView::scrollbar:vertical {
-    margin-right: 5px;
-}
-
-QComboBox QAbstractItemView::scrollbar-handle:vertical {
-    background-color: #CCCCCC;
-    border-radius: 5px;
-    min-height: 20px;
-}
-
-QComboBox QAbstractItemView::scrollbar-handle:vertical:hover {
-    background-color: #BBBBBB;
-}
-
-QComboBox QAbstractItemView::scrollbar:horizontal {
-    margin-bottom: 5px;
-}
-
-QComboBox QAbstractItemView::scrollbar-handle:horizontal {
-    min-width: 20px;
+QComboBox::drop-down:on {
+  /* Neon effect on dropdown button pressed */
+  color: #00E1FF;
+  animation: glowing 1s infinite;
 }
 </string>
      </property>
@@ -183,7 +168,7 @@ QComboBox QAbstractItemView::scrollbar-handle:horizontal {
     <widget class="QLineEdit" name="ID">
      <property name="geometry">
       <rect>
-       <x>110</x>
+       <x>130</x>
        <y>110</y>
        <width>171</width>
        <height>31</height>
@@ -191,16 +176,35 @@ QComboBox QAbstractItemView::scrollbar-handle:horizontal {
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit {
-    border-radius: 15px;
-    background-color: white;
-	font-size: 16px;
-	padding-left: 10px;
-    padding-right: 10px; 
+  /* Line edit styles */
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
 }
 
-QLineEdit:focus, QLineEdit:hover {
-    border: 1px solid #4da6ff;
-}</string>
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QLineEdit:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  border: 1px solid #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QLineEdit:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  border: 1px solid #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
+}
+</string>
      </property>
      <property name="text">
       <string/>
@@ -209,13 +213,13 @@ QLineEdit:focus, QLineEdit:hover {
       <bool>false</bool>
      </property>
      <property name="placeholderText">
-      <string comment="123"/>
+      <string comment="123">User ID (int)</string>
      </property>
     </widget>
     <widget class="QLabel" name="UserID_text">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>120</y>
        <width>71</width>
        <height>16</height>
@@ -223,9 +227,29 @@ QLineEdit:focus, QLineEdit:hover {
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
-    color: #2196F3;
-    font-weight: bold;
-	background-color: transparent;
+  /* QLabel styles */
+  color: white;
+  font-size: 16px;
+	background:transparent;
+}
+
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QLabel:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QLabel:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
 }
 </string>
      </property>
@@ -236,7 +260,7 @@ QLineEdit:focus, QLineEdit:hover {
     <widget class="QLabel" name="Pass_text">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>30</x>
        <y>170</y>
        <width>81</width>
        <height>16</height>
@@ -244,9 +268,29 @@ QLineEdit:focus, QLineEdit:hover {
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
-    color: #2196F3;
-    font-weight: bold;
-	background-color: transparent;
+  /* QLabel styles */
+  color: white;
+  font-size: 16px;
+	background:transparent;
+}
+
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QLabel:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QLabel:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
 }
 </string>
      </property>
@@ -265,19 +309,28 @@ QLineEdit:focus, QLineEdit:hover {
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
-    background-color: #2196F3;
-    color: #FFFFFF;
-    border-radius: 20px;
-    padding: 10px 20px;
-    font-weight: bold;
+  /* Button styles */
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 QPushButton:hover {
-    background-color: #1976D2;
+  /* Neon effect on hover */
+  color: #38FFD8;
+  text-shadow: 0px 0px 10px #38FFD8;
 }
 
 QPushButton:pressed {
-    background-color: #0D47A1;
+  /* Neon effect when pressed */
+  color: #00E1FF;
+  text-shadow: 0px 0px 10px #00E1FF;
 }
 </string>
      </property>
@@ -288,7 +341,7 @@ QPushButton:pressed {
     <widget class="QLineEdit" name="password">
      <property name="geometry">
       <rect>
-       <x>110</x>
+       <x>130</x>
        <y>160</y>
        <width>171</width>
        <height>31</height>
@@ -296,16 +349,35 @@ QPushButton:pressed {
      </property>
      <property name="styleSheet">
       <string notr="true">QLineEdit {
-    border-radius: 15px;
-    background-color: white;
-	font-size: 16px;
-	padding-left: 10px;
-    padding-right: 10px; 
+  /* Line edit styles */
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
 }
 
-QLineEdit:focus, QLineEdit:hover {
-    border: 1px solid #4da6ff;
-}</string>
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QLineEdit:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  border: 1px solid #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QLineEdit:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  border: 1px solid #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
+}
+</string>
      </property>
      <property name="text">
       <string/>
@@ -317,7 +389,7 @@ QLineEdit:focus, QLineEdit:hover {
       <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
-      <string/>
+      <string>Password</string>
      </property>
     </widget>
    </widget>
@@ -330,6 +402,9 @@ QLineEdit:focus, QLineEdit:hover {
       <height>251</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background:transparent;</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -339,18 +414,43 @@ QLineEdit:focus, QLineEdit:hover {
      <rect>
       <x>370</x>
       <y>350</y>
-      <width>221</width>
-      <height>24</height>
+      <width>253</width>
+      <height>31</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label_5">
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
-    color: black;
-	background-color: transparent;
-}</string>
+  /* QLabel styles */
+  color: white;
+  font-size: 16px;
+	background:transparent;
+}
+
+@keyframes glowing {
+  0% { box-shadow: 0 0 5px #38FFD8; }
+  50% { box-shadow: 0 0 20px #38FFD8; }
+  100% { box-shadow: 0 0 5px #38FFD8; }
+}
+
+QLabel:hover {
+  /* Neon effect on hover */
+  color: #38FFD8;
+  animation: glowing 1s infinite;
+}
+
+QLabel:focus {
+  /* Neon effect when focused */
+  color: #00E1FF;
+  outline: none;
+  animation: glowing 1s infinite;
+}
+</string>
        </property>
        <property name="text">
         <string>donot have an accocunt</string>
@@ -364,6 +464,7 @@ QLineEdit:focus, QLineEdit:hover {
     background-color: transparent;
     color: blue;
     padding: 0px 0px;
+  font-size: 16px;
 }
 </string>
        </property>

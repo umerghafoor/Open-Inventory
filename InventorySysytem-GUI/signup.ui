@@ -71,7 +71,7 @@ QLineEdit:focus, QLineEdit:hover {
 }</string>
     </property>
     <property name="text">
-     <string>ID</string>
+     <string/>
     </property>
     <property name="frame">
      <bool>false</bool>
@@ -80,7 +80,7 @@ QLineEdit:focus, QLineEdit:hover {
      <enum>QLineEdit::Normal</enum>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>ID (int)</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Email">
@@ -106,7 +106,7 @@ QLineEdit:focus, QLineEdit:hover {
 }</string>
     </property>
     <property name="text">
-     <string>example@email.com</string>
+     <string/>
     </property>
     <property name="frame">
      <bool>false</bool>
@@ -115,7 +115,7 @@ QLineEdit:focus, QLineEdit:hover {
      <enum>QLineEdit::Normal</enum>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>Email</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="Name">
@@ -141,7 +141,7 @@ QLineEdit:focus, QLineEdit:hover {
 }</string>
     </property>
     <property name="text">
-     <string>Name</string>
+     <string/>
     </property>
     <property name="frame">
      <bool>false</bool>
@@ -150,7 +150,7 @@ QLineEdit:focus, QLineEdit:hover {
      <enum>QLineEdit::Normal</enum>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>Name</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password_1">
@@ -185,7 +185,7 @@ QLineEdit:focus, QLineEdit:hover {
      <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>password</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="password_2">
@@ -220,7 +220,7 @@ QLineEdit:focus, QLineEdit:hover {
      <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
-     <string/>
+     <string>password</string>
     </property>
    </widget>
    <widget class="QLabel" name="picture">
@@ -358,6 +358,9 @@ QComboBox QAbstractItemView::scrollbar-handle:horizontal {
     min-width: 20px;
 }
 </string>
+    </property>
+    <property name="placeholderText">
+     <string>User Type</string>
     </property>
     <item>
      <property name="text">
