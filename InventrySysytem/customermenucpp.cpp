@@ -3,8 +3,8 @@
 
 void CustomerMenu()
 {
-//	Customer c1(3,"user3","user3@gmail.com","12345678");
-	Customer c2(3,"12345678");
+	Customer c2(3,"user3","user3@gmail.com","12345678",0);
+//	Customer c2(3,"12345678");
 	std::cout << c2.getName() << std::endl;
 	
 	c2.displayAll();
